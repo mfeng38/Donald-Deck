@@ -1,0 +1,93 @@
+﻿body {
+    background-color: #FDFDF9;
+    margin: 0px;
+}
+html, body{
+    height:100%;
+}
+/*
+
+    #FDA700 orange
+    #145BB4 dark blue
+
+    try this:
+    #156025 - dark green
+    #57A545 - light green
+    #546A76 - grey
+    #594236 - brown
+    #FDFDF9 - white
+
+
+*/
+div.navbar {
+    padding:0;
+    width: 100%;
+    
+}
+div.navbar:after {
+    content: " ";
+    display:block;
+    clear: both;
+}
+ul {
+    margin: 0px;
+    padding:0px;
+    list-style-type: none;
+}
+li.insidenav {
+    float: left;
+    width: 25%;
+}
+div.innav {
+    display: inline-block;
+    background-color: lightblue;
+    border-left: dashed;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 36px;
+    width:100%;
+}
+div.innav:hover{
+    background-color: darkcyan;
+}
+img.logo{
+    width:25%;
+}
+
+div#solocontainer {
+    border-color: #594236;
+    margin-top: 1%;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: solid;
+    border-color: dimgrey;
+    background-color: #57A545;
+    height: 90%;
+    width: 98%;
+}
+p#Dealer {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+p#CurrentBet{
+    position: absolute;
+    left:50%;
+    top:40%;
+    transform: translate(-50%, -50%);
+}
+#Add10 {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    background-color: #156025;
+    padding: 1%;
+    border: none;
+    color: white;
+}
+#Add10:hover{
+    background-color:darkgreen;
+}
