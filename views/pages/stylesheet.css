@@ -1,0 +1,29 @@
+span,h1,a{
+  font-family:calibri;
+  color:#FDA700;
+}
+
+h1{
+  font-size:25px;
+  text-align:center;
+}
+
+span{
+  font-size:15px;
+  padding:15px;
+}
+
+body{
+  background-color:#1352A2;
+}
+
+#divLogin{
+  background-color:#145BB4;
+  margin-left:25px;
+  margin-right:25px;
+  margin-bottom:25px;
+  padding:5px;
+  position:relative;
+  border-color:grey;
+  box-shadow:0 0 5px #19468d;
+}
