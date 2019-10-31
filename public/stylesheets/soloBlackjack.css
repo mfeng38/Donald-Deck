@@ -95,8 +95,11 @@ p#CurrentBet{
     top: 50%;
     transform: translate(-50%, -50%);
 }
-#bet{
-    position:absolute;
-    top:95%;
-    left:89%;
+#bet {
+    position: absolute;
+    top: 98%;
+    left: 95%;
+    width: max-content;
+    visibility: hidden;
+    transform: translate(-100%, -100%);
 }
