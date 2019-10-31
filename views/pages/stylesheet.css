@@ -46,7 +46,7 @@ body{
   box-shadow:0 0 5px #19468d;
 }
 
-#divMenu{
+.divMenu{
   background-color:#145BB4;
   box-shadow:0 0 5px #19468d;
   position:relative;
