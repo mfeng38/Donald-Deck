@@ -40,15 +40,15 @@ li.insidenav {
 }
 div.innav {
     display: inline-block;
-    background-color: lightblue;
+    background-color: lightgrey;
     border-left: dashed;
     margin-left: 0px;
     margin-right: 0px;
     height: 36px;
-    width:100%;
+    width: 100%;
 }
 div.innav:hover{
-    background-color: darkcyan;
+    background-color: saddlebrown;
 }
 img.logo{
     width:25%;
@@ -60,7 +60,7 @@ div#solocontainer {
     margin-left: 5px;
     margin-right: 5px;
     border: solid;
-    border-color: dimgrey;
+    border-color: #594236;
     background-color: #57A545;
     height: 90%;
     width: 98%;
