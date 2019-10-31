@@ -70,6 +70,21 @@ p#Dealer {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
+    visibility: hidden;
+}
+p#Player {
+    position: absolute;
+    left: 50%;
+    top:94%;
+    transform: translate(-50%,-50%);
+    visibility: hidden;
+}
+p#playerCounter {
+    position: absolute;
+    left: 50%;
+    top: 97%;
+    transform: translate(-50%,-50%);
+    visibility: hidden;
 }
 p#CurrentBet{
     position: absolute;
@@ -102,4 +117,57 @@ p#CurrentBet{
     width: max-content;
     visibility: hidden;
     transform: translate(-100%, -100%);
+}
+
+img.card{
+    position:absolute;
+    visibility:hidden;
+    width:80px;
+    
+}
+img#backofcard {
+    visibility: visible;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+img#dealer1 {
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%);
+}
+img#dealer2 {
+    left: 54%;
+    top: 18%;
+    transform: translate(-50%);
+}
+img#c1 {
+    left: 50%;
+    transform: translate(-50%);
+    top:75%;
+}
+img#c2 {
+    left: 52%;
+    transform: translate(-50%);
+    top: 73%;
+}
+img#c3 {
+    left: 54%;
+    transform: translate(-50%);
+    top: 71%;
+}
+img#c4 {
+    left: 56%;
+    transform: translate(-50%);
+    top: 69%;
+}
+img#c5 {
+    left: 58%;
+    transform: translate(-50%);
+    top: 67%;
+}
+img#c6 {
+    left: 60%;
+    transform: translate(-50%);
+    top: 65%;
 }

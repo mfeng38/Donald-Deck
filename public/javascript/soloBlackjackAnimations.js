@@ -1,7 +1,7 @@
 // JavaScript soloBlackjack
 // animations and placement of object
 console.log("hello");
-console.log(document.getElementById('Add10'));
+console.log(document.getElementById(CurrentBet.value));
 
 document.getElementById('Add10').addEventListener('click', function () {
     //Add10 turn current Bet to 
@@ -28,6 +28,20 @@ document.getElementById('start').addEventListener('click', function () {
     var bet = document.getElementById("CurrentBet").value;
     document.getElementById("bet").innerHTML = `Bet: ${bet}`;
     document.getElementById("bet").style.visibility = "visible";
+    document.getElementById("Player").style.visibility = "visible";
+    document.getElementById("Dealer").style.visibility = "visible";
+    document.getElementById("playerCounter").style.visibility = "visible";
     document.getElementById("Add10").style.display = "none";
     document.getElementById("start").style.display = "none";
+    document.getElementById("backofcard").style.display = "none";
+    var cards = document.getElementsByClassName("card")
+    for (var i = 0; i < cards.length; i++) {
+        cards[i].style.visibility = "visible";
+    }
+    
+
+
+
+
+
 });
