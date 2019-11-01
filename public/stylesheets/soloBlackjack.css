@@ -243,41 +243,40 @@ button#sendmsg{
 @media only screen and (max-width: 960px) {
     div.innav {
         font-size: large;
-        height: 120px;
+        height: 80px;
     }
     img#backofcard {
-        width: 40%;
+        width: 50%;
     }
     #Add5 {
         left: 50%;
-        top: 51%;
+        top: 55%;
         transform: translate(-50%, -50%);
         padding: 2%;
     }
     #Add10 {
         left: 50%;
-        top: 56%;
+        top: 65%;
         transform: translate(-50%, -50%);
         padding: 2%;
     }
     #Add25 {
         left: 50%;
-        top: 61%;
+        top: 75%;
         transform: translate(-50%, -50%);
         padding: 2%;
     }
     #Add100 {
         left: 50%;
-        top: 66%;
+        top: 85%;
         transform: translate(-50%, -50%);
         padding: 2%;
     }
     #start {
         left: 50%;
-        top: 46%;
+        top: 45%;
         transform: translate(-50%, -50%);
-        padding:2%;
-        background-color:darkblue;
+        padding:3%;
     }
     
 }
