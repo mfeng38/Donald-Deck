@@ -3,6 +3,19 @@
 console.log("hello");
 console.log(document.getElementById(CurrentBet.value));
 
+document.getElementById('Add5').addEventListener('click', function () {
+    var currbet = document.getElementById("CurrentBet").value;
+    console.log("click:", parseInt(currbet));
+    var numcoins = parseInt(currbet);
+    if (Number.isNaN(numcoins)) {
+        numcoins = 5;
+    }
+    else {
+        numcoins = numcoins + 5;
+    }
+    document.getElementById("CurrentBet").innerHTML = "Current Bet: " + numcoins;
+    document.getElementById("CurrentBet").value = numcoins;
+});
 document.getElementById('Add10').addEventListener('click', function () {
     //Add10 turn current Bet to 
     
@@ -18,10 +31,33 @@ document.getElementById('Add10').addEventListener('click', function () {
     }
     document.getElementById("CurrentBet").innerHTML = "Current Bet: " + numcoins;
     document.getElementById("CurrentBet").value = numcoins;
-
 });
-
-
+document.getElementById('Add25').addEventListener('click', function () {
+    var currbet = document.getElementById("CurrentBet").value;
+    console.log("click:", parseInt(currbet));
+    var numcoins = parseInt(currbet);
+    if (Number.isNaN(numcoins)) {
+        numcoins = 25;
+    }
+    else {
+        numcoins = numcoins + 25;
+    }
+    document.getElementById("CurrentBet").innerHTML = "Current Bet: " + numcoins;
+    document.getElementById("CurrentBet").value = numcoins;
+});
+document.getElementById('Add100').addEventListener('click', function () {
+    var currbet = document.getElementById("CurrentBet").value;
+    console.log("click:", parseInt(currbet));
+    var numcoins = parseInt(currbet);
+    if (Number.isNaN(numcoins)) {
+        numcoins = 100;
+    }
+    else {
+        numcoins = numcoins + 100;
+    }
+    document.getElementById("CurrentBet").innerHTML = "Current Bet: " + numcoins;
+    document.getElementById("CurrentBet").value = numcoins;
+});
 document.getElementById('start').addEventListener('click', function () {
     //to start the game:
     document.getElementById("CurrentBet").style.visibility = "hidden";
@@ -31,7 +67,10 @@ document.getElementById('start').addEventListener('click', function () {
     document.getElementById("Player").style.visibility = "visible";
     document.getElementById("Dealer").style.visibility = "visible";
     document.getElementById("playerCounter").style.visibility = "visible";
+    document.getElementById("Add5").style.display = "none";
     document.getElementById("Add10").style.display = "none";
+    document.getElementById("Add25").style.display = "none";
+    document.getElementById("Add100").style.display = "none";
     document.getElementById("start").style.display = "none";
     document.getElementById("backofcard").style.display = "none";
     var cards = document.getElementsByClassName("card")

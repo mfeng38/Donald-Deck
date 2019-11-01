@@ -97,6 +97,11 @@ p#CurrentBet{
     left: 50%;
     top: 51%;
     transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    padding: 1%;
+    border: none;
+    color: white;
 }
 #Add10 {
     position: absolute;
@@ -115,12 +120,22 @@ p#CurrentBet{
     left: 50%;
     top: 61%;
     transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    padding: 1%;
+    border: none;
+    color: white;
 }
 #Add100 {
     position: absolute;
     left: 50%;
     top: 66%;
     transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    padding: 1%;
+    border: none;
+    color: white;
 }
 #start {
     position: absolute;
