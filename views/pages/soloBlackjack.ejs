@@ -41,9 +41,12 @@
 		<p id="playerCounter"> 0 </p>
     </div>
 	<div id = "chatroom">
+		<div id = "messages">
+
+		</div>
 		<form class= "chat" onsubmit="" action="/sendmsg" method="post"> 
 			<input id="msgin" type="text" name= "msg"> </input>
-			<button class="btn-info">SEND </button>
+			<button id="sendmsg" class="btn-info">SEND </button>
 		</form>
 		
 	</div>

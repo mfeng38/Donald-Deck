@@ -95,7 +95,7 @@ p#CurrentBet{
 #Add10 {
     position: absolute;
     left: 50%;
-    top: 45%;
+    top: 47%;
     transform: translate(-50%, -50%);
     /* button design*/
     text-align: center;
@@ -107,7 +107,7 @@ p#CurrentBet{
 #start {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 53%;
     transform: translate(-50%, -50%);
 }
 #bet {
@@ -127,7 +127,7 @@ img.card{
 }
 img#backofcard {
     visibility: visible;
-    top: 47%;
+    top: 49%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -174,15 +174,26 @@ img#c6 {
 
 /*Chatroom*/
 div#chatroom{
-    height:20%;
+    height:25%;
     margin-top:3%;
 }
-
-form.class {
+div#messages {
+    height: 85%;
+    width: 98%;
     margin: auto;
-    width: 100%;
+    border:solid;
+    border-color:#546A76; 
+}
+form.chat {
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 98%;
 }
 input#msgin{
-    margin-left:2%;
-    width:80%
+    width:80%;
+}
+
+button#sendmsg{
+    width: 19%;
 }
