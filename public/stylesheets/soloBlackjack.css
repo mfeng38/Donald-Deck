@@ -160,7 +160,6 @@ img.card{
     position:absolute;
     visibility:hidden;
     width:80px;
-    
 }
 img#backofcard {
     visibility: visible;
@@ -245,6 +244,10 @@ button#sendmsg{
         font-size: large;
         height: 80px;
     }
+    p#CurrentBet {
+        top: 30%;
+        font-size: 155%;
+    }
     img#backofcard {
         width: 50%;
     }
@@ -252,25 +255,25 @@ button#sendmsg{
         left: 50%;
         top: 55%;
         transform: translate(-50%, -50%);
-        padding: 2%;
+        padding: 3%;
     }
     #Add10 {
         left: 50%;
         top: 65%;
         transform: translate(-50%, -50%);
-        padding: 2%;
+        padding: 3%;
     }
     #Add25 {
         left: 50%;
         top: 75%;
         transform: translate(-50%, -50%);
-        padding: 2%;
+        padding: 3%;
     }
     #Add100 {
         left: 50%;
         top: 85%;
         transform: translate(-50%, -50%);
-        padding: 2%;
+        padding: 3%;
     }
     #start {
         left: 50%;
@@ -278,5 +281,73 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding:3%;
     }
+
+    #bet {
+        top: 99%;
+        left: 95%;
+    }
+    p#Player {
+        top: 97%;
+    }
+
+    p#playerCounter {
+        top: 99%;
+    }
+
+    /*CARDS PLACEMENT MOBILE*/
+    img.card {
+        position: absolute;
+        visibility: hidden;
+        width: 100px;
+    }
+
+    img#dealer1 {
+        left: 49%;
+        top: 27%;
+        transform: translate(-50%);
+    }
+
+    img#dealer2 {
+        left: 54%;
+        top: 24%;
+        transform: translate(-50%);
+    }
+
+    img#c1 {
+        left: 45%;
+        transform: translate(-50%);
+        top: 75%;
+    }
+
+    img#c2 {
+        left: 48%;
+        transform: translate(-50%);
+        top: 73%;
+    }
+
+    img#c3 {
+        left: 51%;
+        transform: translate(-50%);
+        top: 71%;
+    }
+
+    img#c4 {
+        left: 54%;
+        transform: translate(-50%);
+        top: 69%;
+    }
+
+    img#c5 {
+        left: 57%;
+        transform: translate(-50%);
+        top: 67%;
+    }
+
+    img#c6 {
+        left: 60%;
+        transform: translate(-50%);
+        top: 65%;
+    }
+
     
 }
