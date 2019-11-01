@@ -17,7 +17,7 @@ html, body{
     #594236 - brown
     #FDFDF9 - white
 
-
+    11 cards = max
 */
 nav {
     padding:0;
@@ -170,4 +170,19 @@ img#c6 {
     left: 60%;
     transform: translate(-50%);
     top: 65%;
+}
+
+/*Chatroom*/
+div#chatroom{
+    height:20%;
+    margin-top:3%;
+}
+
+form.class {
+    margin: auto;
+    width: 100%;
+}
+input#msgin{
+    margin-left:2%;
+    width:80%
 }
