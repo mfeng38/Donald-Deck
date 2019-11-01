@@ -39,13 +39,12 @@ li.insidenav {
     width: 25%;
 }
 div.innav {
-    font-size:large;
     display: inline-block;
     background-color: lightgrey;
     border-left: dashed;
     margin-left: 0px;
     margin-right: 0px;
-    height: 120px;
+    height: 48px;
     width: 100%;
     text-align:center;
 }
@@ -110,7 +109,7 @@ p#CurrentBet {
 #Add10 {
     position: absolute;
     left: 50%;
-    top: 56%;
+    top: 58%;
     transform: translate(-50%, -50%);
     /* button design*/
     text-align: center;
@@ -122,7 +121,7 @@ p#CurrentBet {
 #Add25 {
     position: absolute;
     left: 50%;
-    top: 61%;
+    top: 66%;
     transform: translate(-50%, -50%);
     /* button design*/
     text-align: center;
@@ -133,7 +132,7 @@ p#CurrentBet {
 #Add100 {
     position: absolute;
     left: 50%;
-    top: 66%;
+    top: 74%;
     transform: translate(-50%, -50%);
     /* button design*/
     text-align: center;
@@ -167,7 +166,7 @@ img#backofcard {
     top: 57%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width:40%;
+    width:30%;
 }
 img#dealer1 {
     left: 50%;
@@ -234,4 +233,53 @@ input#msgin{
 
 button#sendmsg{
     width: 19%;
+}
+
+
+
+/* For Phone/mobile */
+/*----------------------------------------------*/
+@media only screen and (max-width: 960px) {
+    div.innav {
+        font-size: large;
+        height: 120px;
+    }
+    img#backofcard {
+        width: 40%;
+    }
+    #Add5 {
+        left: 50%;
+        top: 51%;
+        transform: translate(-50%, -50%);
+        padding: 2%;
+    }
+
+    #Add10 {
+        left: 50%;
+        top: 56%;
+        transform: translate(-50%, -50%);
+        padding: 2%;
+    }
+
+    #Add25 {
+        left: 50%;
+        top: 61%;
+        transform: translate(-50%, -50%);
+        padding: 2%;
+    }
+
+    #Add100 {
+        left: 50%;
+        top: 66%;
+        transform: translate(-50%, -50%);
+        padding: 2%;
+    }
+
+    #start {
+        left: 50%;
+        top: 46%;
+        transform: translate(-50%, -50%);
+        padding:2%
+    }
+    
 }
