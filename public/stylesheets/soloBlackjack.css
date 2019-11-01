@@ -39,12 +39,13 @@ li.insidenav {
     width: 25%;
 }
 div.innav {
+    font-size:large;
     display: inline-block;
     background-color: lightgrey;
     border-left: dashed;
     margin-left: 0px;
     margin-right: 0px;
-    height: 48px;
+    height: 120px;
     width: 100%;
     text-align:center;
 }
@@ -86,11 +87,14 @@ p#playerCounter {
     transform: translate(-50%,-50%);
     visibility: hidden;
 }
-p#CurrentBet{
+p#CurrentBet {
     position: absolute;
-    left:50%;
-    top:40%;
+    left: 50%;
+    top: 40%;
+    font-size: 125%;
     transform: translate(-50%, -50%);
+    color: #145BB4;
+    background-color: white;
 }
 #Add5 {
     position: absolute;
@@ -163,7 +167,7 @@ img#backofcard {
     top: 57%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width:35%;
+    width:40%;
 }
 img#dealer1 {
     left: 50%;
