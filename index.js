@@ -37,8 +37,8 @@ app.post('/login', (req, res) => {
             console.log(req.body.username);
             console.log(req.body.password);
             console.log(results);
-            console.log(results.rows);
-            console.log(results.rows);
+            console.log(results.rows[0].username);
+            console.log(results.rows[0].password);
         }
     });
 });
