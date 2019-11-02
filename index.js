@@ -34,7 +34,11 @@ app.post('/login', (req, res) => {
                     res.send("incorrect password");
                 }
             }
+            console.log(req.body.username);
+            console.log(req.body.password);
             console.log(results);
+            console.log(results.username);
+            console.log(results.password);
         }
     });
 });
