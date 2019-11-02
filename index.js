@@ -22,7 +22,7 @@ app.post('/login', (req, res) => {
     console.log(loginQuery);
     pool.query(loginQuery, (error, result) => {
         if (error)
-            res.send("not found");
+            res.send(error);
         var results = {'rows': result.rows };
         console.log(results);
         res.render('pages/edit', results)
