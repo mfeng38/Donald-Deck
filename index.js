@@ -22,10 +22,9 @@ app.post('/login', (req, res) => {
     console.log(loginQuery);
     pool.query(loginQuery, (error, result) => {
         if (error)
-            res.send(error);
-        res.send(result);
-        // var results = {'rows': result.rows };
-        // console.log(results);
-        // res.render('pages/edit', results)
+            res.send("Username not found.");
+        else {
+            console.log(results);
+        }
     });
 });
