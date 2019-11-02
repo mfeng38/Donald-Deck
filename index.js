@@ -24,7 +24,7 @@ app.post('/login', (req, res) => {
         if (error)
             res.send("Error");
         else {
-            var results = result.rows;
+            var results = {'rows': result.rows };
             if (results === []) res.send("Username not found");
             else {
                 if (results.password === req.body.password) {
@@ -37,8 +37,8 @@ app.post('/login', (req, res) => {
             console.log(req.body.username);
             console.log(req.body.password);
             console.log(results);
-            console.log(results.username);
-            console.log(results.password);
+            console.log(results.rows.username);
+            console.log(results.rows.password);
         }
     });
 });
