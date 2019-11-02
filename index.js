@@ -18,13 +18,14 @@ app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 app.get('/soloBlackjack',(req,res)=> res.render('pages/soloBlackjack'));
 
 app.post('/login', (req, res) => {
-    var loginQuery = "SELECT * FROM user WHERE user.username = " + req.body.username;
+    var loginQuery = `SELECT * FROM users WHERE users.username = "${req.body.username}"`;
     console.log(loginQuery);
     pool.query(loginQuery, (error, result) => {
         if (error)
             res.send(error);
-        var results = {'rows': result.rows };
-        console.log(results);
-        res.render('pages/edit', results)
+        res.send(result);
+        // var results = {'rows': result.rows };
+        // console.log(results);
+        // res.render('pages/edit', results)
     });
 });
