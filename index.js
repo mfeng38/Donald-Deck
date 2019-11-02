@@ -22,7 +22,7 @@ app.post('/login', (req, res) => {
     console.log(loginQuery);
     pool.query(loginQuery, (error, result) => {
         if (error)
-            res.send("Error");
+            res.send(error);
         else {
             var results = {'rows': result.rows };
             if (results === []) res.send("Username not found");
@@ -37,8 +37,8 @@ app.post('/login', (req, res) => {
             console.log(req.body.username);
             console.log(req.body.password);
             console.log(results);
-            console.log(results.rows.username);
-            console.log(results.rows.password);
+            console.log(results.rows);
+            console.log(results.rows);
         }
     });
 });
