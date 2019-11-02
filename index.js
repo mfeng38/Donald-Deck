@@ -22,9 +22,18 @@ app.post('/login', (req, res) => {
     console.log(loginQuery);
     pool.query(loginQuery, (error, result) => {
         if (error)
-            res.send("Username not found");
+            res.send("Error");
         else {
             var results = {'rows': result.rows };
+            if (results === []) res.send("Username not found");
+            else {
+                if (results.password === req.body.password) {
+                    res.send("correct password");
+                }
+                else {
+                    res.send("incorrect password");
+                }
+            }
             console.log(results);
         }
     });
