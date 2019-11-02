@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" href="stylesheets/oldStyles.css">
   </head>
   <body>
     <!-- CHANGE-->
@@ -13,19 +13,19 @@
       <button id="buttLogin">Login</button>
     </div> -->
 
-    <form action="[insert link here]" id="loginForm">
-      <h1>Welcome</h1>
-      <table id="loginTable">
-        <tr>
-          <td><label for="username">Username:</label></td>
-          <td><input type="text" name="username" id="usernameID" placeholder="username"></td>
-        </tr>
-        <tr>
-          <td><label for="password">Username:</label></td>
-          <td><input type="password" name="password" id="passwordID" placeholder="password"></td>
-        </tr>
-      </table>
-    </form>
+    <div class="mainDiv">
+        <form method='post' action='/login'>
+            <div class="borderDiv">
+                <input type="text" class="txtInputfull" name="username" placeholder="Username"/><br>
+                <input type="password" class="txtInputfull" name="password" placeholder="Password"/><br>
+            </div>
+            <input type="submit" class="pageButton add" value="Login"/>
+        </form>
+        <br>
+        <form method='get' action='/createAccount'>
+            <input type="submit" class="txtButton" value="create_account"/>
+        </form>
+    </div>
 
   </body>
 </html>
