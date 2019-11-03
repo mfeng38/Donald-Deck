@@ -27,9 +27,9 @@ app.post('/login', (req, res) => {
             res.send(error);
         else {
             var results = {'rows': result.rows };
-            var databasePassword = results.rows[0].password;
-            if (results === []) res.send("Username not found");
+            if (results === undefined) res.send("Username not found");
             else {
+                var databasePassword = results.rows[0].password;
                 if (loginPassword === databasePassword) {
                     res.send("correct password");
                 }
