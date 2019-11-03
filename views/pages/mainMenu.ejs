@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheets/oldStyles.css">
+  </head>
+  <body>
+    <!-- <div class="divMenu">
+      <p class="mmTitle">Some sort of<br>Blackjack game</p>
+      <button class="mmOptions" id="soloGame">Play Solo</button><br>
+      <button class="mmOptions" id="createGame">Create Match</button><br>
+      <button class="mmOptions" id="joinGame">Join Match</button>
+    </div>
+  </body> -->
+    <div class="mainDiv">
+        <% rows.forEach((r) => { %>
+        <form method='/post' action='/soloBlackjack'>
+            <input type="hidden" name="id" value=<%= r.username %>>
+            <input type="submit" class="pageButton add" value="Play Solo"/>
+        </form>
+        <br>
+        <form method='/post' action='/createMatch'>
+            <input type="hidden" name="id" value=<%= r.username %>>
+            <input type="submit" class="pageButton add" value="Create Match"/>
+        </form>
+        <br>
+        <form method='/post' action='/joinMatch'>
+            <input type="hidden" name="id" value=<%= r.username %>>
+            <input type="submit" class="pageButton add" value="Join Match"/>
+        </form>
+        <% }); %>
+    </div>
+</html>

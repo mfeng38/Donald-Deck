@@ -28,21 +28,37 @@ app.post('/login', (req, res) => {
         else {
             var results = {'rows': result.rows };
             console.log(results.rows)
-            if (results.rows === undefined || results.rows.length == 0) res.send("Username not found");
+            if (results.rows === undefined || results.rows.length == 0) {
+                res.render('pages/loginIncorrect.ejs');
+            }
             else {
                 var databasePassword = results.rows[0].password;
                 if (loginPassword === databasePassword) {
-                    res.send("correct password");
+                    res.render('pages/mainMenu.ejs', results );
                 }
                 else {
-                    res.send("incorrect password");
+                    res.render('pages/loginIncorrect.ejs');
                 }
             }
-            console.log(req.body.username);
-            console.log(req.body.password);
-            console.log(results);
-            console.log(results.rows[0].username);
-            console.log(results.rows[0].password);
+        }
+    });
+});
+
+app.post('/createAccount', (req, res) => {
+    var createUsername = req.body.username;
+    var createPassword = req.body.password;
+    var createQuery = ` insert into users(username, password, credits) select '${createUsername}', '${createPassword}', 2000 where not exists (select 1 from users where username='${createUsername}');`;
+    console.log(createQuery);
+    pool.query(createQuery, (error, result) => {
+        if (error)
+            res.send(error);
+        else {
+            if (result.rowCount === 0) {
+                res.render('pages/createAccountIncorrect.ejs')
+            }
+            else {
+                res.render('pages/loginPostCreate.ejs')
+            }
         }
     });
 });

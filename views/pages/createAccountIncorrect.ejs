@@ -4,26 +4,26 @@
     <link rel="stylesheet" href="stylesheets/oldStyles.css">
   </head>
   <body>
-    <!-- CHANGE-->
-    <!-- <div id="divLogin">
-      <h1>Welcome</h1>
+    <!-- <div class="divMenu">
+      <p class="mmTitle">Quack Creation</p>
       <span>Username: </span><input name="username" type="text"><br>
       <span>Password: </span><input name="password" type="text"><br>
-      <a href="/createAcct.html">Create an account</a>
-      <button id="buttLogin">Login</button>
+      <span>E-mail: </span><input name="email" type="text"><br>
+      <span>Confirm E-mail: </span><input name="confEmail" type="text"><br>
+      <button>Create Account</button>
+      <button>Back</button>
     </div> -->
-
     <div class="mainDiv">
-        <form method='post' action='/login'>
+        <p class="error">Username already in use.</p>
+        <form method='post' action='/createAccount'>
             <div class="borderDiv">
                 <input type="text" class="txtInputfull" name="username" placeholder="Username"/><br>
                 <input type="password" class="txtInputfull" name="password" placeholder="Password"/><br>
             </div>
-            <input type="submit" class="pageButton add" value="Login"/>
+            <input type="submit" class="pageButton add" value="Create Account"/>
         </form>
         <br>
-        <a href="createAccount.html" class="txtButton">Create Account</a>
+        <a href="loginUI.html" class="txtButton">Return to Login</a>
     </div>
-
   </body>
 </html>
