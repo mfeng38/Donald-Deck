@@ -18,16 +18,19 @@ app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 app.get('/soloBlackjack',(req,res)=> res.render('pages/soloBlackjack'));
 
 app.post('/login', (req, res) => {
-    var loginQuery = `SELECT * FROM users WHERE users.username = '${req.body.username}'`;
+    var loginUsername = req.body.username;
+    var loginPassword = req.body.password;
+    var loginQuery = `SELECT * FROM users WHERE users.username = '${loginUsername}'`;
     console.log(loginQuery);
     pool.query(loginQuery, (error, result) => {
         if (error)
             res.send(error);
         else {
             var results = {'rows': result.rows };
+            var databasePassword = results.rows[0].password;
             if (results === []) res.send("Username not found");
             else {
-                if (results.password === req.body.password) {
+                if (loginPassword === databasePassword) {
                     res.send("correct password");
                 }
                 else {
