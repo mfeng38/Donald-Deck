@@ -34,6 +34,9 @@ app.post('/login', (req, res) => {
             else {
                 var databasePassword = results.rows[0].password;
                 if (loginPassword === databasePassword) {
+                    if (results.username === 'admin'){
+                        res.redirect('/admin');
+                    }
                     res.render('pages/mainMenu.ejs', results );
                 }
                 else {
@@ -61,4 +64,19 @@ app.post('/createAccount', (req, res) => {
             }
         }
     });
+});
+
+// If Log in as administrator, redirect to here 
+app.get('/admin', (req,res)=>{
+    var GetUsersQuery = `SELECT * FROM USERS WHERE users.username != admin`;
+    console.log(GetUsersQuery);
+    pool.query(GetUsersQuery, (error, result)=>{
+        if (error){
+            res.send(error);
+        }
+        else{
+            var results = {'rows': result.rows};
+            res.render('pages/adminview.ejs', results);
+        }
+    })
 });

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheets/oldStyles.css">
+	<link rel="stylesheet" href="stylesheets/soloBlackjack.css">
+  </head>
+  <body>
+  <nav>
+        <ul>
+            <li class="insidenav">
+                <div class="innav">
+                    <img class="logo" alt="Insert Logo Here" />
+                </div>
+            </li>
+            <li class="insidenav"><div class="innav"> View Users</div> </li>
+            <li class="insidenav"> <div class="innav"> View Statistics </div></li>
+            <li class="insidenav"><div class="innav"> Log out </div> </li>
+        </ul>
+    </nav>
+  <h1>Donald Deck Administrator</h1>
+  <table>
+		<tr>
+			<th> User Name <th>
+			<th> Coins <th>
+			<% rows.forEach((user)=>{ %>
+			<tr>
+                <th>
+					<p><%=user.username %></p>
+					<p>Caught By: <%=user.credits %></p>	
+                <th>
+			<tr>
+			<% }); %>
+	</table>
+</html>
