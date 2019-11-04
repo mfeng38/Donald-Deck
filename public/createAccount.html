@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="stylesheets/oldStyles.css">
+  </head>
+  <body>
+    <!-- <div class="divMenu">
+      <p class="mmTitle">Quack Creation</p>
+      <span>Username: </span><input name="username" type="text"><br>
+      <span>Password: </span><input name="password" type="text"><br>
+      <span>E-mail: </span><input name="email" type="text"><br>
+      <span>Confirm E-mail: </span><input name="confEm
+      ail" type="text"><br>
+      <button>Create Account</button>
+      <button>Back</button>
+    </div> -->
+    <h1>Sign up</h1>
+    <h2>Create a Quacking Cow account</h2>
+    <div class="mainDiv">
+        <form method='post' action='/createAccount'>
+            <div class="borderDiv">
+                <input type="text" class="txtInputfull" name="username" placeholder="Username"/><br>
+                <input type="password" class="txtInputfull" name="password" placeholder="Password"/><br>
+            </div>
+            <input type="submit" class="pageButton add" value="Create Account"/>
+        </form>
+        <br>
+        <a href="loginUI.html" class="txtButton">Return to Login</a>
+    </div>
+  </body>
+</html>
