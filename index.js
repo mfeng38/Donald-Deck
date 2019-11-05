@@ -69,7 +69,7 @@ app.post('/createAccount', (req, res) => {
 
 // If Log in as administrator, redirect to here 
 app.get('/admin', (req,res)=>{
-    var GetUsersQuery = `SELECT * FROM USERS WHERE users.username != admin`;
+    var GetUsersQuery = `SELECT * FROM users`;
     console.log(GetUsersQuery);
     pool.query(GetUsersQuery, (error, result)=>{
         if (error){
@@ -77,7 +77,7 @@ app.get('/admin', (req,res)=>{
         }
         else{
             var results = {'rows': result.rows};
-            res.render('pages/adminview.ejs', results);
+            res.render('/pages/adminview.ejs', results);
         }
-    })
+    });
 });
