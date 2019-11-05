@@ -34,6 +34,7 @@ app.post('/login', (req, res) => {
             else {
                 var databasePassword = results.rows[0].password;
                 if (loginPassword === databasePassword) {
+                    console.log(results.username)
                     if (results.username === 'admin'){
                         res.redirect('/admin');
                     }
