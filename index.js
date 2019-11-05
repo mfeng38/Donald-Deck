@@ -76,7 +76,7 @@ app.get('/admin', (req,res)=>{
         }
         else{
             var results = {'rows': result.rows};
-            res.render('pages/adminview.ejs', results);
+            res.render('/pages/adminview.ejs', results);
         }
-    })
+    });
 });
