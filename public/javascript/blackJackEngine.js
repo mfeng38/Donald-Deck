@@ -15,6 +15,13 @@
 */
 
 /*
+    Dealer AI
+        - if value >= 17, stay
+        - else, hit
+
+*/
+
+/*
     Display values/card images
         - change img http link to deckofcards API img
         - change counters innerHTML to corresponding values
