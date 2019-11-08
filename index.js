@@ -51,7 +51,7 @@ app.post('/createAccount', (req, res) => {
     console.log(createQuery);
     pool.query(createQuery, (error, result) => {
         if (error)
-            res.send(error);
+            res.send('ERROR',error);
         else {
             if (result.rowCount === 0) {
                 res.render('pages/createAccountIncorrect.ejs')
@@ -61,4 +61,8 @@ app.post('/createAccount', (req, res) => {
             }
         }
     });
+});
+
+app.get('\mystats', (req, res) => {
+    var user 
 });
