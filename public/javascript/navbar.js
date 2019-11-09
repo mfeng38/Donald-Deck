@@ -3,16 +3,17 @@ console.log("navbar.js runs");
 var mystats = document.getElementById("mystats");
 var creatematch = document.getElementById("mystats");
 var joinmatch = document.getElementById("joinmatch");
-var lotout = document.getElementById("logout");
+var logout = document.getElementById("logout");
 
 mystats.addEventListener('click', function () {
     var username = document.getElementById("id").innerHTML;
-    console.log(`click mystats: ${username}`);
+    //console.log(`click mystats: ${username}`);
 
     var form = document.createElement("form");
     form.setAttribute('method', 'post');
     form.setAttribute("action", "/mystats");
     var input = document.createElement("input");
+    input.style.visibility = 'hidden';
     input.setAttribute('type', 'text');
     input.setAttribute('name', 'user');
     input.setAttribute('value', `${username}`);

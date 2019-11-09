@@ -22,7 +22,7 @@
     <div class="mainDiv">
         <% rows.forEach((r) => { %>
 		<h1> Hello! </h1>
-		<p> <%=r.username %></p>
+		<p id="id"><%=r.username %></p>
         <form method='POST' action='/soloBlackjack/'>
             <input type="hidden" name="id" value=<%= r.username %>>
             <button type="submit" class="pageButton add"> Play Solo</button>

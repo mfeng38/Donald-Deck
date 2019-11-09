@@ -91,11 +91,11 @@ app.post('/createAccount', (req, res) => {
 app.post('/mystats', (req, res) => {
     var user = req.body.user;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    //console.log("mystats",findUser);
     pool.query(findUser, (error, result) => {
         if (error)
             res.send('ERROR',error);
         else {
-            
             if (result.rowCount === 0) {
                 res.render('pages/createAccountIncorrect.ejs')
             }
@@ -103,10 +103,11 @@ app.post('/mystats', (req, res) => {
                 userinfo = result.rows[0];
                 console.log(`mystats index.js`, userinfo);
                 res.render('pages/mystats.ejs', userinfo);
-                console.log("rendered");
+                //console.log("rendered");
             }
         }
     });
+});
 
 // If Log in as administrator, redirect to here 
 app.get('/admin', (req,res)=>{
@@ -120,4 +121,5 @@ app.get('/admin', (req,res)=>{
             var results = {'rows': result.rows};
             res.render('pages/adminview.ejs', results);
         }
-    });
+    })
+});
