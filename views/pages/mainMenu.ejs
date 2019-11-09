@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="/stylesheets/oldStyles.css">
+	<link rel="stylesheet" href="/stylesheets/oldStyles.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+	<script src="javascript/navbar.js" defer ></script>
   </head>
   <body>
-    <!-- <div class="divMenu">
-      <p class="mmTitle">Some sort of<br>Blackjack game</p>
-      <button class="mmOptions" id="soloGame">Play Solo</button><br>
-      <button class="mmOptions" id="createGame">Create Match</button><br>
-      <button class="mmOptions" id="joinGame">Join Match</button>
-    </div>
-  </body> -->
   <h1>Donald Deck</h1>
+  <nav>
+        <ul>
+            <li class="insidenav" style="width:33%;">
+                <div class="innav" >
+                    <img class="logo" alt="Insert Logo Here" />
+                </div>
+            </li>
+            <li class="insidenav" style="width:33%;"> <div class="innav" id="mystats"> My Stats </div></li>
+            <li class="insidenav" style="width:34%;"><div class="innav" id="logout"> Log out</div> </li>
+        </ul>
+    </nav>
+	<br>
     <div class="mainDiv">
         <% rows.forEach((r) => { %>
-        <form method='/post' action='/soloBlackjack'>
+		<h1> Hello! </h1>
+		<p> <%=r.username %></p>
+        <form method='POST' action='/soloBlackjack/'>
             <input type="hidden" name="id" value=<%= r.username %>>
-            <input type="submit" class="pageButton add" value="Play Solo"/>
+            <button type="submit" class="pageButton add"> Play Solo</button>
         </form>
         <br>
-        <form method='/post' action='/createMatch'>
+        <form method='POST' action='/createMatch/'>
             <input type="hidden" name="id" value=<%= r.username %>>
-            <input type="submit" class="pageButton add" value="Create Match"/>
+            <button type="submit" class="pageButton add"> Create Match </button>
         </form>
         <br>
-        <form method='/post' action='/joinMatch'>
+        <form method='POST' action='/joinMatch/'>
             <input type="hidden" name="id" value=<%= r.username %>>
-            <input type="submit" class="pageButton add" value="Join Match"/>
+            <button type="submit" class="pageButton add"> Join Match</button>
         </form>
         <% }); %>
     </div>

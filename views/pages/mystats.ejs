@@ -6,6 +6,7 @@
 	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <title> solo blackjack</title>
     <link rel="stylesheet" href="stylesheets/mystats.css">
+	<script src="javascript/navbar.js" defer ></script>	
 </head>
 <body>
     <nav>
@@ -15,13 +16,15 @@
                     <img class="logo" alt="Insert Logo Here" />
                 </div>
             </li>
-            <li class="insidenav"><div class="innav"> Play with Friends</div> </li>
-            <li class="insidenav"> <div class="innav"> My stats </div></li>
-            <li class="insidenav"><div class="innav"> Log out</div> </li>
+            <li class="insidenav"><div class="innav" id="creatematch" > Create match</div> </li>
+            <li class="insidenav"><div class="innav" id="joinmatch" > Join Match</div> </li>
+			<li class="insidenav"> <div class="innav" id="mystats"> My stats </div></li>
+            <li class="insidenav"><div class="innav" id= "logout" > Log out</div> </li>
         </ul>
     </nav>
     <div>
-	<p>Hi! <%=user%> </p>
+	<h1 id='id'><%=username%></h1>
+	<p>Hi <%=username%>!</p>
 	</div>
 </body>
 </html>

@@ -15,7 +15,27 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.redirect('loginUI.html'));
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-app.get('/soloBlackjack',(req,res)=> res.render('pages/soloBlackjack'));
+
+app.post('/soloBlackjack',(req,res)=> {
+    console.log("post soloBlackjack");
+    var findUser = `SELECT * FROM users WHERE users.username = '${req.body.id}'`; // Maybe not from users, maybe from diff table
+    pool.query(findUser, (error,result)=>{
+        if (error)
+            res.send(error);
+        else{
+            var userinfo= {'row' : result.rows[0]};
+            console.log(userinfo);
+            if (userinfo === undefined || result.rows.length == 0) {
+                res.redirect('pages/loginUI.html'); //fail in staying logged in
+            }
+            else{
+                res.render('pages/soloBlackjack', userinfo);
+            }
+        }
+    })
+    
+      
+});
 
 app.post('/login', (req, res) => {
     var loginUsername = req.body.username;
@@ -63,6 +83,18 @@ app.post('/createAccount', (req, res) => {
     });
 });
 
-app.get('\mystats', (req, res) => {
+app.post('\mystats', (req, res) => {
     var user 
+    pool.query(createQuery, (error, result) => {
+        if (error)
+            res.send('ERROR',error);
+        else {
+            if (result.rowCount === 0) {
+                res.render('pages/createAccountIncorrect.ejs')
+            }
+            else {
+                res.render('pages/loginPostCreate.ejs')
+            }
+        }
+    });
 });
