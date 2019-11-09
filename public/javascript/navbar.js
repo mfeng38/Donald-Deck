@@ -6,23 +6,18 @@ var joinmatch = document.getElementById("joinmatch");
 var lotout = document.getElementById("logout");
 
 mystats.addEventListener('click', function () {
-        console.log(`click mystats`);
-        
-});
-
-function functclicked(i) {
-    //When click, post id
     var username = document.getElementById("id").innerHTML;
     console.log(`click mystats: ${username}`);
-    $.post('\mystats', {user: `${username}`);
-    /*idelements = document.querySelectorAll(".sid");
-    var idelement = idelements.item(i);
-    console.log(`boop: ${idelements}`);
-    console.log(`boop: ${idelement} at ${i}`);
-    sid = idelement.innerHTML;
-    console.log(`boop: ${sid}`);
-    document.getElementById("sid").value = `${sid}`;
-    var form;*/
+
+    var form = document.createElement("form");
+    form.setAttribute('method', 'post');
+    form.setAttribute("action", "/mystats");
+    var input = document.createElement("input");
+    input.setAttribute('type', 'text');
+    input.setAttribute('name', 'user');
+    input.setAttribute('value', `${username}`);
+    form.appendChild(input);
+    document.getElementsByTagName('body')[0].appendChild(form);
     form.submit();
     return;
-}
+});

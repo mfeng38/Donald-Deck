@@ -83,17 +83,22 @@ app.post('/createAccount', (req, res) => {
     });
 });
 
-app.post('\mystats', (req, res) => {
-    var user 
-    pool.query(createQuery, (error, result) => {
+app.post('/mystats', (req, res) => {
+    var user = req.body.user;
+    var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    pool.query(findUser, (error, result) => {
         if (error)
             res.send('ERROR',error);
         else {
+            
             if (result.rowCount === 0) {
                 res.render('pages/createAccountIncorrect.ejs')
             }
             else {
-                res.render('pages/loginPostCreate.ejs')
+                userinfo = result.rows[0];
+                console.log(`mystats index.js`, userinfo);
+                res.render('pages/mystats.ejs', userinfo);
+                console.log("rendered");
             }
         }
     });

@@ -5,26 +5,28 @@
     <meta charset="utf-8" />
 	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <title> solo blackjack</title>
-    <link rel="stylesheet" href="stylesheets/mystats.css">
+    <link rel="stylesheet" href="/stylesheets/mystats.css">
+	<link rel="stylesheet" href="/stylesheets/navbar.css">
 	<script src="javascript/navbar.js" defer ></script>	
 </head>
 <body>
     <nav>
         <ul>
-            <li class="insidenav">
+            <li class="insidenav" style= "width:20%">
                 <div class="innav">
                     <img class="logo" alt="Insert Logo Here" />
                 </div>
             </li>
-            <li class="insidenav"><div class="innav" id="creatematch" > Create match</div> </li>
-            <li class="insidenav"><div class="innav" id="joinmatch" > Join Match</div> </li>
-			<li class="insidenav"> <div class="innav" id="mystats"> My stats </div></li>
-            <li class="insidenav"><div class="innav" id= "logout" > Log out</div> </li>
+            <li class="insidenav" style= "width:20%"><div class="innav" id="creatematch" > Create match</div> </li>
+            <li class="insidenav" style= "width:20%"><div class="innav" id="joinmatch" > Join Match</div> </li>
+			<li class="insidenav" style= "width:20%"> <div class="innav" id="mystats"> My stats </div></li>
+            <li class="insidenav" style= "width:20%"><div class="innav" id= "logout" > Log out</div> </li>
         </ul>
     </nav>
     <div>
 	<h1 id='id'><%=username%></h1>
-	<p>Hi <%=username%>!</p>
+	<p>Hi <%=username%>! Here are your statistics</p>
+	
 	</div>
 </body>
 </html>
