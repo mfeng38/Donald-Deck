@@ -89,7 +89,7 @@ app.post('/createAccount', (req, res) => {
 });
 
 app.post('/mystats', (req, res) => {
-    var user = req.body.user;
+    var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
     //console.log("mystats",findUser);
     pool.query(findUser, (error, result) => {
@@ -108,6 +108,27 @@ app.post('/mystats', (req, res) => {
         }
     });
 });
+
+app.post('/mainMenu', (req,res)=>{
+    var user = req.body.id;
+    var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    //console.log("mainmenu",findUser);
+    pool.query(findUser, (error, result) => {
+        if (error)
+            res.send('ERROR',error);
+        else {
+            if (result.rowCount === 0) {
+                res.render('pages/createAccountIncorrect.ejs')
+            }
+            else {
+                var userinfo = {'rows': result.rows };
+                res.render('pages/mainMenu.ejs', userinfo );
+            }
+        }
+    });
+});
+
+
 
 // If Log in as administrator, redirect to here 
 app.get('/admin', (req,res)=>{
