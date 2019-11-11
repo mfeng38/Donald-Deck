@@ -1,4 +1,22 @@
+//-- Variables --//
+var deckOfCards = [];
+var playerHandValue = 0;
+var dealerHandValue = 0;
+
+
+
 // Functions to be implemented //
+/* 
+    Shuffle & grab cards from API
+        - fetch from API
+        - store card values in deckOfCards
+
+*/
+var shuffleDeck = function(){
+    fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+};
+
+
 
 /* 
     convert card value to usable value
