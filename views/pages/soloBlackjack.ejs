@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/stylesheets/soloBlackjack.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="javascript/soloBlackjackAnimations.js" defer ></script>
+	<script src="javascript/navbar.js" defer ></script>
     <script src="javascript/blackJackEngine.js" defer></script>
 </head>
 <body>
@@ -28,6 +29,7 @@
     <div id="solocontainer">
         <p id="Dealer">Dealer</p>
 		<p id="Player">Player</p>
+		<p id="id" style="visibility:hidden;"><%=row.username%></p>
 		<img class="card" src="images/cardback.png" alt="backofcard" id = "backofcard"/>
 
         <p id="CurrentBet" value = "0" >Current Bet: 0</p>
@@ -37,7 +39,9 @@
 		<button id="Add25" class="btn-danger" > ADD 25 COINS </button>
 		<button id="Add100" class="btn-danger" > ADD 100 COINS </button>
         <button class="btn-danger" onclick = "gameStart()" id="start"> START GAME</button>
-        <p id="bet">Bet: 0</p>
+        <button id="hit" class="btn-danger">HIT</button>
+		<button id="stay" class="btn-danger">STAY</button>
+		<p id="bet">Bet: 0</p>
 		<img class="card" src="/images/cardback.png" alt="dealer1" id = "dealer1"/>
 		<img class="card" src="/images/cardback.png" alt="dealer2" id = "dealer2"/>
 		<img class="card" src="/images/cardback.png" alt="c1" id="c1"/>
