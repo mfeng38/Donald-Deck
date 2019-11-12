@@ -3,7 +3,7 @@
 
 /* Create Users table */
 
-CREATE TABLE users(
+CREATE TABLE Users(
     username TEXT UNIQUE PRIMARY KEY,
     password TEXT,
     credits INTEGER,

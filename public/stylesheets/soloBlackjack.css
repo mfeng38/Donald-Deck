@@ -1,4 +1,4 @@
-body {
+﻿body {
     background-color: #FDFDF9;
     margin: 0px;
 }
@@ -22,7 +22,6 @@ html, body{
 nav {
     padding: 0;
     width: 100%;
-
 }
 
     nav:after {
@@ -265,7 +264,7 @@ div#messages {
     width: 98%;
     margin: auto;
     border:solid;
-    border-color:#546A76;
+    border-color:#546A76; 
 }
 form.chat {
     margin: auto;
@@ -415,5 +414,5 @@ button#sendmsg{
         top: 65%;
     }
 
-
+    
 }
