@@ -59,27 +59,41 @@ document.getElementById('Add100').addEventListener('click', function () {
 });
 document.getElementById('start').addEventListener('click', function () {
     //to start the game:
+        
+    document.getElementById("Add5").style.visibility = "visible";
+    document.getElementById("Add10").style.visibility = "visible";
+    document.getElementById("Add25").style.visibility = "visible";
+    document.getElementById("Add100").style.visibility = "visible";
+    document.getElementById("CurrentBet").style.visibility= "visible";
+    document.getElementById("start").style.display = "none";
+    document.getElementById("startround").style.visibility = "visible";
+    
+    
+    
+
+});
+document.getElementById('startround').addEventListener('click', function () {
+    document.getElementById('startround').style.visibility = 'hidden';
     document.getElementById("CurrentBet").style.visibility = "hidden";
     var bet = document.getElementById("CurrentBet").value;
     document.getElementById("bet").innerHTML = `Bet: ${bet}`;
     document.getElementById("bet").style.visibility = "visible";
+    document.getElementById("Add5").style.visibility = "hidden";
+    document.getElementById("Add10").style.visibility = "hidden";
+    document.getElementById("Add25").style.visibility = "hidden";
+    document.getElementById("Add100").style.visibility = "hidden";
+    document.getElementById("CurrentBet").style.visibility = "hidden";
+    
+
     document.getElementsByClassName("Player")[0].style.visibility = "visible";
     document.getElementById("Dealer").style.visibility = "visible";
     document.getElementById("playerCounter").style.visibility = "visible";
-    document.getElementById("Add5").style.display = "none";
-    document.getElementById("Add10").style.display = "none";
-    document.getElementById("Add25").style.display = "none";
-    document.getElementById("Add100").style.display = "none";
-    document.getElementById("start").style.display = "none";
-    document.getElementById("backofcard").style.display = "none";
     var cards = document.getElementsByClassName("card")
     for (var i = 0; i < cards.length; i++) {
         cards[i].style.visibility = "visible";
     }
-    
+    document.getElementById("backofcard").style.visibility = "hidden";
 
-
-
-
-
+    document.getElementById("hit").style.visibility = "visible";
+    document.getElementById("stay").style.visibility = "visible";
 });

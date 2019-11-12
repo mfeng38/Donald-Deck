@@ -100,6 +100,7 @@ p#CurrentBet {
     transform: translate(-50%, -50%);
     color: #145BB4;
     background-color: white;
+    visibility: hidden;
 }
 #Add5 {
     position: absolute;
@@ -111,6 +112,8 @@ p#CurrentBet {
     padding: 1%;
     border: none;
     color: white;
+    width: 12%;
+    visibility: hidden;
 }
 #Add10 {
     position: absolute;
@@ -123,6 +126,8 @@ p#CurrentBet {
     padding: 1%;
     border: none;
     color: white;
+    visibility: hidden;
+    width: 12%;
 }
 #Add25 {
     position: absolute;
@@ -134,6 +139,8 @@ p#CurrentBet {
     padding: 1%;
     border: none;
     color: white;
+    width: 12%;
+    visibility: hidden;
 }
 #Add100 {
     position: absolute;
@@ -145,13 +152,16 @@ p#CurrentBet {
     padding: 1%;
     border: none;
     color: white;
+    width: 12%;
+    visibility: hidden;
 }
 #start {
     position: absolute;
     left: 50%;
     top: 44%;
     transform: translate(-50%, -50%);
-    padding:1%;
+    padding: 1%;
+    width: 10%;
 }
 #bet {
     position: absolute;
@@ -160,8 +170,37 @@ p#CurrentBet {
     width: max-content;
     visibility: hidden;
     transform: translate(-100%, -100%);
+    visibility: hidden;
 }
 
+#startround {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    transform: translate(-50%, -50%);
+    padding: 1%;
+    visibility: hidden;
+    width: 12%;
+}
+#hit {
+    position: absolute;
+    left: 50%;
+    top: 51%;
+    transform: translate(-50%, -50%);
+    padding: 1%;
+    width:10%;
+    visibility: hidden;
+}
+
+#stay {
+    position: absolute;
+    left: 50%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    padding: 1%;
+    width: 10%;
+    visibility: hidden;
+}
 img.card{
     position:absolute;
     visibility:hidden;
@@ -286,6 +325,26 @@ button#sendmsg{
         top: 45%;
         transform: translate(-50%, -50%);
         padding:3%;
+    }
+    #startround {
+        left: 50%;
+        top: 45%;
+        transform: translate(-50%, -50%);
+        padding: 3%;
+    }
+
+    #hit {
+        left: 50%;
+        top: 65%;
+        transform: translate(-50%, -50%);
+        padding: 3%;
+    }
+
+    #stay {
+        left: 50%;
+        top: 75%;
+        transform: translate(-50%, -50%);
+        padding: 3%;
     }
 
     #bet {
