@@ -295,6 +295,10 @@ button#sendmsg{
     }
     img#backofcard {
         width: 50%;
+        top:50%;
+    }
+    button#start{
+        width:auto;
     }
     #Add5 {
         left: 50%;
@@ -414,5 +418,8 @@ button#sendmsg{
         top: 65%;
     }
 
-    
+    /*Chat*/
+    #msgin{
+        width:78%;
+    }
 }
