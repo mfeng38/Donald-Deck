@@ -287,54 +287,60 @@ button#sendmsg{
 @media only screen and (max-width: 960px) {
     div.innav {
         font-size: large;
-        height: 80px;
+        height: 70px;
     }
     p#CurrentBet {
-        top: 30%;
+        top: 40%;
         font-size: 155%;
     }
     img#backofcard {
-        width: 50%;
-        top:50%;
+        width: 55%;
+        top:60%;
     }
     button#start{
         width:auto;
     }
     #Add5 {
         left: 50%;
-        top: 55%;
+        top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
+        width:auto;
     }
     #Add10 {
         left: 50%;
-        top: 65%;
+        top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
+        width: auto;
     }
     #Add25 {
         left: 50%;
-        top: 75%;
+        top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
+        width: auto;
     }
     #Add100 {
         left: 50%;
-        top: 85%;
+        top: 87%;
         transform: translate(-50%, -50%);
         padding: 3%;
+        width: auto;
     }
     #start {
         left: 50%;
         top: 45%;
         transform: translate(-50%, -50%);
-        padding:3%;
+        padding: 3%;
+        width: auto;
     }
     #startround {
         left: 50%;
         top: 45%;
         transform: translate(-50%, -50%);
         padding: 3%;
+        width: auto;
     }
 
     #hit {
@@ -342,6 +348,7 @@ button#sendmsg{
         top: 65%;
         transform: translate(-50%, -50%);
         padding: 3%;
+        width: auto;
     }
 
     #stay {
@@ -349,10 +356,11 @@ button#sendmsg{
         top: 75%;
         transform: translate(-50%, -50%);
         padding: 3%;
+        width: auto;
     }
 
     #bet {
-        top: 99%;
+        top: 100%;
         left: 95%;
     }
     p#Player {
@@ -372,50 +380,50 @@ button#sendmsg{
 
     img#dealer1 {
         left: 49%;
-        top: 27%;
+        top: 34%;
         transform: translate(-50%);
     }
 
     img#dealer2 {
-        left: 54%;
-        top: 24%;
+        left: 53%;
+        top: 30%;
         transform: translate(-50%);
     }
 
     img#c1 {
-        left: 45%;
+        left: 42%;
         transform: translate(-50%);
-        top: 75%;
+        top: 90%;
     }
 
     img#c2 {
-        left: 48%;
+        left: 46%;
         transform: translate(-50%);
-        top: 73%;
+        top: 86%;
     }
 
     img#c3 {
-        left: 51%;
+        left: 49%;
         transform: translate(-50%);
-        top: 71%;
+        top: 82%;
     }
 
     img#c4 {
-        left: 54%;
+        left: 52%;
         transform: translate(-50%);
-        top: 69%;
+        top: 78%;
     }
 
     img#c5 {
-        left: 57%;
+        left: 55%;
         transform: translate(-50%);
-        top: 67%;
+        top: 74%;
     }
 
     img#c6 {
-        left: 60%;
+        left: 58%;
         transform: translate(-50%);
-        top: 65%;
+        top: 70%;
     }
 
     /*Chat*/
