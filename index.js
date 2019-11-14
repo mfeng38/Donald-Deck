@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.redirect('loginUI.html'));
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
+//app.get('/test', (req, res) => res.render('pages/soloBlackjackTEST'));
 app.post('/soloBlackjack',(req,res)=> {
     console.log("post soloBlackjack");
     var findUser = `SELECT * FROM users WHERE users.username = '${req.body.id}'`; // Maybe not from users, maybe from diff table
@@ -33,8 +33,8 @@ app.post('/soloBlackjack',(req,res)=> {
             }
         }
     })
-    
-      
+
+
 });
 
 app.post('/login', (req, res) => {
@@ -130,7 +130,7 @@ app.post('/mainMenu', (req,res)=>{
 
 
 
-// If Log in as administrator, redirect to here 
+// If Log in as administrator, redirect to here
 app.get('/admin', (req,res)=>{
     var GetUsersQuery = `SELECT * FROM USERS WHERE users.username != 'admin'`;
     console.log(GetUsersQuery);
@@ -144,6 +144,3 @@ app.get('/admin', (req,res)=>{
         }
     })
 });
-
-
-

@@ -16,8 +16,8 @@ document.getElementById('Add5').addEventListener('click', function () {
     document.getElementById("CurrentBet").value = numcoins;
 });
 document.getElementById('Add10').addEventListener('click', function () {
-    //Add10 turn current Bet to 
-    
+    //Add10 turn current Bet to
+
     var currbet = document.getElementById("CurrentBet").value;
     console.log("click:", parseInt(currbet));
     var numcoins = parseInt(currbet);
@@ -59,7 +59,7 @@ document.getElementById('Add100').addEventListener('click', function () {
 });
 document.getElementById('start').addEventListener('click', function () {
     //to start the game:
-        
+
     document.getElementById("Add5").style.visibility = "visible";
     document.getElementById("Add10").style.visibility = "visible";
     document.getElementById("Add25").style.visibility = "visible";
@@ -67,9 +67,9 @@ document.getElementById('start').addEventListener('click', function () {
     document.getElementById("CurrentBet").style.visibility= "visible";
     document.getElementById("start").style.display = "none";
     document.getElementById("startround").style.visibility = "visible";
-    
-    
-    
+
+
+
 
 });
 document.getElementById('startround').addEventListener('click', function () {
@@ -83,16 +83,12 @@ document.getElementById('startround').addEventListener('click', function () {
     document.getElementById("Add25").style.visibility = "hidden";
     document.getElementById("Add100").style.visibility = "hidden";
     document.getElementById("CurrentBet").style.visibility = "hidden";
-    
+
     document.getElementById("Player").style.visibility = "visible";
     document.getElementById("Dealer").style.visibility = "visible";
     document.getElementById("playerCounter").style.visibility = "visible";
     document.getElementById("dealerCounter").style.visibility = "visible";
 
-    var cards = document.getElementsByClassName("card")
-    for (var i = 0; i < cards.length; i++) {
-        cards[i].style.visibility = "visible";
-    }
     document.getElementById("backofcard").style.visibility = "hidden";
     document.getElementById("hit").style.visibility = "visible";
     document.getElementById("stay").style.visibility = "visible";
