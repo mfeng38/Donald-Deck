@@ -88,7 +88,7 @@ app.post('/createAccount', (req, res) => {
     });
 });
 
-app.post('/mystats', (req, res) => {
+app.post('/myStats', (req, res) => {
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
     //console.log("mystats",findUser);
