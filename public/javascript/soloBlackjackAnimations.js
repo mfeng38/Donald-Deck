@@ -84,16 +84,16 @@ document.getElementById('startround').addEventListener('click', function () {
     document.getElementById("Add100").style.visibility = "hidden";
     document.getElementById("CurrentBet").style.visibility = "hidden";
     
-
-    document.getElementsByClassName("Player")[0].style.visibility = "visible";
+    document.getElementById("Player").style.visibility = "visible";
     document.getElementById("Dealer").style.visibility = "visible";
     document.getElementById("playerCounter").style.visibility = "visible";
+    document.getElementById("dealerCounter").style.visibility = "visible";
+
     var cards = document.getElementsByClassName("card")
     for (var i = 0; i < cards.length; i++) {
         cards[i].style.visibility = "visible";
     }
     document.getElementById("backofcard").style.visibility = "hidden";
-
     document.getElementById("hit").style.visibility = "visible";
     document.getElementById("stay").style.visibility = "visible";
 });

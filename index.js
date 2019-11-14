@@ -33,8 +33,8 @@ app.post('/soloBlackjack',(req,res)=> {
             }
         }
     })
-
-
+    
+      
 });
 
 app.post('/login', (req, res) => {
@@ -88,7 +88,7 @@ app.post('/createAccount', (req, res) => {
     });
 });
 
-app.post('/mystats', (req, res) => {
+app.post('/myStats', (req, res) => {
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
     //console.log("mystats",findUser);
@@ -130,7 +130,7 @@ app.post('/mainMenu', (req,res)=>{
 
 
 
-// If Log in as administrator, redirect to here
+// If Log in as administrator, redirect to here 
 app.get('/admin', (req,res)=>{
     var GetUsersQuery = `SELECT * FROM USERS WHERE users.username != 'admin'`;
     console.log(GetUsersQuery);
@@ -144,3 +144,6 @@ app.get('/admin', (req,res)=>{
         }
     })
 });
+
+
+
