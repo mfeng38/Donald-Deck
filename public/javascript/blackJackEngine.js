@@ -99,7 +99,9 @@ async function gameStart(){
         }
         if(playerHandValue == 21){
           //BLACKJACK and PAYOUT
-          gameStateReset();
+          //gameStateReset();
+          document.getElementById("changeBet").style.visibility = "visible";
+          document.getElementById("playAgain").style.visibility = "visible";
         }
       } else {
         throw new Error('Response did not return 200');
@@ -148,7 +150,9 @@ async function hit(){
         playerCardIndex++;
         //BUST
         if(playerHandValue > 21){
-          await gameStateReset();
+          //await gameStateReset();
+          document.getElementById("changeBet").style.visibility = "visible";
+          document.getElementById("playAgain").style.visibility = "visible";
         }
         document.getElementById("playerCounter").innerHTML = playerHandValue;
       }
@@ -203,7 +207,9 @@ async function dealer(){
   }
   //BUST
   if(dealerHandValue > 21){
-    await gameStateReset();
+    //await gameStateReset();
+    document.getElementById("changeBet").style.visibility = "visible";
+    document.getElementById("playAgain").style.visibility = "visible";
   }
 }
 
@@ -213,6 +219,8 @@ async function gameStateReset(){
   {
     cardReset[i].style.visibility = "hidden";
   }
+  document.getElementById("changeBet").style.visibility = "hidden";
+  document.getElementById("playAgain").style.visibility = "hidden";
   gameStart();
 }
 /*
