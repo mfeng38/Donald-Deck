@@ -1,6 +1,7 @@
 //-- Variables --//
 var deckOfCards = [];
 var playerHandValue = 0;
+var dealerVisibleHandValue = 0;
 var dealerHandValue = 0;
 var newDeckID;
 var playerCardIndex = 1;
@@ -30,14 +31,16 @@ async function deckID(){
 
 async function gameStart(){
   await deckID();
-  await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=3`)
+  await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=4`)
     .then(async (response) => {
       if (response.ok) {
         var temp = await response.json();
         for(var i = 0; i < temp.cards.length; i++){
           var playerCard = document.getElementById(`c${playerCardIndex}`);
+          var dealerCard = document.getElementById(`d${dealerCardIndex}`);
+
           if(temp.cards[i].value == "JACK" || temp.cards[i].value == "QUEEN" || temp.cards[i].value == "KING"){
-            if(i == 2){
+            if(i%2 == 0){
               dealerHandValue += 10;
             }
             else{
@@ -45,7 +48,7 @@ async function gameStart(){
             }
           }
           else if(temp.cards[i].value == "ACE"){
-            if(i == 2){
+            if(i%2 == 0){
               dealerHandValue += 11;
             }
             else{
@@ -53,24 +56,38 @@ async function gameStart(){
             }
           }
           else {
-            if(i == 2){
+            if(i%2 == 0){
               dealerHandValue += parseInt(temp.cards[i].value);
             }
             else{
               playerHandValue += parseInt(temp.cards[i].value);
             }
           }
-          if(i == 2){
-            document.getElementById("d1").src = temp.cards[i].image;
-            document.getElementById("d1").style.visibility = "visible";
+          if(i%2 == 0){
+            if(i == 0){
+              dealerCard.src = temp.cards[i].image;
+              dealerCard.style.visibility = "visible";
+            }
+            else{
+              dealerCard.style.visibility = "visible";
+            }
+            dealerCardIndex++;
+
+            console.log("Dealer dealt")
+            console.log("Dealer score: " + dealerHandValue)
           }
           else {
             playerCard.src = temp.cards[i].image;
             playerCard.style.visibility = "visible";
             playerCardIndex++;
+            console.log("Player dealt")
+          }
+          //If first card dealt to dealer, display ONLY that value.
+          if(i == 0){
+            dealerVisibleHandValue = dealerHandValue;
           }
           document.getElementById("playerCounter").innerHTML = playerHandValue;
-          document.getElementById("dealerCounter").innerHTML = dealerHandValue;
+          document.getElementById("dealerCounter").innerHTML = dealerVisibleHandValue;
         }
         if(playerHandValue == 21){
           //BLACKJACK and PAYOUT
