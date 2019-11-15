@@ -1,11 +1,13 @@
 //-- Variables --//
 var deckOfCards = [];
-var playerHandValue = 0;
-var dealerVisibleHandValue = 0;
-var dealerHandValue = 0;
+var playerHandValue;
+var dealerVisibleHandValue;
+var dealerHandValue;
 var newDeckID;
-var playerCardIndex = 1;
-var dealerCardIndex = 2;
+var playerCardIndex;
+var dealerCardIndex;
+//var dealerHiddenCard;
+
 // Functions to be implemented //
 /*
     Shuffle & grab cards from API
@@ -35,6 +37,11 @@ async function gameStart(){
     .then(async (response) => {
       if (response.ok) {
         var temp = await response.json();
+        dealerHandValue = 0;
+        dealerVisibleHandValue = 0;
+        dealerCardIndex = 2;
+        playerHandValue = 0;
+        playerCardIndex = 1;
         for(var i = 0; i < temp.cards.length; i++){
           var playerCard = document.getElementById(`c${playerCardIndex}`);
           var dealerCard = document.getElementById(`d${dealerCardIndex}`);
@@ -69,6 +76,7 @@ async function gameStart(){
               dealerCard.style.visibility = "visible";
             }
             else{
+              //dealerHiddenCard = temp.cards[i].image;
               dealerCard.style.visibility = "visible";
             }
             dealerCardIndex++;
@@ -166,6 +174,7 @@ async function dealer(){
       .then(async (response) => {
         if (response.ok) {
           var temp = await response.json();
+          //document.getElementById('d3').src = dealerHiddenCard;
           var dealerCard = document.getElementById(`d${dealerCardIndex}`);
           if(temp.cards[0].value == "JACK" || temp.cards[0].value == "QUEEN" || temp.cards[0].value == "KING"){
               dealerHandValue += 10;
@@ -199,17 +208,12 @@ async function dealer(){
 }
 
 async function gameStateReset(){
-  dealerHandValue = 0;
-  dealerCardIndex = 2;
-  playerHandValue = 0;
-  playerCardIndex = 1;
-  document.getElementById("playerCounter").innerHTML = playerHandValue;
-  document.getElementById("dealerCounter").innerHTML = dealerHandValue;
   cardReset = document.getElementsByClassName("card");
   for(var i = 0; i < cardReset.length; i++)
   {
     cardReset[i].style.visibility = "hidden";
   }
+  gameStart();
 }
 /*
     Display values/card images
