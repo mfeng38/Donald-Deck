@@ -225,61 +225,73 @@ img#d1 {
     left: 45%;
     top: 34%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#d2 {
     left: 47%;
     top: 32%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#d3 {
     left: 49%;
     top: 30%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#d4 {
     left: 51%;
     top: 28%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#d5 {
     left: 53%;
     top: 26%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#d6 {
     left: 55%;
     top: 24%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#c1 {
     left: 50%;
     transform: translate(-50%);
     top:75%;
+    visibility: hidden;
 }
 img#c2 {
     left: 52%;
     transform: translate(-50%);
     top: 73%;
+    visibility: hidden;
 }
 img#c3 {
     left: 54%;
     transform: translate(-50%);
     top: 71%;
+    visibility: hidden;
 }
 img#c4 {
     left: 56%;
     transform: translate(-50%);
     top: 69%;
+    visibility: hidden;
 }
 img#c5 {
     left: 58%;
     transform: translate(-50%);
     top: 67%;
+    visibility: hidden;
 }
 img#c6 {
     left: 60%;
     transform: translate(-50%);
     top: 65%;
+    visibility: hidden;
 }
 
 /*Chatroom*/
