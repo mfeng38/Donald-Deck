@@ -7,71 +7,78 @@
   </head>
   <body>
     <% rows.forEach((r) => { %>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <form type="POST" action="/mainMenu">
-            <input type="hidden" name="id" value=<%= r.username %>>
-            <button class="btn my-2 my-sm-0" type="submit">
-                <img src="assets/logo_circle.png" width="50" height="50" alt="">
-            </button>
-        </form>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <img src="assets/logo_circle.png" width="50" height="50" alt="">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <form method="POST" action='/myStats'>
+            <li class="nav-item">
+                <form method="POST" action='/mainMenu'>
                     <input type="hidden" name="id" value=<%= r.username %>>
-                    <input type="submit" class="btn my-2 my-sm-0" value="My Stats"/>
+                    <input type="submit" class="btn my-2 my-sm-0" value="Main Menu"/>
                 </form>
             </li>
             <li class="nav-item">
-                <form method="GET" action='/'>
-                    <input type="submit" class="btn my-2 my-sm-0" value="Logout"/>
+                <form method="POST" action='/myStats'>
+                    <input type="hidden" name="id" value=<%= r.username %>>
+                    <input type="submit" class="btn my-2 my-sm-0" value="View Stats"/>
                 </form>
-                <!-- <a class="nav-link" href="#">Logout</a> -->
             </li>
-            
-            
+            <li class="nav-item">
+                <form method="POST" action='/soloBlackjack'>
+                    <input type="hidden" name="id" value=<%= r.username %>>
+                    <input type="submit" class="btn my-2 my-sm-0" value="Play Solo"/>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form method="POST" action='/createMatch'>
+                    <input type="hidden" name="id" value=<%= r.username %>>
+                    <input type="submit" class="btn my-2 my-sm-0" value="Create Match"/>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form method="POST" action='/joinMatch'>
+                    <input type="hidden" name="id" value=<%= r.username %>>
+                    <input type="submit" class="btn my-2 my-sm-0" value="Join Match"/>
+                </form>
+            </li>
           </ul>
-          <!-- <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form> -->
         </div>
-      </nav>
-  <!-- <nav>
-        <ul>
-            <li class="insidenav" style="width:33%;">
-                <div class="innav" id="logo" >
-                    <img class="logo" alt="Insert Logo Here" />
-                </div>
-            </li>
-            <li class="insidenav" style="width:33%;"> <div class="innav" id="mystats"> My Stats </div></li>
-            <li class="insidenav" style="width:34%;"><div class="innav" id="logout"> Log out</div> </li>
-        </ul>
-    </nav> -->
-    <br>
+    </nav>
+
+    <br> -->
     <div class="container-fluid">
         <div class="row">
           <div class="col-sm">
           </div>
           <div class="col-sm">
                 <h1 class="text-center"> Hello, <%=r.username %>! </h1>
+                <form method='POST' action='/myStats/'>
+                    <input type="hidden" name="id" value=<%= r.username %>>
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="View Stats"/>
+                </form>
+                <br>
                 <form method='POST' action='/soloBlackjack/'>
                     <input type="hidden" name="id" value=<%= r.username %>>
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Play Solo"/>
+                    <input type="submit" class="btn btn-success btn-lg btn-block" value="Play Solo"/>
                 </form>
                 <br>
                 <form method='POST' action='/createMatch/'>
                     <input type="hidden" name="id" value=<%= r.username %>>
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Create Match"/>
+                    <input type="submit" class="btn btn-success btn-lg btn-block" value="Create Match"/>
                 </form>
                 <br>
                 <form method='POST' action='/joinMatch/'>
                     <input type="hidden" name="id" value=<%= r.username %>>
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Join Match"/>
+                    <input type="submit" class="btn btn-success btn-lg btn-block" value="Join Match"/>
+                </form>
+                <br>
+                <form method='GET' action='/'>
+                    <input type="hidden" name="id" value=<%= r.username %>>
+                    <input type="submit" class="btn btn-danger btn-lg btn-block" value="Logout"/>
                 </form>
           </div>
           <div class="col-sm">
