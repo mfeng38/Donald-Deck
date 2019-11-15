@@ -16,7 +16,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -52,51 +52,53 @@
             </ul>
         </div>
     </nav>
-	<h1> Hello <%=row.username%>!</h1>
+	  <h1> Hello <%=row.username%>!</h1>
+
     <div id="solocontainer">
-        <p id="Dealer">Dealer</p>
-		<p id="Player">Player</p>
-		<p id="id" style="visibility:hidden;"><%=row.username%></p>
-    <img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
+      <p id="Dealer">Dealer</p>
+  		<p id="Player">Player</p>
+      <p id="id" style="visibility:hidden;"><%=row.username%></p>
 
-        <p id="CurrentBet" value = "0" >Current Bet: 0</p>
-		<button id="startround" onclick = "gameStart()" class="btn-danger">START ROUND</button>
-		<button id="Add5" class="btn-danger" > ADD 5 COINS </button>
-        <button id="Add10" class="btn-danger" > ADD 10 COINS </button>
-		<button id="Add25" class="btn-danger" > ADD 25 COINS </button>
-		<button id="Add100" class="btn-danger" > ADD 100 COINS </button>
-        <button class="btn-danger" id="start"> START GAME</button>
-        <button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
-		<button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
-		<p id="bet">Bet: 0</p>
-		<img class="card" src="/images/cardback.png" alt="dealer1" id = "d1"/>
-		<img class="card" src="/images/cardback.png" alt="dealer2" id = "d2"/>
-		<img class="card" src="/images/cardback.png" alt="dealer3" id = "d3"/>
-		<img class="card" src="/images/cardback.png" alt="dealer4" id = "d4"/>
-		<img class="card" src="/images/cardback.png" alt="dealer5" id = "d5"/>
-		<img class="card" src="/images/cardback.png" alt="dealer6" id = "d6"/>
+  		<img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
 
+      <p id="CurrentBet" value = "0" >Current Bet: 0</p>
 
+      <button id="startround" onclick = "gameStart()" class="btn-danger">START ROUND</button>
+  		<button id="Add5" class="btn-danger" > ADD 5 COINS </button>
+      <button id="Add10" class="btn-danger" > ADD 10 COINS </button>
+  		<button id="Add25" class="btn-danger" > ADD 25 COINS </button>
+  		<button id="Add100" class="btn-danger" > ADD 100 COINS </button>
 
-		<img class="card" src="/images/cardback.png" alt="c1" id="c1"/>
-		<img class="card" src="/images/cardback.png" alt="c2" id="c2" />
-		<img class="card" src="/images/cardback.png" alt="c3" id="c3"/>
-		<img class="card" src="/images/cardback.png" alt="c4" id="c4"/>
-		<img class="card" src="/images/cardback.png" alt="c5" id="c5"/>
-		<img class="card" src="/images/cardback.png" alt="c6" id="c6"/>
-		<p id="playerCounter"> 0 </p>
-		<p id="dealerCounter"> 0 </p>
+      <button class="btn-danger" id="start"> START GAME</button>
+
+      <button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
+		  <button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
+
+      <p id="bet">Bet: 0</p>
+		  <img class="card" src="/images/cardback.png" alt="dealer1" id = "d1"/>
+		  <img class="card" src="/images/cardback.png" alt="dealer2" id = "d2"/>
+      <!-- Only possible for dealer to have 2 cards -->
+
+		  <img class="card" src="/images/cardback.png" alt="c1" id="c1"/>
+		  <img class="card" src="/images/cardback.png" alt="c2" id="c2" />
+  		<!--
+      <img class="card" src="/images/cardback.png" alt="c3" id="c3"/>
+  		<img class="card" src="/images/cardback.png" alt="c4" id="c4"/>
+  		<img class="card" src="/images/cardback.png" alt="c5" id="c5"/>
+  		<img class="card" src="/images/cardback.png" alt="c6" id="c6"/> -->
+
+      <p id="playerCounter"> 0 </p>
+		  <p id="dealerCounter"> 0 </p>
     </div>
-	<div id = "chatroom">
-		<div id = "messages">
+    <div id = "chatroom">
+		    <div id = "messages">
 
-		</div>
-		<form class= "chat" onsubmit="" action="/sendmsg" method="post">
-			<input id="msgin" type="text" name= "msg"> </input>
-			<button id="sendmsg" class="btn-info">SEND </button>
-		</form>
-
-    </div>
+		    </div>
+        <form class= "chat" onsubmit="" action="/sendmsg" method="post">
+           <input id="msgin" type="text" name= "msg"> </input>
+			     <button id="sendmsg" class="btn-info">SEND</button>
+		    </form>
+     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
