@@ -2,31 +2,36 @@
 <html>
   <head>
     <title>Donald Deck - Login</title>
-    <link rel="stylesheet" href="/stylesheets/oldStyles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/bootstrap.css">
   </head>
   <body>
-    <!-- CHANGE-->
-    <!-- <div id="divLogin">
-      <h1>Welcome</h1>
-      <span>Username: </span><input name="username" type="text"><br>
-      <span>Password: </span><input name="password" type="text"><br>
-      <a href="/createAcct.html">Create an account</a>
-      <button id="buttLogin">Login</button>
-    </div> -->
-    <h1>Sign in</h1>
-    <h2>Use your Quacking Cow account</h2>
-    <div class="mainDiv">
-        <form method='post' action='/login'>
-            <p class="error">Incorrect Username/Password Combination</p>
-            <div class="borderDiv">
-                <input type="text" class="txtInputfull" name="username" placeholder="Username"/><br>
-                <input type="password" class="txtInputfull" name="password" placeholder="Password"/><br>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            <div class="text-center">
+                <img src="assets/login_logo_circle.png" class="rounded" alt="Logo">
             </div>
-            <input type="submit" class="pageButton add" value="Login"/>
-        </form>
-        <br>
-        <a href="createAccount.html" class="txtButton">Create Account</a>
-    </div>
-
+            <h1>Sign in</h1>
+            <form method='post' action='/login'>
+                <p class="text-danger">Incorrect username/password combination.</p>
+                <div class="form-group">
+                  <label for="usernameInput">Username</label>
+                  <input type="text" class="form-control" id="usernameInput" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                  <label for="passwordInput">Password</label>
+                  <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password">
+                </div>
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Login"/>
+            </form>
+            <a href="createAccount.html" class="txtButton">Create account</a>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+      </div>
   </body>
 </html>
