@@ -1,4 +1,43 @@
 ﻿body
 {
 }
-
+h1{
+    margin:auto;
+}
+img.coin {
+    position: absolute;
+    top:50%;
+    left:50%;
+    width:50%;
+    transform:translate(-50%,-50%);
+}
+p{
+    margin:auto;
+    font-size:15px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', sans-serif;
+}
+div.coinbox {
+    position: relative;
+    height:16em;
+    text-align:center;
+}
+h3 {
+    font-size: 50px;
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: inline;
+}
+p#youhave {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    top: 38%;
+}
+p#credits{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%,-50%);
+    top:66%;
+}
