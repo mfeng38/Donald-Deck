@@ -100,7 +100,7 @@ app.post('/myStats', (req, res) => {
                 res.render('pages/createAccountIncorrect.ejs')
             }
             else {
-                userinfo = result.rows[0];
+                var userinfo= {'row' : result.rows[0]};
                 console.log(`mystats index.js`, userinfo);
                 res.render('pages/mystats.ejs', userinfo);
                 //console.log("rendered");
