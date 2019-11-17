@@ -6,7 +6,7 @@ var dealerHandValue;
 var newDeckID;
 var playerCardIndex;
 var dealerCardIndex;
-//var dealerHiddenCard;
+var dealerHiddenCard
 
 // Functions to be implemented //
 /*
@@ -76,7 +76,7 @@ async function gameStart(){
               dealerCard.style.visibility = "visible";
             }
             else{
-              //dealerHiddenCard = temp.cards[i].image;
+              dealerHiddenCard = temp.cards[i].image;
               dealerCard.style.visibility = "visible";
             }
             dealerCardIndex++;
@@ -99,17 +99,20 @@ async function gameStart(){
         }
         if(playerHandValue == 21){
           //BLACKJACK and PAYOUT
-          //gameStateReset();
+          gameStateReset();
           document.getElementById("changeBet").style.visibility = "visible";
           document.getElementById("playAgain").style.visibility = "visible";
         }
       } else {
         throw new Error('Response did not return 200');
+        return false
       }
     })
     .catch(async (error) => {
         console.log(error);
+        return false
     })
+    return true
 }
 /*
     convert card value to usable value
@@ -150,7 +153,7 @@ async function hit(){
         playerCardIndex++;
         //BUST
         if(playerHandValue > 21){
-          //await gameStateReset();
+          await gameStateReset();
           document.getElementById("changeBet").style.visibility = "visible";
           document.getElementById("playAgain").style.visibility = "visible";
         }
@@ -158,11 +161,14 @@ async function hit(){
       }
      else {
         throw new Error('Response did not return 200');
+        return false
       }
     })
     .catch(async (error) => {
         console.log(error);
+        return false
     })
+    return true
 }
 
 /*
@@ -178,7 +184,7 @@ async function dealer(){
       .then(async (response) => {
         if (response.ok) {
           var temp = await response.json();
-          //document.getElementById('d3').src = dealerHiddenCard;
+          document.getElementById('d2').src = dealerHiddenCard;
           var dealerCard = document.getElementById(`d${dealerCardIndex}`);
           if(temp.cards[0].value == "JACK" || temp.cards[0].value == "QUEEN" || temp.cards[0].value == "KING"){
               dealerHandValue += 10;
@@ -199,18 +205,21 @@ async function dealer(){
         }
        else {
           throw new Error('Response did not return 200');
+          return false
         }
       })
       .catch(async (error) => {
           console.log(error);
+          return false
       })
   }
   //BUST
   if(dealerHandValue > 21){
-    //await gameStateReset();
+    await gameStateReset();
     document.getElementById("changeBet").style.visibility = "visible";
     document.getElementById("playAgain").style.visibility = "visible";
   }
+  return true
 }
 
 async function gameStateReset(){
@@ -222,6 +231,7 @@ async function gameStateReset(){
   document.getElementById("changeBet").style.visibility = "hidden";
   document.getElementById("playAgain").style.visibility = "hidden";
   gameStart();
+  return true
 }
 /*
     Display values/card images
