@@ -39,7 +39,7 @@ async function gameStart(){
         var temp = await response.json();
         dealerHandValue = 0;
         dealerVisibleHandValue = 0;
-        dealerCardIndex = 2;
+        dealerCardIndex = 1;
         playerHandValue = 0;
         playerCardIndex = 1;
         for(var i = 0; i < temp.cards.length; i++){
