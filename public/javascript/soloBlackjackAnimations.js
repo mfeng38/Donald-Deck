@@ -60,10 +60,7 @@ document.getElementById('Add100').addEventListener('click', function () {
 document.getElementById('start').addEventListener('click', function () {
     //to start the game:
         
-    document.getElementById("Add5").style.visibility = "visible";
-    document.getElementById("Add10").style.visibility = "visible";
-    document.getElementById("Add25").style.visibility = "visible";
-    document.getElementById("Add100").style.visibility = "visible";
+    showBetButtons();
     document.getElementById("CurrentBet").style.visibility= "visible";
     document.getElementById("start").style.display = "none";
     document.getElementById("startround").style.visibility = "visible";
@@ -96,23 +93,39 @@ function moveBetButtonsLeft() {
     document.getElementById("Add10").style.left = "10%";
     document.getElementById("Add25").style.left = "10%";
     document.getElementById("Add100").style.left = "10%";
+    document.getElementById("Sub5").style.left = "20%";
+    document.getElementById("Sub10").style.left = "20%";
+    document.getElementById("Sub25").style.left = "20%";
+    document.getElementById("Sub100").style.left = "20%";
 }
 
 function moveBetButtonsCenter() {
-    document.getElementById("Add5").style.left = "50%";
-    document.getElementById("Add10").style.left = "50%";
-    document.getElementById("Add25").style.left = "50%";
-    document.getElementById("Add100").style.left = "50%";
+    document.getElementById("Add5").style.left = "45%";
+    document.getElementById("Add10").style.left = "45%";
+    document.getElementById("Add25").style.left = "45%";
+    document.getElementById("Add100").style.left = "45%";
+    document.getElementById("Sub5").style.left = "55%";
+    document.getElementById("Sub10").style.left = "55%";
+    document.getElementById("Sub25").style.left = "55%";
+    document.getElementById("Sub100").style.left = "55%";
 }
 function hideBetButtons() {
     document.getElementById("Add5").style.visibility = "hidden";
     document.getElementById("Add10").style.visibility = "hidden";
     document.getElementById("Add25").style.visibility = "hidden";
     document.getElementById("Add100").style.visibility = "hidden";
+    document.getElementById("Sub5").style.visibility = "hidden";
+    document.getElementById("Sub10").style.visibility = "hidden";
+    document.getElementById("Sub25").style.visibility = "hidden";
+    document.getElementById("Sub100").style.visibility = "hidden";
 }
 function showBetButtons() {
     document.getElementById("Add5").style.visibility = "visible";
     document.getElementById("Add10").style.visibility = "visible";
     document.getElementById("Add25").style.visibility = "visible";
     document.getElementById("Add100").style.visibility = "visible";
+    document.getElementById("Sub5").style.visibility = "visible";
+    document.getElementById("Sub10").style.visibility = "visible";
+    document.getElementById("Sub25").style.visibility = "visible";
+    document.getElementById("Sub100").style.visibility = "visible";
 }

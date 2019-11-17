@@ -112,7 +112,7 @@ p#CurrentBet {
 }
 #Add5 {
     position: absolute;
-    left: 50%;
+    left: 45%;
     top: 51%;
     transform: translate(-50%, -50%);
     /* button design*/
@@ -120,12 +120,12 @@ p#CurrentBet {
     padding: 1%;
     border: none;
     color: white;
-    width: 12%;
+    width: 8%;
     visibility: hidden;
 }
 #Add10 {
     position: absolute;
-    left: 50%;
+    left: 45%;
     top: 58%;
     transform: translate(-50%, -50%);
     /* button design*/
@@ -135,11 +135,11 @@ p#CurrentBet {
     border: none;
     color: white;
     visibility: hidden;
-    width: 12%;
+    width: 8%;
 }
 #Add25 {
     position: absolute;
-    left: 50%;
+    left: 45%;
     top: 66%;
     transform: translate(-50%, -50%);
     /* button design*/
@@ -147,12 +147,12 @@ p#CurrentBet {
     padding: 1%;
     border: none;
     color: white;
-    width: 12%;
+    width: 8%;
     visibility: hidden;
 }
 #Add100 {
     position: absolute;
-    left: 50%;
+    left: 45%;
     top: 74%;
     transform: translate(-50%, -50%);
     /* button design*/
@@ -160,7 +160,64 @@ p#CurrentBet {
     padding: 1%;
     border: none;
     color: white;
-    width: 12%;
+    width: 8%;
+    visibility: hidden;
+}
+
+#Sub5 {
+    position: absolute;
+    left: 55%;
+    top: 51%;
+    transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    padding: 1%;
+    border: none;
+    color: white;
+    width: 8%;
+    visibility: hidden;
+}
+
+#Sub10 {
+    position: absolute;
+    left: 55%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    /*background-color: #156025;*/
+    padding: 1%;
+    border: none;
+    color: white;
+    visibility: hidden;
+    width: 8%;
+}
+
+#Sub25 {
+    position: absolute;
+    left: 55%;
+    top: 66%;
+    transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    padding: 1%;
+    border: none;
+    color: white;
+    width: 8%;
+    visibility: hidden;
+}
+
+#Sub100 {
+    position: absolute;
+    left: 55%;
+    top: 74%;
+    transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    padding: 1%;
+    border: none;
+    color: white;
+    width: 8%;
     visibility: hidden;
 }
 #start {
@@ -312,7 +369,7 @@ button#sendmsg{
 
 /* For Phone/mobile */
 /*----------------------------------------------*/
-@media only screen and (max-width: 960px) {
+@media only screen or (max-width: 960px) {
     div.innav {
         font-size: large;
         height: 70px;
