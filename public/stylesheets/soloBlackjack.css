@@ -5,64 +5,9 @@ body {
 html, body{
     height:100%;
 }
-/*
-
-    #FDA700 orange
-    #145BB4 dark blue
-
-    try this:
-    #156025 - dark green
-    #57A545 - light green
-    #546A76 - grey
-    #594236 - brown
-    #FDFDF9 - white
-
-    11 cards = max
-*/
-nav {
-    padding: 0;
-    width: 100%;
-
-}
-
-    nav:after {
-        content: " ";
-        display: block;
-        clear: both;
-    }
-
-ul {
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none;
-}
-
-li.insidenav {
-    float: left;
-    width: 25%;
-}
-
-div.innav {
-    display: inline-block;
-    background-color: lightgrey;
-    border-left: dashed;
-    margin-left: 0px;
-    margin-right: 0px;
-    height: 48px;
-    width: 100%;
-    text-align: center;
-}
-
-    div.innav:hover {
-        background-color: saddlebrown;
-    }
-
-img.logo {
-    width: 25%;
-}
-
 
 div#solocontainer {
+    position:relative;
     border-color: #594236;
     margin-top: 1%;
     margin-left: 5px;
@@ -89,7 +34,7 @@ p#Player {
 p#dealerCounter {
     position: absolute;
     left: 50%;
-    top: 20%;
+    top: 3%;
     transform: translate(-50%);
     visibility: hidden;
 }
@@ -223,10 +168,10 @@ p#CurrentBet {
 #start {
     position: absolute;
     left: 50%;
-    top: 44%;
+    top: 40%;
     transform: translate(-50%, -50%);
-    padding: 1%;
-    width: 10%;
+    padding: 2%;
+    width: 12%;
 }
 #bet {
     position: absolute;
@@ -250,7 +195,7 @@ p#CurrentBet {
 #hit {
     position: absolute;
     left: 50%;
-    top: 51%;
+    top: 45%;
     transform: translate(-50%, -50%);
     padding: 1%;
     width:10%;
@@ -260,7 +205,7 @@ p#CurrentBet {
 #stay {
     position: absolute;
     left: 50%;
-    top: 58%;
+    top: 55%;
     transform: translate(-50%, -50%);
     padding: 1%;
     width: 10%;
@@ -269,74 +214,75 @@ p#CurrentBet {
 img.card{
     position:absolute;
     visibility:hidden;
-    width:80px;
+    width:120px;
 }
 img#backofcard {
+    position:absolute;
     visibility: visible;
     top: 57%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width:30%;
+    width:40%;
 }
 img#d1 {
     left: 45%;
-    top: 34%;
+    top: 17%;
     transform: translate(-50%);
 }
 img#d2 {
     left: 47%;
-    top: 32%;
+    top: 15%;
     transform: translate(-50%);
 }
 img#d3 {
     left: 49%;
-    top: 30%;
+    top: 13%;
     transform: translate(-50%);
 }
 img#d4 {
     left: 51%;
-    top: 28%;
+    top: 11%;
     transform: translate(-50%);
 }
 img#d5 {
     left: 53%;
-    top: 26%;
+    top: 9%;
     transform: translate(-50%);
 }
 img#d6 {
     left: 55%;
-    top: 24%;
+    top: 7%;
     transform: translate(-50%);
 }
 img#c1 {
-    left: 50%;
+    left: 45%;
     transform: translate(-50%);
-    top:75%;
+    top:70%;
 }
 img#c2 {
-    left: 52%;
+    left: 47%;
     transform: translate(-50%);
-    top: 73%;
+    top: 68%;
 }
 img#c3 {
-    left: 54%;
+    left: 49%;
     transform: translate(-50%);
-    top: 71%;
+    top: 66%;
 }
 img#c4 {
-    left: 56%;
+    left: 51%;
     transform: translate(-50%);
-    top: 69%;
+    top: 64%;
 }
 img#c5 {
-    left: 58%;
+    left: 53%;
     transform: translate(-50%);
-    top: 67%;
+    top: 62%;
 }
 img#c6 {
-    left: 60%;
+    left: 55%;
     transform: translate(-50%);
-    top: 65%;
+    top: 60%;
 }
 
 /*Chatroom*/
@@ -384,28 +330,28 @@ button#sendmsg{
     }
     
     #Add5 {
-        left: 42%;
+        left: 40%;
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width:auto;
     }
     #Add10 {
-        left: 42%;
+        left: 40%;
         top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
     }
     #Add25 {
-        left: 42%;
+        left: 40%;
         top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
     }
     #Add100 {
-        left: 42%;
+        left: 40%;
         top: 87%;
         transform: translate(-50%, -50%);
         padding: 3%;
@@ -413,7 +359,7 @@ button#sendmsg{
     }
 
     #Sub5 {
-        left: 57%;
+        left: 60%;
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
@@ -421,7 +367,7 @@ button#sendmsg{
     }
 
     #Sub10 {
-        left: 57%;
+        left: 60%;
         top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
@@ -429,7 +375,7 @@ button#sendmsg{
     }
 
     #Sub25 {
-        left: 57%;
+        left: 60%;
         top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
@@ -437,7 +383,7 @@ button#sendmsg{
     }
 
     #Sub100 {
-        left: 57%;
+        left: 60%;
         top: 87%;
         transform: translate(-50%, -50%);
         padding: 3%;
@@ -445,7 +391,7 @@ button#sendmsg{
     }
     button#start {
         left: 50%;
-        top: 46%;
+        top: 47%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
@@ -460,7 +406,7 @@ button#sendmsg{
 
     #hit {
         left: 50%;
-        top: 65%;
+        top: 40%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
@@ -468,7 +414,7 @@ button#sendmsg{
 
     #stay {
         left: 50%;
-        top: 75%;
+        top: 50%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
@@ -478,89 +424,74 @@ button#sendmsg{
         top: 100%;
         left: 95%;
     }
-    p#Player {
-        top: 97%;
-    }
-
-    p#playerCounter {
-        top: 100%;
-    }
-    p#dealerCounter{
-        top:5%;
-    }
+    
     /*CARDS PLACEMENT MOBILE*/
     img.card {
         position: absolute;
         visibility: hidden;
-        width: 70px;
+        width: 80px;
     }
-
     img#d1 {
-        left: 38%;
-        top: 36%;
+        left: 40%;
+        top: 18%;
         transform: translate(-50%);
     }
 
     img#d2 {
-        left: 42%;
-        top: 32%;
+        left: 44%;
+        top: 16%;
         transform: translate(-50%);
     }
     img#d3 {
-        left: 46%;
-        top: 28%;
+        left: 48%;
+        top: 14%;
         transform: translate(-50%);
     }
     img#d4 {
-        left: 50%;
-        top: 24%;
+        left: 52%;
+        top: 12%;
         transform: translate(-50%);
     }
     img#d5 {
-        left: 54%;
-        top: 20%;
+        left: 56%;
+        top: 10%;
         transform: translate(-50%);
     }
     img#d6 {
-        left: 58%;
-        top: 16%;
+        left: 60%;
+        top: 8%;
         transform: translate(-50%);
     }
 
     img#c1 {
-        left: 42%;
-        transform: translate(-50%);
-        top: 90%;
-    }
-
-    img#c2 {
-        left: 46%;
-        transform: translate(-50%);
-        top: 86%;
-    }
-
-    img#c3 {
-        left: 49%;
-        transform: translate(-50%);
-        top: 82%;
-    }
-
-    img#c4 {
-        left: 52%;
+        left: 40%;
         transform: translate(-50%);
         top: 78%;
     }
-
-    img#c5 {
-        left: 55%;
+    img#c2 {
+        left: 44%;
+        transform: translate(-50%);
+        top: 76%;
+    }
+    img#c3 {
+        left: 48%;
         transform: translate(-50%);
         top: 74%;
     }
-
-    img#c6 {
-        left: 58%;
+    img#c4 {
+        left: 52%;
+        transform: translate(-50%);
+        top: 72%;
+    }
+    img#c5 {
+        left: 56%;
         transform: translate(-50%);
         top: 70%;
+    }
+    img#c6 {
+        left: 60%;
+        transform: translate(-50%);
+        top: 68%;
     }
 
     /*Chat*/
