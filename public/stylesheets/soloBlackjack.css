@@ -369,7 +369,7 @@ button#sendmsg{
 
 /* For Phone/mobile */
 /*----------------------------------------------*/
-@media only screen or (max-width: 960px) {
+@media only screen and (max-width: 600px) {
     div.innav {
         font-size: large;
         height: 70px;
@@ -386,33 +386,66 @@ button#sendmsg{
         width:auto;
     }
     #Add5 {
-        left: 50%;
+        left: 45%;
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width:auto;
     }
     #Add10 {
-        left: 50%;
+        left: 45%;
         top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
     }
     #Add25 {
-        left: 50%;
+        left: 45%;
         top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
     }
     #Add100 {
-        left: 50%;
+        left: 45%;
         top: 87%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
     }
+
+    #Sub5 {
+        left: 55%;
+        top: 57%;
+        transform: translate(-50%, -50%);
+        padding: 3%;
+        width: auto;
+    }
+
+    #Sub10 {
+        left: 55%;
+        top: 67%;
+        transform: translate(-50%, -50%);
+        padding: 3%;
+        width: auto;
+    }
+
+    #Sub25 {
+        left: 55%;
+        top: 77%;
+        transform: translate(-50%, -50%);
+        padding: 3%;
+        width: auto;
+    }
+
+    #Sub100 {
+        left: 55%;
+        top: 87%;
+        transform: translate(-50%, -50%);
+        padding: 3%;
+        width: auto;
+    }
+
     #start {
         left: 50%;
         top: 45%;

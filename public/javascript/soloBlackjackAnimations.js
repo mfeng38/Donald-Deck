@@ -131,10 +131,11 @@ document.getElementById('start').addEventListener('click', function () {
 
 document.getElementById('startround').addEventListener('click', function () {
     var bet = document.getElementById("CurrentBet").value;
-    if (Number.isNaN(bet) || bet==0){
+    if (Number.isNaN(bet) || bet==0||bet==undefined){
         return;
     }
     else {
+        console.log(bet);
         document.getElementById('startround').style.visibility = 'hidden';
         document.getElementById("CurrentBet").style.visibility = "hidden";
 
