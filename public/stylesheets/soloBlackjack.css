@@ -406,7 +406,7 @@ button#sendmsg{
 
     #hit {
         left: 50%;
-        top: 40%;
+        top: 45%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
@@ -414,7 +414,7 @@ button#sendmsg{
 
     #stay {
         left: 50%;
-        top: 50%;
+        top: 55%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
@@ -466,32 +466,32 @@ button#sendmsg{
     img#c1 {
         left: 40%;
         transform: translate(-50%);
-        top: 78%;
+        top: 70%;
     }
     img#c2 {
         left: 44%;
         transform: translate(-50%);
-        top: 76%;
+        top: 68%;
     }
     img#c3 {
         left: 48%;
         transform: translate(-50%);
-        top: 74%;
+        top: 66%;
     }
     img#c4 {
         left: 52%;
         transform: translate(-50%);
-        top: 72%;
+        top: 64%;
     }
     img#c5 {
         left: 56%;
         transform: translate(-50%);
-        top: 70%;
+        top: 62%;
     }
     img#c6 {
         left: 60%;
         transform: translate(-50%);
-        top: 68%;
+        top: 60%;
     }
 
     /*Chat*/
