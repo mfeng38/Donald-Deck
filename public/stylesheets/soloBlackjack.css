@@ -375,39 +375,37 @@ button#sendmsg{
         height: 70px;
     }
     p#CurrentBet {
-        top: 40%;
+        top: 38%;
         font-size: 155%;
     }
     img#backofcard {
         width: 55%;
         top:60%;
     }
-    button#start{
-        width:auto;
-    }
+    
     #Add5 {
-        left: 45%;
+        left: 42%;
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width:auto;
     }
     #Add10 {
-        left: 45%;
+        left: 42%;
         top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
     }
     #Add25 {
-        left: 45%;
+        left: 42%;
         top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
     }
     #Add100 {
-        left: 45%;
+        left: 42%;
         top: 87%;
         transform: translate(-50%, -50%);
         padding: 3%;
@@ -415,7 +413,7 @@ button#sendmsg{
     }
 
     #Sub5 {
-        left: 55%;
+        left: 57%;
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
@@ -423,7 +421,7 @@ button#sendmsg{
     }
 
     #Sub10 {
-        left: 55%;
+        left: 57%;
         top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
@@ -431,7 +429,7 @@ button#sendmsg{
     }
 
     #Sub25 {
-        left: 55%;
+        left: 57%;
         top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
@@ -439,16 +437,15 @@ button#sendmsg{
     }
 
     #Sub100 {
-        left: 55%;
+        left: 57%;
         top: 87%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
     }
-
-    #start {
+    button#start {
         left: 50%;
-        top: 45%;
+        top: 46%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
@@ -486,7 +483,7 @@ button#sendmsg{
     }
 
     p#playerCounter {
-        top: 99%;
+        top: 100%;
     }
     p#dealerCounter{
         top:5%;
@@ -495,7 +492,7 @@ button#sendmsg{
     img.card {
         position: absolute;
         visibility: hidden;
-        width: 100px;
+        width: 70px;
     }
 
     img#d1 {
