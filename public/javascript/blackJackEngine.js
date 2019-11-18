@@ -99,7 +99,8 @@ async function gameStart(){
         }
         if(playerHandValue == 21){
           //BLACKJACK and PAYOUT
-          gameStateReset();
+          document.getElementById("hit").style.visibility = "hidden";
+          document.getElementById("stay").style.visibility = "hidden";
           document.getElementById("changeBet").style.visibility = "visible";
           document.getElementById("playAgain").style.visibility = "visible";
         }
@@ -151,9 +152,17 @@ async function hit(){
         playerCard.src = temp.cards[0].image;
         playerCard.style.visibility = "visible"
         playerCardIndex++;
-        //BUST
-        if(playerHandValue > 21){
-          await gameStateReset();
+        if(playerHandValue == 21){
+          document.getElementById("hit").style.visibility = "hidden";
+          document.getElementById("stay").style.visibility = "hidden";
+          document.getElementById("changeBet").style.visibility = "visible";
+          document.getElementById("playAgain").style.visibility = "visible";
+          await dealer();
+        }
+        else if(playerHandValue > 21){
+          //BUST
+          document.getElementById("hit").style.visibility = "hidden";
+          document.getElementById("stay").style.visibility = "hidden";
           document.getElementById("changeBet").style.visibility = "visible";
           document.getElementById("playAgain").style.visibility = "visible";
         }
@@ -179,12 +188,13 @@ async function hit(){
 */
 
 async function dealer(){
+  document.getElementById('d2').src = dealerHiddenCard;
+  document.getElementById("dealerCounter").innerHTML = dealerHandValue;
   while(dealerHandValue < 17){
     await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=1`)
       .then(async (response) => {
         if (response.ok) {
           var temp = await response.json();
-          document.getElementById('d2').src = dealerHiddenCard;
           var dealerCard = document.getElementById(`d${dealerCardIndex}`);
           if(temp.cards[0].value == "JACK" || temp.cards[0].value == "QUEEN" || temp.cards[0].value == "KING"){
               dealerHandValue += 10;
@@ -202,6 +212,10 @@ async function dealer(){
           dealerCard.style.visibility = "visible"
           dealerCardIndex++;
           document.getElementById("dealerCounter").innerHTML = dealerHandValue;
+          //SHUFFLE DECK IF LOW ON CARDS
+          if(parseInt(temp.remaining) < 13){
+            await shuffleDeck();
+          }
         }
        else {
           throw new Error('Response did not return 200');
@@ -213,11 +227,18 @@ async function dealer(){
           return false
       })
   }
-  //BUST
-  if(dealerHandValue > 21){
-    await gameStateReset();
-    document.getElementById("changeBet").style.visibility = "visible";
-    document.getElementById("playAgain").style.visibility = "visible";
+  document.getElementById("hit").style.visibility = "hidden";
+  document.getElementById("stay").style.visibility = "hidden";
+  document.getElementById("changeBet").style.visibility = "visible";
+  document.getElementById("playAgain").style.visibility = "visible";
+  if(dealerHandValue > 21 || dealerHandValue < playerHandValue){
+    //PAY PLAYER
+  }
+  else if(dealerHandValue > playerHandValue){
+    //PLAYER LOSES
+  }
+  else{
+    //DRAW;PUSH
   }
   return true
 }
@@ -228,10 +249,31 @@ async function gameStateReset(){
   {
     cardReset[i].style.visibility = "hidden";
   }
+  document.getElementById("hit").style.visibility = "visible";
+  document.getElementById("stay").style.visibility = "visible";
   document.getElementById("changeBet").style.visibility = "hidden";
   document.getElementById("playAgain").style.visibility = "hidden";
   gameStart();
   return true
+}
+
+async function shuffleDeck(){
+  await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/shuffle/`)
+    .then(async (response) => {
+      if (response.ok) {
+        var temp = await response.json();
+        if(temp.success == true){
+          return true
+        }
+      } else {
+        throw new Error('Response did not return 200');
+        return false
+      }
+    })
+    .catch(async (error) => {
+        console.log(error);
+        return false
+    })
 }
 /*
     Display values/card images
