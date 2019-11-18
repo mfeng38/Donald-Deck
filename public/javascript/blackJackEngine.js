@@ -6,8 +6,9 @@ var dealerHandValue;
 var newDeckID;
 var playerCardIndex;
 var dealerCardIndex;
-var dealerHiddenCard
-
+var dealerHiddenCard;
+var dealerAces;
+var playerAces;
 // Functions to be implemented //
 /*
     Shuffle & grab cards from API
@@ -42,6 +43,9 @@ async function gameStart(){
         dealerCardIndex = 1;
         playerHandValue = 0;
         playerCardIndex = 1;
+        dealerAces = 0;
+        playerAces = 0;
+        document.getElementById("d2").src = "/images/cardback.png";
         for(var i = 0; i < temp.cards.length; i++){
           var playerCard = document.getElementById(`c${playerCardIndex}`);
           var dealerCard = document.getElementById(`d${dealerCardIndex}`);
@@ -57,9 +61,11 @@ async function gameStart(){
           else if(temp.cards[i].value == "ACE"){
             if(i%2 == 0){
               dealerHandValue += 11;
+              dealerAces++;
             }
             else{
               playerHandValue += 11;
+              playerAces++;
             }
           }
           else {
@@ -94,9 +100,13 @@ async function gameStart(){
           if(i == 0){
             dealerVisibleHandValue = dealerHandValue;
           }
-          document.getElementById("playerCounter").innerHTML = playerHandValue;
-          document.getElementById("dealerCounter").innerHTML = dealerVisibleHandValue;
         }
+        while(playerAces > 0 && playerHandValue > 21){
+          playerAces--;
+          playerHandValue -= 10;
+        }
+        document.getElementById("playerCounter").innerHTML = playerHandValue;
+        document.getElementById("dealerCounter").innerHTML = dealerVisibleHandValue;
         if(playerHandValue == 21){
           //BLACKJACK and PAYOUT
           document.getElementById("hit").style.visibility = "hidden";
@@ -142,9 +152,7 @@ async function hit(){
         }
         else if(temp.cards[0].value == "ACE"){
               playerHandValue += 11;
-              if(playerHandValue > 21){
-                playerHandValue -= 10;
-              }
+              playerAces++;
         }
         else {
             playerHandValue += parseInt(temp.cards[0].value);
@@ -152,6 +160,10 @@ async function hit(){
         playerCard.src = temp.cards[0].image;
         playerCard.style.visibility = "visible"
         playerCardIndex++;
+        while(playerAces > 0 && playerHandValue > 21){
+          playerAces--;
+          playerHandValue -= 10;
+        }
         if(playerHandValue == 21){
           document.getElementById("hit").style.visibility = "hidden";
           document.getElementById("stay").style.visibility = "hidden";
@@ -201,9 +213,6 @@ async function dealer(){
           }
           else if(temp.cards[0].value == "ACE"){
                 dealerHandValue += 11;
-                if(dealerHandValue > 21){
-                  dealerHandValue -= 10;
-                }
           }
           else {
               dealerHandValue += parseInt(temp.cards[0].value);
@@ -211,6 +220,10 @@ async function dealer(){
           dealerCard.src = temp.cards[0].image;
           dealerCard.style.visibility = "visible"
           dealerCardIndex++;
+          while(dealerAces > 0 && dealerHandValue > 21){
+            dealerAces--;
+            dealererHandValue -= 10;
+          }
           document.getElementById("dealerCounter").innerHTML = dealerHandValue;
           //SHUFFLE DECK IF LOW ON CARDS
           if(parseInt(temp.remaining) < 13){
