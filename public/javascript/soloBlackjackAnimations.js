@@ -123,10 +123,15 @@ document.getElementById('Sub100').addEventListener('click', function () {
 
 document.getElementById('start').addEventListener('click', function () {
     //to start the game:
-    showBetButtons();
+    document.getElementById("Add5").style.visibility = "visible";
+    document.getElementById("Add10").style.visibility = "visible";
+    document.getElementById("Add25").style.visibility = "visible";
+    document.getElementById("Add100").style.visibility = "visible";
     document.getElementById("CurrentBet").style.visibility= "visible";
     document.getElementById("start").style.display = "none";
     document.getElementById("startround").style.visibility = "visible";
+    showBetButtons();
+
 });
 
 document.getElementById('startround').addEventListener('click', function () {
@@ -189,6 +194,19 @@ function hideBetButtons() {
     document.getElementById("Sub10").style.visibility = "hidden";
     document.getElementById("Sub25").style.visibility = "hidden";
     document.getElementById("Sub100").style.visibility = "hidden";
+    document.getElementById("CurrentBet").style.visibility = "hidden";
+
+    document.getElementById("Player").style.visibility = "visible";
+    document.getElementById("Dealer").style.visibility = "visible";
+    document.getElementById("playerCounter").style.visibility = "visible";
+    document.getElementById("dealerCounter").style.visibility = "visible";
+
+    document.getElementById("backofcard").style.visibility = "hidden";
+    document.getElementById("hit").style.visibility = "visible";
+    document.getElementById("stay").style.visibility = "visible";
+});
+
+   
 }
 function showBetButtons() {
     document.getElementById("Add5").style.visibility = "visible";

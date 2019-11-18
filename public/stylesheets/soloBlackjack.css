@@ -165,6 +165,7 @@ p#CurrentBet {
     width: 8%;
     visibility: hidden;
 }
+
 #start {
     position: absolute;
     left: 50%;
@@ -175,12 +176,11 @@ p#CurrentBet {
 }
 #bet {
     position: absolute;
-    top: 98%;
+    top: 85%;
     left: 95%;
     width: max-content;
     visibility: hidden;
     transform: translate(-100%, -100%);
-    visibility: hidden;
 }
 
 #startround {
@@ -211,6 +211,18 @@ p#CurrentBet {
     width: 10%;
     visibility: hidden;
 }
+#changeBet{
+  position: absolute;
+  left:80%;
+  top:90%;
+  visibility:hidden;
+}
+#playAgain{
+  position: absolute;
+  left:80%;
+  top:100%;
+  visibility:hidden;
+}
 img.card{
     position:absolute;
     visibility:hidden;
@@ -228,61 +240,73 @@ img#d1 {
     left: 45%;
     top: 17%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#d2 {
     left: 47%;
     top: 15%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#d3 {
     left: 49%;
     top: 13%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#d4 {
     left: 51%;
     top: 11%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#d5 {
     left: 53%;
     top: 9%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#d6 {
     left: 55%;
     top: 7%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 img#c1 {
     left: 45%;
     transform: translate(-50%);
-    top:70%;
+    top:75%;
+    visibility: hidden;
 }
 img#c2 {
     left: 47%;
     transform: translate(-50%);
-    top: 68%;
+    top: 73%;
+    visibility: hidden;
 }
 img#c3 {
     left: 49%;
     transform: translate(-50%);
-    top: 66%;
+    top: 71%;
+    visibility: hidden;
 }
 img#c4 {
     left: 51%;
     transform: translate(-50%);
-    top: 64%;
+    top: 69%;
+    visibility: hidden;
 }
 img#c5 {
     left: 53%;
     transform: translate(-50%);
-    top: 62%;
+    top: 67%;
+    visibility: hidden;
 }
 img#c6 {
     left: 55%;
     transform: translate(-50%);
-    top: 60%;
+    top: 65%;
+    visibility: hidden;
 }
 
 /*Chatroom*/

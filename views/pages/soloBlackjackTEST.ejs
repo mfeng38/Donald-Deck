@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,77 +21,53 @@
             <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <form method="POST" action='/mainMenu'>
-                    <input type="hidden" name="id" value=<%= row.username %>>
+                    <input type="hidden" name="id" value=>
                     <input type="submit" class="btn my-2 my-sm-0" value="Main Menu"/>
                 </form>
             </li>
             <li class="nav-item">
                 <form method="POST" action='/myStats'>
-                    <input type="hidden" name="id" value=<%= row.username %>>
+                    <input type="hidden" name="id" value=>
                     <input type="submit" class="btn my-2 my-sm-0" value="View Stats"/>
                 </form>
             </li>
             <li class="nav-item">
                 <form method="POST" action='/soloBlackjack'>
-                    <input type="hidden" name="id" value=<%= row.username %>>
+                    <input type="hidden" name="id" value=>
                     <input type="submit" class="btn my-2 my-sm-0" value="Play Solo"/>
                 </form>
             </li>
             <li class="nav-item">
                 <form method="POST" action='/createMatch'>
-                    <input type="hidden" name="id" value=<%= row.username %>>
+                    <input type="hidden" name="id" value=>
                     <input type="submit" class="btn my-2 my-sm-0" value="Create Match"/>
                 </form>
             </li>
             <li class="nav-item">
                 <form method="POST" action='/joinMatch'>
-                    <input type="hidden" name="id" value=<%= row.username %>>
+                    <input type="hidden" name="id" value=>
                     <input type="submit" class="btn my-2 my-sm-0" value="Join Match"/>
                 </form>
             </li>
             </ul>
         </div>
     </nav>
-	  <h1> Hello <%=row.username%>!</h1>
+	  <h1> Hello </h1>
 
     <div id="solocontainer">
       <p id="Dealer">Dealer</p>
   		<p id="Player">Player</p>
-      <p id="id" style="visibility:hidden;"><%=row.username%></p>
+      <p id="id" style="visibility:hidden;"></p>
 
-        <p id="CurrentBet" value = "0" >Current Bet: 0</p>
-		<button id="startround" class="btn-danger">START ROUND</button>
-		<button id="Add5" class="btn-danger" >+5</button>
-        <button id="Add10" class="btn-danger" >+10</button>
-		<button id="Add25" class="btn-danger" >+25</button>
-		<button id="Add100" class="btn-danger" >+100</button>
-		<button id="Sub5" class="btn-info" >-5</button>
-        <button id="Sub10" class="btn-info" >-10</button>
-		<button id="Sub25" class="btn-info" >-25</button>
-		<button id="Sub100" class="btn-info" >-100</button>
-        <button class="btn-danger" onclick = "gameStart()" id="start"> START GAME</button>
-        <button id="hit" class="btn-danger">HIT</button>
-		<button id="stay" class="btn-danger">STAY</button>
-		<p id="bet">Bet: 0</p>
-		<img class="card" src="/images/cardback.png" alt="dealer1" id = "d1"/>
-		<img class="card" src="/images/cardback.png" alt="dealer2" id = "d2"/>
-		<img class="card" src="/images/cardback.png" alt="dealer3" id = "d3"/>
-		<img class="card" src="/images/cardback.png" alt="dealer4" id = "d4"/>
-		<img class="card" src="/images/cardback.png" alt="dealer5" id = "d5"/>
-		<img class="card" src="/images/cardback.png" alt="dealer6" id = "d6"/>
-		
-		
-		<img class="card" src="/images/cardback.png" alt="c1" id="c1"/>
-		<img class="card" src="/images/cardback.png" alt="c2" id="c2" />
-		<img class="card" src="/images/cardback.png" alt="c3" id="c3"/>
-		<img class="card" src="/images/cardback.png" alt="c4" id="c4"/>
-		<img class="card" src="/images/cardback.png" alt="c5" id="c5"/>
-		<img class="card" src="/images/cardback.png" alt="c6" id="c6"/>
-		<p id="playerCounter"> 0 </p>
-		<p id="dealerCounter"> 0 </p>
-    </div>
-	<div id = "chatroom">
-		<div id = "messages">
+  		<img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
+
+      <p id="CurrentBet" value = "0" >Current Bet: 0</p>
+
+      <button id="startround" onclick = "gameStart()" class="btn-danger">START ROUND</button>
+  		<button id="Add5" class="btn-danger" > ADD 5 COINS </button>
+      <button id="Add10" class="btn-danger" > ADD 10 COINS </button>
+  		<button id="Add25" class="btn-danger" > ADD 25 COINS </button>
+  		<button id="Add100" class="btn-danger" > ADD 100 COINS </button>
 
       <button class="btn-danger" id="start"> START GAME</button>
 

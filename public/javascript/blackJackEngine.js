@@ -1,9 +1,12 @@
 //-- Variables --//
 var deckOfCards = [];
-var playerHandValue = 0;
-var dealerHandValue = 0;
+var playerHandValue;
+var dealerVisibleHandValue;
+var dealerHandValue;
 var newDeckID;
-
+var playerCardIndex;
+var dealerCardIndex;
+var dealerHiddenCard
 
 // Functions to be implemented //
 /*
@@ -28,18 +31,23 @@ async function deckID(){
     })
 }
 
-// TO DO: ADD DEALER VALUE DISPLAY, HIDE CARD BACK SLOTS TILL DEALT CARD
 async function gameStart(){
   await deckID();
-  await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=3`)
+  await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=4`)
     .then(async (response) => {
       if (response.ok) {
         var temp = await response.json();
+        dealerHandValue = 0;
+        dealerVisibleHandValue = 0;
+        dealerCardIndex = 1;
+        playerHandValue = 0;
+        playerCardIndex = 1;
         for(var i = 0; i < temp.cards.length; i++){
-          var cardIndex = i + 1;
-          var playerCard = document.getElementById(`c${cardIndex}`);
+          var playerCard = document.getElementById(`c${playerCardIndex}`);
+          var dealerCard = document.getElementById(`d${dealerCardIndex}`);
+
           if(temp.cards[i].value == "JACK" || temp.cards[i].value == "QUEEN" || temp.cards[i].value == "KING"){
-            if(i == 2){
+            if(i%2 == 0){
               dealerHandValue += 10;
             }
             else{
@@ -47,7 +55,7 @@ async function gameStart(){
             }
           }
           else if(temp.cards[i].value == "ACE"){
-            if(i == 2){
+            if(i%2 == 0){
               dealerHandValue += 11;
             }
             else{
@@ -55,29 +63,57 @@ async function gameStart(){
             }
           }
           else {
-            if(i == 2){
+            if(i%2 == 0){
               dealerHandValue += parseInt(temp.cards[i].value);
             }
             else{
               playerHandValue += parseInt(temp.cards[i].value);
             }
           }
-          if(i == 2){
-            document.getElementById("dealer1").src = temp.cards[i].image;
+          if(i%2 == 0){
+            if(i == 0){
+              dealerCard.src = temp.cards[i].image;
+              dealerCard.style.visibility = "visible";
+            }
+            else{
+              dealerHiddenCard = temp.cards[i].image;
+              dealerCard.style.visibility = "visible";
+            }
+            dealerCardIndex++;
+
+            console.log("Dealer dealt")
+            console.log("Dealer score: " + dealerHandValue)
           }
           else {
             playerCard.src = temp.cards[i].image;
-            //playerCard.style.visibility = "visible"
+            playerCard.style.visibility = "visible";
+            playerCardIndex++;
+            console.log("Player dealt")
+          }
+          //If first card dealt to dealer, display ONLY that value.
+          if(i == 0){
+            dealerVisibleHandValue = dealerHandValue;
           }
           document.getElementById("playerCounter").innerHTML = playerHandValue;
+          document.getElementById("dealerCounter").innerHTML = dealerVisibleHandValue;
+        }
+        if(playerHandValue == 21){
+          //BLACKJACK and PAYOUT
+          document.getElementById("hit").style.visibility = "hidden";
+          document.getElementById("stay").style.visibility = "hidden";
+          document.getElementById("changeBet").style.visibility = "visible";
+          document.getElementById("playAgain").style.visibility = "visible";
         }
       } else {
         throw new Error('Response did not return 200');
+        return false
       }
     })
     .catch(async (error) => {
         console.log(error);
+        return false
     })
+    return true
 }
 /*
     convert card value to usable value
@@ -93,6 +129,56 @@ async function gameStart(){
             - if <= 21, continue until player chooses stand
 */
 
+//STAND ONCLICK CALLS DEALER AI
+//NEED TO IMPLEMENT WHAT BUST SHOULD LOOK LIKE
+async function hit(){
+  await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=1`)
+    .then(async (response) => {
+      if (response.ok) {
+        var temp = await response.json();
+        var playerCard = document.getElementById(`c${playerCardIndex}`);
+        if(temp.cards[0].value == "JACK" || temp.cards[0].value == "QUEEN" || temp.cards[0].value == "KING"){
+            playerHandValue += 10;
+        }
+        else if(temp.cards[0].value == "ACE"){
+              playerHandValue += 11;
+              if(playerHandValue > 21){
+                playerHandValue -= 10;
+              }
+        }
+        else {
+            playerHandValue += parseInt(temp.cards[0].value);
+        }
+        playerCard.src = temp.cards[0].image;
+        playerCard.style.visibility = "visible"
+        playerCardIndex++;
+        if(playerHandValue == 21){
+          document.getElementById("hit").style.visibility = "hidden";
+          document.getElementById("stay").style.visibility = "hidden";
+          document.getElementById("changeBet").style.visibility = "visible";
+          document.getElementById("playAgain").style.visibility = "visible";
+          await dealer();
+        }
+        else if(playerHandValue > 21){
+          //BUST
+          document.getElementById("hit").style.visibility = "hidden";
+          document.getElementById("stay").style.visibility = "hidden";
+          document.getElementById("changeBet").style.visibility = "visible";
+          document.getElementById("playAgain").style.visibility = "visible";
+        }
+        document.getElementById("playerCounter").innerHTML = playerHandValue;
+      }
+     else {
+        throw new Error('Response did not return 200');
+        return false
+      }
+    })
+    .catch(async (error) => {
+        console.log(error);
+        return false
+    })
+    return true
+}
 
 /*
     Dealer AI
@@ -101,6 +187,94 @@ async function gameStart(){
 
 */
 
+async function dealer(){
+  document.getElementById('d2').src = dealerHiddenCard;
+  document.getElementById("dealerCounter").innerHTML = dealerHandValue;
+  while(dealerHandValue < 17){
+    await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=1`)
+      .then(async (response) => {
+        if (response.ok) {
+          var temp = await response.json();
+          var dealerCard = document.getElementById(`d${dealerCardIndex}`);
+          if(temp.cards[0].value == "JACK" || temp.cards[0].value == "QUEEN" || temp.cards[0].value == "KING"){
+              dealerHandValue += 10;
+          }
+          else if(temp.cards[0].value == "ACE"){
+                dealerHandValue += 11;
+                if(dealerHandValue > 21){
+                  dealerHandValue -= 10;
+                }
+          }
+          else {
+              dealerHandValue += parseInt(temp.cards[0].value);
+          }
+          dealerCard.src = temp.cards[0].image;
+          dealerCard.style.visibility = "visible"
+          dealerCardIndex++;
+          document.getElementById("dealerCounter").innerHTML = dealerHandValue;
+          //SHUFFLE DECK IF LOW ON CARDS
+          if(parseInt(temp.remaining) < 13){
+            await shuffleDeck();
+          }
+        }
+       else {
+          throw new Error('Response did not return 200');
+          return false
+        }
+      })
+      .catch(async (error) => {
+          console.log(error);
+          return false
+      })
+  }
+  document.getElementById("hit").style.visibility = "hidden";
+  document.getElementById("stay").style.visibility = "hidden";
+  document.getElementById("changeBet").style.visibility = "visible";
+  document.getElementById("playAgain").style.visibility = "visible";
+  if(dealerHandValue > 21 || dealerHandValue < playerHandValue){
+    //PAY PLAYER
+  }
+  else if(dealerHandValue > playerHandValue){
+    //PLAYER LOSES
+  }
+  else{
+    //DRAW;PUSH
+  }
+  return true
+}
+
+async function gameStateReset(){
+  cardReset = document.getElementsByClassName("card");
+  for(var i = 0; i < cardReset.length; i++)
+  {
+    cardReset[i].style.visibility = "hidden";
+  }
+  document.getElementById("hit").style.visibility = "visible";
+  document.getElementById("stay").style.visibility = "visible";
+  document.getElementById("changeBet").style.visibility = "hidden";
+  document.getElementById("playAgain").style.visibility = "hidden";
+  gameStart();
+  return true
+}
+
+async function shuffleDeck(){
+  await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/shuffle/`)
+    .then(async (response) => {
+      if (response.ok) {
+        var temp = await response.json();
+        if(temp.success == true){
+          return true
+        }
+      } else {
+        throw new Error('Response did not return 200');
+        return false
+      }
+    })
+    .catch(async (error) => {
+        console.log(error);
+        return false
+    })
+}
 /*
     Display values/card images
         - change img http link to deckofcards API img
