@@ -156,7 +156,13 @@ document.getElementById('startround').addEventListener('click', function () {
         document.getElementById("backofcard").style.visibility = "hidden";
         document.getElementById("hit").style.visibility = "visible";
         document.getElementById("stay").style.visibility = "visible";
+        hideBetButtons();
     }
+});
+
+document.getElementById('changeBet').addEventListener('click', function () {
+    showBetButtons();
+    document.getElementById("CurrentBet").style.visibility = "visible";
 });
 
 function moveBetButtonsLeft() {
@@ -168,6 +174,7 @@ function moveBetButtonsLeft() {
     document.getElementById("Sub10").style.left = "20%";
     document.getElementById("Sub25").style.left = "20%";
     document.getElementById("Sub100").style.left = "20%";
+    document.getElementById("CurrentBet").style.left = "15%";
 }
 
 function moveBetButtonsCenter() {
