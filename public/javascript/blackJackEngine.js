@@ -119,6 +119,8 @@ async function gameStart(){
         document.getElementById("dealerCounter").innerHTML = dealerVisibleHandValue;
         if(playerHandValue == 21){
           //BLACKJACK and PAYOUT
+          document.getElementById('winloss').innerHTML = "BLACKJACK!";
+          document.getElementById('winloss').style.visibility = "visible";
           document.getElementById("hit").style.visibility = "hidden";
           document.getElementById("stay").style.visibility = "hidden";
           document.getElementById("changeBet").style.visibility = "visible";
@@ -187,7 +189,7 @@ async function hit(){
           document.getElementById("stay").style.visibility = "hidden";
           document.getElementById("changeBet").style.visibility = "visible";
           document.getElementById("playAgain").style.visibility = "visible";
-          document.getElementById('winloss').innerHTML = "YOU LOSE";
+          document.getElementById('winloss').innerHTML = "YOU BUST";
           document.getElementById('winloss').style.visibility = "visible";
         }
         document.getElementById("playerCounter").innerHTML = playerHandValue;
@@ -268,7 +270,7 @@ async function dealer(){
   }
   else{
       //DRAW;PUSH
-      document.getElementById('winloss').innerHTML = "YOU TIE";
+      document.getElementById('winloss').innerHTML = "PUSH";
       document.getElementById('winloss').style.visibility = "visible";
   }
   return true
