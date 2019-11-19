@@ -351,7 +351,7 @@ button#sendmsg{
 /*----------------------------------------------*/
 @media only screen and (max-width: 600px) {
     p#CurrentBet {
-        top: 38%;
+        top: 35%;
         font-size: 155%;
     }
 
@@ -360,7 +360,7 @@ button#sendmsg{
     }
 
     img#backofcard {
-        width: 50%;
+        width: 55%;
         top:50%;
     }
 
