@@ -402,7 +402,7 @@ button#sendmsg{
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 12%;
         display: inline-block;
     }
 
@@ -411,7 +411,7 @@ button#sendmsg{
         top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 13%;
         display: inline-block;
     }
 
@@ -420,7 +420,7 @@ button#sendmsg{
         top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 14%;
         display: inline-block;
     }
 
@@ -474,7 +474,7 @@ button#sendmsg{
 
     #changeBet {
         left: 70%;
-        top: 65%;
+        top: 70%;
         width: auto;
         display: inline-block;
     }
