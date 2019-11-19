@@ -142,7 +142,7 @@ document.getElementById('startround').addEventListener('click', function () {
 
         document.getElementById("bet").innerHTML = `Bet: ${bet}`;
         document.getElementById("bet").style.visibility = "visible";
-        moveBetButtonsLeft();
+       
         document.getElementById("CurrentBet").style.visibility = "hidden";
 
         document.getElementById("Player").style.visibility = "visible";
@@ -157,7 +157,6 @@ document.getElementById('startround').addEventListener('click', function () {
 });
 
 document.getElementById('changeBet').addEventListener('click', function () {
-    moveBetButtonsCenter();
     showBetButtons();
     document.getElementById("startround").style.visibility = "visible";
     document.getElementById("backofcard").style.visibility = "visible";
@@ -179,31 +178,6 @@ document.getElementById('playAgain').addEventListener('click', function () {
 
 });
 
-
-
-function moveBetButtonsLeft() {
-    document.getElementById("Add5").style.left = "10%";
-    document.getElementById("Add10").style.left = "10%";
-    document.getElementById("Add25").style.left = "10%";
-    document.getElementById("Add100").style.left = "10%";
-    document.getElementById("Sub5").style.left = "20%";
-    document.getElementById("Sub10").style.left = "20%";
-    document.getElementById("Sub25").style.left = "20%";
-    document.getElementById("Sub100").style.left = "20%";
-    document.getElementById("CurrentBet").style.left = "15%";
-}
-
-function moveBetButtonsCenter() {
-    document.getElementById("Add5").style.left = "45%";
-    document.getElementById("Add10").style.left = "45%";
-    document.getElementById("Add25").style.left = "45%";
-    document.getElementById("Add100").style.left = "45%";
-    document.getElementById("Sub5").style.left = "55%";
-    document.getElementById("Sub10").style.left = "55%";
-    document.getElementById("Sub25").style.left = "55%";
-    document.getElementById("Sub100").style.left = "55%";
-    document.getElementById("CurrentBet").style.left = "50%";
-}
 function hideBetButtons() {
     document.getElementById("Add5").style.visibility = "hidden";
     document.getElementById("Add10").style.visibility = "hidden";

@@ -231,10 +231,10 @@ img.card{
 img#backofcard {
     position:absolute;
     visibility: visible;
-    top: 57%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width:40%;
+    width:30%
 }
 img#d1 {
     left: 45%;
@@ -350,46 +350,51 @@ button#sendmsg{
 /* For Phone/mobile */
 /*----------------------------------------------*/
 @media only screen and (max-width: 600px) {
-    div.innav {
-        font-size: large;
-        height: 70px;
-    }
     p#CurrentBet {
-        top: 38%;
+        top: 35%;
         font-size: 155%;
     }
+
+    p#winloss {
+        transform:translate(-50%);
+    }
+
     img#backofcard {
         width: 55%;
-        top:60%;
+        top:50%;
     }
-    
+
     #Add5 {
         left: 40%;
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width:auto;
+        width: 15%;
+        display: inline-block;
     }
     #Add10 {
         left: 40%;
         top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
+        display: inline-block;
     }
     #Add25 {
         left: 40%;
         top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
+        display: inline-block;
     }
     #Add100 {
         left: 40%;
         top: 87%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
+        display: inline-block;
     }
 
     #Sub5 {
@@ -397,7 +402,8 @@ button#sendmsg{
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
+        display: inline-block;
     }
 
     #Sub10 {
@@ -405,7 +411,8 @@ button#sendmsg{
         top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
+        display: inline-block;
     }
 
     #Sub25 {
@@ -413,7 +420,8 @@ button#sendmsg{
         top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
+        display: inline-block;
     }
 
     #Sub100 {
@@ -421,7 +429,8 @@ button#sendmsg{
         top: 87%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
+        display: inline-block;
     }
     button#start {
         left: 50%;
@@ -429,6 +438,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display:inline-block;
     }
     #startround {
         left: 50%;
@@ -436,6 +446,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
 
     #hit {
@@ -444,6 +455,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
 
     #stay {
@@ -452,11 +464,25 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
 
     #bet {
         top: 100%;
         left: 95%;
+    }
+
+    #changeBet {
+        left: 70%;
+        top: 70%;
+        width: auto;
+    }
+
+    #playAgain {
+        left: 70%;
+        top: 81%;
+        width: auto;
+        display: inline-block;
     }
     
     /*CARDS PLACEMENT MOBILE*/
