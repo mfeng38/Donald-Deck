@@ -39,7 +39,7 @@ document.getElementById('startround').addEventListener('click', function () {
     else{
         gameStart();
     }
-}
+});
 
 async function gameStart(){
   await deckID();
@@ -270,7 +270,6 @@ async function gameStateReset(){
   document.getElementById('winloss').style.visibility = "hidden";
   document.getElementById("changeBet").style.visibility = "hidden";
   document.getElementById("playAgain").style.visibility = "hidden";
-    // I sorry UwU but just going to go back to start round -- see rest in soloBlackjack animations.js
   return true
 }
 
