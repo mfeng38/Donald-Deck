@@ -1,0 +1,61 @@
+﻿nav {
+    padding: 0;
+    width: 100%;
+}
+
+    nav:after {
+        content: " ";
+        display: block;
+        clear: both;
+    }
+
+ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+li.insidenav {
+    float: left;
+    width: 25%;
+}
+
+div.innav {
+    display: inline-block;
+    background-color: lightgrey;
+    border-left: dashed;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 48px;
+    width: 100%;
+    text-align: center;
+}
+
+    div.innav:hover {
+        background-color: saddlebrown;
+    }
+
+div.innavblank {
+    display: inline-block;
+    background-color: lightgrey;
+    border-left: dashed;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 48px;
+    width: 100%;
+    text-align: center;
+}
+
+img.logo {
+    width: 25%;
+}
+
+@media only screen and (max-width: 960px) {
+    div.innav {
+        font-size: large;
+        height: 80px;
+    }
+    div.innavblank {
+        font-size: large;
+        height: 80px;
+    }
+}

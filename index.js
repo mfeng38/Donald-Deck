@@ -15,7 +15,27 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.redirect('loginUI.html'));
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-app.get('/soloBlackjack',(req,res)=> res.render('pages/soloBlackjack'));
+app.get('/test', (req, res) => res.render('pages/soloBlackjackTEST'));
+app.post('/soloBlackjack',(req,res)=> {
+    console.log("post soloBlackjack");
+    var findUser = `SELECT * FROM users WHERE users.username = '${req.body.id}'`; // Maybe not from users, maybe from diff table
+    pool.query(findUser, (error,result)=>{
+        if (error)
+            res.send(error);
+        else{
+            var userinfo= {'row' : result.rows[0]};
+            console.log(userinfo);
+            if (userinfo === undefined || result.rows.length == 0) {
+                res.redirect('pages/loginUI.html'); //fail in staying logged in
+            }
+            else{
+                res.render('pages/soloBlackjack', userinfo);
+            }
+        }
+    })
+
+
+});
 
 app.post('/login', (req, res) => {
     var loginUsername = req.body.username;
@@ -56,7 +76,7 @@ app.post('/createAccount', (req, res) => {
     console.log(createQuery);
     pool.query(createQuery, (error, result) => {
         if (error)
-            res.send(error);
+            res.send('ERROR',error);
         else {
             if (result.rowCount === 0) {
                 res.render('pages/createAccountIncorrect.ejs')
@@ -68,7 +88,49 @@ app.post('/createAccount', (req, res) => {
     });
 });
 
-// If Log in as administrator, redirect to here 
+app.post('/myStats', (req, res) => {
+    var user = req.body.id;
+    var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    //console.log("mystats",findUser);
+    pool.query(findUser, (error, result) => {
+        if (error)
+            res.send('ERROR',error);
+        else {
+            if (result.rowCount === 0) {
+                res.render('pages/createAccountIncorrect.ejs')
+            }
+            else {
+                var userinfo= {'row' : result.rows[0]};
+                console.log(`mystats index.js`, userinfo);
+                res.render('pages/mystats.ejs', userinfo);
+                //console.log("rendered");
+            }
+        }
+    });
+});
+
+app.post('/mainMenu', (req,res)=>{
+    var user = req.body.id;
+    var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    //console.log("mainmenu",findUser);
+    pool.query(findUser, (error, result) => {
+        if (error)
+            res.send('ERROR',error);
+        else {
+            if (result.rowCount === 0) {
+                res.render('pages/createAccountIncorrect.ejs')
+            }
+            else {
+                var userinfo = {'rows': result.rows };
+                res.render('pages/mainMenu.ejs', userinfo );
+            }
+        }
+    });
+});
+
+
+
+// If Log in as administrator, redirect to here
 app.get('/admin', (req,res)=>{
     var GetUsersQuery = `SELECT * FROM USERS WHERE users.username != 'admin'`;
     console.log(GetUsersQuery);

@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="/stylesheets/oldStyles.css">
-	<link rel="stylesheet" href="stylesheets/soloBlackjack.css">
+	<link rel="stylesheet" href="stylesheets/navbar.css">
+	<link rel="stylesheet" href="stylesheets/admin.css">
+	<script src="javascript/navbar.js" defer ></script>
+	
   </head>
   <body>
   <nav>
     <ul>
       <li class="insidenav">
-        <div class="innav">
+        <div class="innav" id="logo">
           <img class="logo" alt="Insert Logo Here" />
         </div>
       </li>
-      <li class="insidenav"><div class="innav"> View Users</div> </li>
-      <li class="insidenav"> <div class="innav"> View Statistics </div></li>
-      <li class="insidenav"><div class="innav"> Log out </div> </li>
+      <li class="insidenav"  style="width:50%;"><div class="innavblank" id="admin"> </div> </li>
+      <li class="insidenav"><div class="innav" id="logout"> Log out </div> </li>
     </ul>
   </nav>
   <h1>Donald Deck Administrator</h1>
   <table>
 		<tr>
 			<th> User Name </th>
-      <th> Coins </th>
+      <th> Credits </th>
     </tr>
 		<% rows.forEach((user)=>{ %>
     <tr>
-      <th><%=user.username %></th>
-      <th>Credits: <%=user.credits %></th>	
+      <td><%=user.username %></td>
+      <td><%=user.credits %></td>	
     </tr>
     <% }); %>
 	</table>
