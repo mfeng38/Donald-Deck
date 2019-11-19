@@ -30,17 +30,8 @@ async function deckID(){
     .catch(async (error) => {
         console.log(error);
     })
+  return newDeckID;
 }
-
-document.getElementById('startround').addEventListener('click', function () {
-    var bet = document.getElementById("CurrentBet").value;
-    if (Number.isNaN(bet) || bet==0||bet==undefined){
-        return;
-    }
-    else{
-        gameStart();
-    }
-});
 
 async function gameStart(){
   await deckID();
