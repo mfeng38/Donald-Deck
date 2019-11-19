@@ -350,10 +350,6 @@ button#sendmsg{
 /* For Phone/mobile */
 /*----------------------------------------------*/
 @media only screen and (max-width: 600px) {
-    div.innav {
-        font-size: large;
-        height: 70px;
-    }
     p#CurrentBet {
         top: 38%;
         font-size: 155%;
@@ -367,13 +363,14 @@ button#sendmsg{
         width: 50%;
         top:50%;
     }
-    
+
     #Add5 {
         left: 40%;
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width:auto;
+        width: auto;
+        display: inline-block;
     }
     #Add10 {
         left: 40%;
@@ -381,6 +378,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
     #Add25 {
         left: 40%;
@@ -388,6 +386,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
     #Add100 {
         left: 40%;
@@ -395,6 +394,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
 
     #Sub5 {
@@ -403,6 +403,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
 
     #Sub10 {
@@ -411,6 +412,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
 
     #Sub25 {
@@ -419,6 +421,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
 
     #Sub100 {
@@ -427,6 +430,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
     button#start {
         left: 50%;
@@ -434,6 +438,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display:inline-block;
     }
     #startround {
         left: 50%;
@@ -441,6 +446,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
 
     #hit {
@@ -449,6 +455,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
 
     #stay {
@@ -457,6 +464,7 @@ button#sendmsg{
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
+        display: inline-block;
     }
 
     #bet {
@@ -466,12 +474,16 @@ button#sendmsg{
 
     #changeBet {
         left: 70%;
-        top: 70%;
+        top: 55%;
+        width: auto;
+        display: inline-block;
     }
 
     #playAgain {
         left: 70%;
-        top: 80%;
+        top: 75%;
+        width: auto;
+        display: inline-block;
     }
     
     /*CARDS PLACEMENT MOBILE*/
