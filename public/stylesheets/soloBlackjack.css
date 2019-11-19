@@ -476,12 +476,11 @@ button#sendmsg{
         left: 70%;
         top: 70%;
         width: auto;
-        display: inline-block;
     }
 
     #playAgain {
         left: 70%;
-        top: 80%;
+        top: 81%;
         width: auto;
         display: inline-block;
     }
