@@ -32,6 +32,16 @@ async function deckID(){
     })
 }
 
+document.getElementById('startround').addEventListener('click', function () {
+    var bet = document.getElementById("CurrentBet").value;
+    if (Number.isNaN(bet) || bet==0||bet==undefined){
+        return;
+    }
+    else{
+        gameStart();
+    }
+});
+
 async function gameStart(){
   await deckID();
   await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=4`)
@@ -177,6 +187,8 @@ async function hit(){
           document.getElementById("stay").style.visibility = "hidden";
           document.getElementById("changeBet").style.visibility = "visible";
           document.getElementById("playAgain").style.visibility = "visible";
+          document.getElementById('winloss').innerHTML = "YOU LOSE";
+          document.getElementById('winloss').style.visibility = "visible";
         }
         document.getElementById("playerCounter").innerHTML = playerHandValue;
       }
@@ -245,13 +257,19 @@ async function dealer(){
   document.getElementById("changeBet").style.visibility = "visible";
   document.getElementById("playAgain").style.visibility = "visible";
   if(dealerHandValue > 21 || dealerHandValue < playerHandValue){
-    //PAY PLAYER
+      //PAY PLAYER
+      document.getElementById('winloss').innerHTML = "YOU WIN";
+      document.getElementById('winloss').style.visibility = "visible";
   }
   else if(dealerHandValue > playerHandValue){
-    //PLAYER LOSES
+      //PLAYER LOSES
+      document.getElementById('winloss').innerHTML = "YOU LOSE";
+      document.getElementById('winloss').style.visibility = "visible";
   }
   else{
-    //DRAW;PUSH
+      //DRAW;PUSH
+      document.getElementById('winloss').innerHTML = "YOU TIE";
+      document.getElementById('winloss').style.visibility = "visible";
   }
   return true
 }
@@ -262,11 +280,9 @@ async function gameStateReset(){
   {
     cardReset[i].style.visibility = "hidden";
   }
-  document.getElementById("hit").style.visibility = "visible";
-  document.getElementById("stay").style.visibility = "visible";
+  document.getElementById('winloss').style.visibility = "hidden";
   document.getElementById("changeBet").style.visibility = "hidden";
   document.getElementById("playAgain").style.visibility = "hidden";
-  gameStart();
   return true
 }
 

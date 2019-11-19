@@ -5,64 +5,9 @@ body {
 html, body{
     height:100%;
 }
-/*
-
-    #FDA700 orange
-    #145BB4 dark blue
-
-    try this:
-    #156025 - dark green
-    #57A545 - light green
-    #546A76 - grey
-    #594236 - brown
-    #FDFDF9 - white
-
-    11 cards = max
-*/
-nav {
-    padding: 0;
-    width: 100%;
-
-}
-
-    nav:after {
-        content: " ";
-        display: block;
-        clear: both;
-    }
-
-ul {
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none;
-}
-
-li.insidenav {
-    float: left;
-    width: 25%;
-}
-
-div.innav {
-    display: inline-block;
-    background-color: lightgrey;
-    border-left: dashed;
-    margin-left: 0px;
-    margin-right: 0px;
-    height: 48px;
-    width: 100%;
-    text-align: center;
-}
-
-    div.innav:hover {
-        background-color: saddlebrown;
-    }
-
-img.logo {
-    width: 25%;
-}
-
 
 div#solocontainer {
+    position:relative;
     border-color: #594236;
     margin-top: 1%;
     margin-left: 5px;
@@ -89,7 +34,7 @@ p#Player {
 p#dealerCounter {
     position: absolute;
     left: 50%;
-    top: 20%;
+    top: 3%;
     transform: translate(-50%);
     visibility: hidden;
 }
@@ -112,7 +57,7 @@ p#CurrentBet {
 }
 #Add5 {
     position: absolute;
-    left: 50%;
+    left: 45%;
     top: 51%;
     transform: translate(-50%, -50%);
     /* button design*/
@@ -120,12 +65,12 @@ p#CurrentBet {
     padding: 1%;
     border: none;
     color: white;
-    width: 12%;
+    width: 8%;
     visibility: hidden;
 }
 #Add10 {
     position: absolute;
-    left: 50%;
+    left: 45%;
     top: 58%;
     transform: translate(-50%, -50%);
     /* button design*/
@@ -135,11 +80,11 @@ p#CurrentBet {
     border: none;
     color: white;
     visibility: hidden;
-    width: 12%;
+    width: 8%;
 }
 #Add25 {
     position: absolute;
-    left: 50%;
+    left: 45%;
     top: 66%;
     transform: translate(-50%, -50%);
     /* button design*/
@@ -147,12 +92,12 @@ p#CurrentBet {
     padding: 1%;
     border: none;
     color: white;
-    width: 12%;
+    width: 8%;
     visibility: hidden;
 }
 #Add100 {
     position: absolute;
-    left: 50%;
+    left: 45%;
     top: 74%;
     transform: translate(-50%, -50%);
     /* button design*/
@@ -160,17 +105,74 @@ p#CurrentBet {
     padding: 1%;
     border: none;
     color: white;
-    width: 12%;
+    width: 8%;
+    visibility: hidden;
+}
+
+#Sub5 {
+    position: absolute;
+    left: 55%;
+    top: 51%;
+    transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    padding: 1%;
+    border: none;
+    color: white;
+    width: 8%;
+    visibility: hidden;
+}
+
+#Sub10 {
+    position: absolute;
+    left: 55%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    /*background-color: #156025;*/
+    padding: 1%;
+    border: none;
+    color: white;
+    visibility: hidden;
+    width: 8%;
+}
+
+#Sub25 {
+    position: absolute;
+    left: 55%;
+    top: 66%;
+    transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    padding: 1%;
+    border: none;
+    color: white;
+    width: 8%;
+    visibility: hidden;
+}
+
+#Sub100 {
+    position: absolute;
+    left: 55%;
+    top: 74%;
+    transform: translate(-50%, -50%);
+    /* button design*/
+    text-align: center;
+    padding: 1%;
+    border: none;
+    color: white;
+    width: 8%;
     visibility: hidden;
 }
 
 #start {
     position: absolute;
     left: 50%;
-    top: 44%;
+    top: 40%;
     transform: translate(-50%, -50%);
-    padding: 1%;
-    width: 10%;
+    padding: 2%;
+    width: 12%;
 }
 #bet {
     position: absolute;
@@ -193,7 +195,7 @@ p#CurrentBet {
 #hit {
     position: absolute;
     left: 50%;
-    top: 51%;
+    top: 45%;
     transform: translate(-50%, -50%);
     padding: 1%;
     width:10%;
@@ -203,7 +205,7 @@ p#CurrentBet {
 #stay {
     position: absolute;
     left: 50%;
-    top: 58%;
+    top: 55%;
     transform: translate(-50%, -50%);
     padding: 1%;
     width: 10%;
@@ -218,93 +220,104 @@ p#CurrentBet {
 #playAgain{
   position: absolute;
   left:80%;
-  top:100%;
+  top:95%;
   visibility:hidden;
 }
 img.card{
     position:absolute;
     visibility:hidden;
-    width:80px;
+    width:120px;
 }
 img#backofcard {
+    position:absolute;
     visibility: visible;
     top: 57%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width:30%;
+    width:40%;
 }
 img#d1 {
     left: 45%;
-    top: 34%;
+    top: 17%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d2 {
     left: 47%;
-    top: 32%;
+    top: 15%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d3 {
     left: 49%;
-    top: 30%;
+    top: 13%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d4 {
     left: 51%;
-    top: 28%;
+    top: 11%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d5 {
     left: 53%;
-    top: 26%;
+    top: 9%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d6 {
     left: 55%;
-    top: 24%;
+    top: 7%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#c1 {
-    left: 50%;
+    left: 45%;
     transform: translate(-50%);
-    top:75%;
+    top:70%;
     visibility: hidden;
 }
 img#c2 {
-    left: 52%;
+    left: 47%;
     transform: translate(-50%);
-    top: 73%;
+    top: 68%;
     visibility: hidden;
 }
 img#c3 {
-    left: 54%;
+    left: 49%;
     transform: translate(-50%);
-    top: 71%;
+    top: 66%;
     visibility: hidden;
 }
 img#c4 {
-    left: 56%;
+    left: 51%;
     transform: translate(-50%);
-    top: 69%;
+    top: 64%;
     visibility: hidden;
 }
 img#c5 {
-    left: 58%;
+    left: 53%;
     transform: translate(-50%);
-    top: 67%;
+    top: 62%;
     visibility: hidden;
 }
 img#c6 {
-    left: 60%;
+    left: 55%;
     transform: translate(-50%);
-    top: 65%;
+    top: 60%;
     visibility: hidden;
 }
+
+p#winloss{
+    visibility:hidden;
+    top:50%;
+    left:50%;
+    color:white;
+    font-weight:bold;
+    position:absolute;
+}
+
 
 /*Chatroom*/
 div#chatroom{
@@ -336,53 +349,83 @@ button#sendmsg{
 
 /* For Phone/mobile */
 /*----------------------------------------------*/
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 600px) {
     div.innav {
         font-size: large;
         height: 70px;
     }
     p#CurrentBet {
-        top: 40%;
+        top: 38%;
         font-size: 155%;
     }
     img#backofcard {
         width: 55%;
         top:60%;
     }
-    button#start{
-        width:auto;
-    }
+    
     #Add5 {
-        left: 50%;
+        left: 40%;
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width:auto;
     }
     #Add10 {
-        left: 50%;
+        left: 40%;
         top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
     }
     #Add25 {
-        left: 50%;
+        left: 40%;
         top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
     }
     #Add100 {
-        left: 50%;
+        left: 40%;
         top: 87%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
     }
-    #start {
+
+    #Sub5 {
+        left: 60%;
+        top: 57%;
+        transform: translate(-50%, -50%);
+        padding: 3%;
+        width: auto;
+    }
+
+    #Sub10 {
+        left: 60%;
+        top: 67%;
+        transform: translate(-50%, -50%);
+        padding: 3%;
+        width: auto;
+    }
+
+    #Sub25 {
+        left: 60%;
+        top: 77%;
+        transform: translate(-50%, -50%);
+        padding: 3%;
+        width: auto;
+    }
+
+    #Sub100 {
+        left: 60%;
+        top: 87%;
+        transform: translate(-50%, -50%);
+        padding: 3%;
+        width: auto;
+    }
+    button#start {
         left: 50%;
-        top: 45%;
+        top: 47%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
@@ -397,7 +440,7 @@ button#sendmsg{
 
     #hit {
         left: 50%;
-        top: 65%;
+        top: 45%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
@@ -405,7 +448,7 @@ button#sendmsg{
 
     #stay {
         left: 50%;
-        top: 75%;
+        top: 55%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
@@ -415,89 +458,74 @@ button#sendmsg{
         top: 100%;
         left: 95%;
     }
-    p#Player {
-        top: 97%;
-    }
-
-    p#playerCounter {
-        top: 99%;
-    }
-    p#dealerCounter{
-        top:5%;
-    }
+    
     /*CARDS PLACEMENT MOBILE*/
     img.card {
         position: absolute;
         visibility: hidden;
-        width: 100px;
+        width: 80px;
     }
-
     img#d1 {
-        left: 38%;
-        top: 36%;
+        left: 40%;
+        top: 18%;
         transform: translate(-50%);
     }
 
     img#d2 {
-        left: 42%;
-        top: 32%;
+        left: 44%;
+        top: 16%;
         transform: translate(-50%);
     }
     img#d3 {
-        left: 46%;
-        top: 28%;
+        left: 48%;
+        top: 14%;
         transform: translate(-50%);
     }
     img#d4 {
-        left: 50%;
-        top: 24%;
+        left: 52%;
+        top: 12%;
         transform: translate(-50%);
     }
     img#d5 {
-        left: 54%;
-        top: 20%;
+        left: 56%;
+        top: 10%;
         transform: translate(-50%);
     }
     img#d6 {
-        left: 58%;
-        top: 16%;
+        left: 60%;
+        top: 8%;
         transform: translate(-50%);
     }
 
     img#c1 {
-        left: 42%;
+        left: 40%;
         transform: translate(-50%);
-        top: 90%;
+        top: 70%;
     }
-
     img#c2 {
-        left: 46%;
+        left: 44%;
         transform: translate(-50%);
-        top: 86%;
+        top: 68%;
     }
-
     img#c3 {
-        left: 49%;
+        left: 48%;
         transform: translate(-50%);
-        top: 82%;
+        top: 66%;
     }
-
     img#c4 {
         left: 52%;
         transform: translate(-50%);
-        top: 78%;
+        top: 64%;
     }
-
     img#c5 {
-        left: 55%;
+        left: 56%;
         transform: translate(-50%);
-        top: 74%;
+        top: 62%;
     }
-
     img#c6 {
-        left: 58%;
+        left: 60%;
         transform: translate(-50%);
-        top: 70%;
+        top: 60%;
     }
 
     /*Chat*/
