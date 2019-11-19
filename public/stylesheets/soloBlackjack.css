@@ -358,6 +358,11 @@ button#sendmsg{
         top: 38%;
         font-size: 155%;
     }
+
+    p#winloss {
+        transform:translate(-50%);
+    }
+
     img#backofcard {
         width: 50%;
         top:50%;
@@ -457,6 +462,17 @@ button#sendmsg{
     #bet {
         top: 100%;
         left: 95%;
+    }
+
+    #changeBet {
+        left: 75%;
+        top: 80%;
+    }
+
+    #playAgain {
+        left: 75%;
+        top: 90%;
+
     }
     
     /*CARDS PLACEMENT MOBILE*/
