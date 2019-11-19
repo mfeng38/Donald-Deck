@@ -465,14 +465,13 @@ button#sendmsg{
     }
 
     #changeBet {
-        left: 75%;
-        top: 80%;
+        left: 70%;
+        top: 70%;
     }
 
     #playAgain {
-        left: 75%;
-        top: 90%;
-
+        left: 70%;
+        top: 80%;
     }
     
     /*CARDS PLACEMENT MOBILE*/
