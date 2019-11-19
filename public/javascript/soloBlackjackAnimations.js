@@ -123,10 +123,6 @@ document.getElementById('Sub100').addEventListener('click', function () {
 
 document.getElementById('start').addEventListener('click', function () {
     //to start the game:
-    document.getElementById("Add5").style.visibility = "visible";
-    document.getElementById("Add10").style.visibility = "visible";
-    document.getElementById("Add25").style.visibility = "visible";
-    document.getElementById("Add100").style.visibility = "visible";
     document.getElementById("CurrentBet").style.visibility= "visible";
     document.getElementById("start").style.display = "none";
     document.getElementById("startround").style.visibility = "visible";
@@ -166,8 +162,20 @@ document.getElementById('changeBet').addEventListener('click', function () {
 });
 
 document.getElementById('playAgain').addEventListener('click', function () {
-    hideBetButtons();
+    moveBetButtonsCenter();
+    showBetButtons();
+    document.getElementById("startround").style.visibility = "visible";
+    document.getElementById("backofcard").style.visibility = "visible";
+    document.getElementById("Dealer").style.visibility = "hidden";
+    document.getElementById("Player").style.visibility = "hidden";
+    document.getElementById("dealerCounter").style.visibility = "hidden";
+    document.getElementById("playerCounter").style.visibility = "hidden";
+    document.getElementById("bet").style.visibility = "hidden";
+    document.getElementById("CurrentBet").style.visibility = "visible";
 });
+
+
+
 function moveBetButtonsLeft() {
     document.getElementById("Add5").style.left = "10%";
     document.getElementById("Add10").style.left = "10%";
@@ -189,6 +197,7 @@ function moveBetButtonsCenter() {
     document.getElementById("Sub10").style.left = "55%";
     document.getElementById("Sub25").style.left = "55%";
     document.getElementById("Sub100").style.left = "55%";
+    document.getElementById("CurrentBet").style.left = "50%";
 }
 function hideBetButtons() {
     document.getElementById("Add5").style.visibility = "hidden";

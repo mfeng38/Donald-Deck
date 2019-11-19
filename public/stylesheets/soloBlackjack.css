@@ -309,6 +309,15 @@ img#c6 {
     visibility: hidden;
 }
 
+p#winloss{
+    visibility:hidden;
+    top:50%;
+    left:50%;
+    color:white;
+    font-weight:bold;
+    position:absolute;
+}
+
 
 /*Chatroom*/
 div#chatroom{
