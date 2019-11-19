@@ -165,6 +165,9 @@ document.getElementById('changeBet').addEventListener('click', function () {
     document.getElementById("CurrentBet").style.visibility = "visible";
 });
 
+document.getElementById('playAgain').addEventListener('click', function () {
+    hideBetButtons();
+});
 function moveBetButtonsLeft() {
     document.getElementById("Add5").style.left = "10%";
     document.getElementById("Add10").style.left = "10%";
@@ -207,4 +210,5 @@ function showBetButtons() {
     document.getElementById("Sub10").style.visibility = "visible";
     document.getElementById("Sub25").style.visibility = "visible";
     document.getElementById("Sub100").style.visibility = "visible";
+    document.getElementById("CurrentBet").style.visibility = "visible";
 }
