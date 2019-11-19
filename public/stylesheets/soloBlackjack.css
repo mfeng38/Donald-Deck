@@ -369,7 +369,7 @@ button#sendmsg{
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
         display: inline-block;
     }
     #Add10 {
@@ -377,7 +377,7 @@ button#sendmsg{
         top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
         display: inline-block;
     }
     #Add25 {
@@ -385,7 +385,7 @@ button#sendmsg{
         top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
         display: inline-block;
     }
     #Add100 {
@@ -393,7 +393,7 @@ button#sendmsg{
         top: 87%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
         display: inline-block;
     }
 
@@ -402,7 +402,7 @@ button#sendmsg{
         top: 57%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: 12%;
+        width: 15%;
         display: inline-block;
     }
 
@@ -411,7 +411,7 @@ button#sendmsg{
         top: 67%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: 13%;
+        width: 15%;
         display: inline-block;
     }
 
@@ -420,7 +420,7 @@ button#sendmsg{
         top: 77%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: 14%;
+        width: 15%;
         display: inline-block;
     }
 
@@ -429,7 +429,7 @@ button#sendmsg{
         top: 87%;
         transform: translate(-50%, -50%);
         padding: 3%;
-        width: auto;
+        width: 15%;
         display: inline-block;
     }
     button#start {
