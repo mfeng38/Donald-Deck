@@ -7,7 +7,7 @@ CREATE TABLE users(
     username TEXT UNIQUE PRIMARY KEY,
     password TEXT,
     credits INTEGER,
-    rebuys INTEGER
+    rebuys INTEGER DEFAULT 0
 );
 
 /* Create Rooms table (do in iteration 2/3)*/
