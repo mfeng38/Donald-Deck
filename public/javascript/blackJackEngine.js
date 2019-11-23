@@ -11,10 +11,7 @@ var dealerAces;
 var playerAces;
 // Functions to be implemented //
 /*
-    Shuffle & grab cards from API
-        - fetch from API
-        - store card values in deckOfCards
-
+       ? - store card values in deckOfCards
 */
 
 async function deckID(){
@@ -32,8 +29,14 @@ async function deckID(){
     })
   return newDeckID;
 }
+async function betOk(){ 
+    //tests if bet is within the amount of credits and returns t/f
+    //using socket.io
+}
 
 async function gameStart(){
+  var isBetOk = betOk();
+
   await deckID();
   await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=4`)
     .then(async (response) => {

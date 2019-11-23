@@ -144,3 +144,19 @@ app.get('/admin', (req,res)=>{
         }
     })
 });
+
+// Socket.io stuff
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+io.on('connection', function(socket){
+    socket.emit('test', {msg: 'testing: socket.io emit from index.js'});
+    /*socket.on('subtractbet', function(data){ //data = user, bet
+        console.log(data);
+        var poolquery = ``; // access credits using user, and return credits
+
+    })*/
+    socket.on('chat msg', function(socket){
+        io.emit('chat msg', msg);
+    });
+});
