@@ -1,12 +1,15 @@
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
-var app = express();
+const app = express();
+const http = require('http').Server(app);
 
 const { Pool, Client } = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
 });
+
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -14,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.redirect('loginUI.html'));
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+//app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 app.get('/test', (req, res) => res.render('pages/soloBlackjackTEST'));
 app.post('/soloBlackjack',(req,res)=> {
     console.log("post soloBlackjack");
@@ -145,18 +148,26 @@ app.get('/admin', (req,res)=>{
     })
 });
 
-// Socket.io stuff
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
 
+//For socket.io using express
+const io = require('socket.io')(http);
+var server = http.listen(PORT, function(){
+    console.log('listening http index.js Port: ' + PORT);
+});
+
+
+// Socket.io stuff
+setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
 io.on('connection', function(socket){
+    console.log('connection index ');
     socket.emit('test', {msg: 'testing: socket.io emit from index.js'});
     /*socket.on('subtractbet', function(data){ //data = user, bet
         console.log(data);
         var poolquery = ``; // access credits using user, and return credits
 
     })*/
-    socket.on('chat msg', function(socket){
-        io.emit('chat msg', msg);
+    socket.on('chat msg', function(message){
+        //console.log(message);
+        io.emit('chat msg', 'User said: ' + message );
     });
 });

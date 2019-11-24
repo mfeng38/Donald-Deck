@@ -324,12 +324,18 @@ div#chatroom{
     height:25%;
     margin-top:3%;
 }
-div#messages {
+div#chatbox {
     height: 85%;
     width: 98%;
     margin: auto;
     border:solid;
     border-color:#546A76;
+    overflow-y:scroll;
+    overflow-x:no-content;
+}
+p {
+    width: 90%;
+    word-wrap: break-word;
 }
 form.chat {
     margin: auto;

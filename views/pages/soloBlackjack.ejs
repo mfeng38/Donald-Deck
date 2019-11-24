@@ -10,6 +10,7 @@
     <script src="/javascript/soloBlackjackAnimations.js" defer ></script>
     <script src="/javascript/blackJackEngine.js" defer></script>
     <script src="/javascript/blackJackEngineEvents.js" defer></script>
+	<script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -102,32 +103,41 @@
     </div>
 
     <div id = "chatroom">
-		    <ul id = "messages">
-
-		    </ul>
-        <form class= "chat" action="" method="">
+		<div id="chatbox">
+		    <ul id = "messages"></ul>
+		</div>
+        <form id= "chat" method="">
            <input id="msgin" type="text" name= "msg"> </input>
 			     <button id="sendmsg" class="btn-info">SEND</button>
 		</form>
      </div>
 	 <script>
-		$(function(){
-			var socket = io();
-			$('form').submit(function(){
-				console.log('hi');
-				socket.emit('chat msg',$('#msgin').val());
-				$('#msgin'.val('');
-				return false;
-			});
-			socket.on('chat msg',function(msg){
-				$('#messages').append($('<li'>').text(msg));
-			});
+		var socket = io();
+		socket.on('connect',function(){});
+		var form = document.getElementById('chat');
+		//form.addEventListener('submit', sendmsg(event));
+		form.addEventListener("submit", function(event){
+			event.preventDefault();
+			var msg = document.getElementById('msgin');
+			socket.emit('chat msg',msg.value);
+			msg.value='';
+			return false;
 		});
+		
+		socket.on('chat msg',function(msg){
+			var messages = document.getElementById("messages");
+			var message = document.createElement("LI");
+			var text = document.createElement("P");
+			text.innerHTML = msg;
+			message.appendChild(text);
+			messages.appendChild(message);
+			document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight;
+		});
+		
 	</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src="../../socket.io/socket.io.js"></script>
-	<script src= "http://code.jquery.com/jquery-2.3.0.js"></script>
+	
 </body>
 </html>
