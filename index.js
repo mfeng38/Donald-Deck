@@ -168,6 +168,10 @@ io.on('connection', function(socket){
     })*/
     socket.on('chat msg', function(message){
         //console.log(message);
-        io.emit('chat msg', 'User said: ' + message );
+        io.emit('chat msg', socket.username + ' said: ' + message );
+    });
+    socket.on('username', function(username){
+        socket.username= username;
+        io.emit('chat msg', `${socket.username} has joined the chat!`)
     });
 });

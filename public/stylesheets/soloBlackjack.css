@@ -324,6 +324,9 @@ div#chatroom{
     height:25%;
     margin-top:3%;
 }
+ul#messages{
+    padding:1%;   
+}
 div#chatbox {
     height: 85%;
     width: 98%;
@@ -334,11 +337,13 @@ div#chatbox {
     overflow-x:no-content;
 }
 li{
+    margin-top:5px;
     list-style-type: none;
     display:block;
+    border:dotted;
+    border-color:skyblue;
 }
 p {
-    width: 90%;
     word-wrap:break-word;
 }
 form.chat {
