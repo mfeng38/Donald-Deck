@@ -129,6 +129,8 @@
 			var messages = document.getElementById("messages");
 			var message = document.createElement("LI");
 			var text = document.createElement("P");
+			text.className = "wrap";
+			message.className = "msgs";
 			text.innerHTML = msg;
 			message.appendChild(text);
 			messages.appendChild(message);

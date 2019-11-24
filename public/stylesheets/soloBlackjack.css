@@ -336,14 +336,14 @@ div#chatbox {
     overflow-y:scroll;
     overflow-x:no-content;
 }
-li{
+li.msgs{
     margin-top:5px;
     list-style-type: none;
     display:block;
     border:dotted;
     border-color:skyblue;
 }
-p {
+p.wrap {
     word-wrap:break-word;
 }
 form.chat {
