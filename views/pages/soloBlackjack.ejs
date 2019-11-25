@@ -64,54 +64,57 @@
     <div id="solocontainer">
 		<img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
 		<p id="Dealer">Dealer</p>
-  		<p id="Player">Player</p>
+  	<p id="Player">Player</p>
 		<input id="id" type="hidden" value=<%=row.username%>>
 
-        <p id="CurrentBet" value = "0" >Current Bet: 0</p>
+    <p id="CurrentBet" value = "0" >Current Bet: 0</p>
 		<button id="startround" class="btn-danger">START ROUND</button>
 		<button id="Add5" class="btn-danger" >+5</button>
-        <button id="Add10" class="btn-danger" >+10</button>
+    <button id="Add10" class="btn-danger" >+10</button>
 		<button id="Add25" class="btn-danger" >+25</button>
 		<button id="Add100" class="btn-danger" >+100</button>
 		<button id="Sub5" class="btn-info" >-5</button>
-        <button id="Sub10" class="btn-info" >-10</button>
+    <button id="Sub10" class="btn-info" >-10</button>
 		<button id="Sub25" class="btn-info" >-25</button>
 		<button id="Sub100" class="btn-info" >-100</button>
-        <button class="btn-danger" id="start"> START GAME</button>
-		<p id="bet">Bet: 0</p>
+    <button class="btn-danger" id="start"> START GAME</button>
+
+    <p id="bet">Bet: 0</p>
 		<img class="card" src="/images/cardback.png" alt="dealer1" id = "d1"/>
 		<img class="card" src="/images/cardback.png" alt="dealer2" id = "d2"/>
 		<img class="card" src="/images/cardback.png" alt="dealer3" id = "d3"/>
 		<img class="card" src="/images/cardback.png" alt="dealer4" id = "d4"/>
 		<img class="card" src="/images/cardback.png" alt="dealer5" id = "d5"/>
 		<img class="card" src="/images/cardback.png" alt="dealer6" id = "d6"/>
-		
-		
+
+
 		<img class="card" src="/images/cardback.png" alt="c1" id="c1"/>
 		<img class="card" src="/images/cardback.png" alt="c2" id="c2" />
 		<img class="card" src="/images/cardback.png" alt="c3" id="c3"/>
 		<img class="card" src="/images/cardback.png" alt="c4" id="c4"/>
 		<img class="card" src="/images/cardback.png" alt="c5" id="c5"/>
 		<img class="card" src="/images/cardback.png" alt="c6" id="c6"/>
-		<p id="playerCounter"> 0 </p>
+
+    <p id="playerCounter"> 0 </p>
 		<p id="dealerCounter"> 0 </p>
 		<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
 		<button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
 		<button id="changeBet" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
 		<button id="playAgain" onclick = "gameStateReset()" class="btn-danger">Play Again</button>
 		<p id="winloss"></p>
-    </div>
+  </div>
 
-    <div id = "chatroom">
-		<div id="chatbox">
-		    <ul id = "messages"></ul>
+  <div id = "chatroom">
+    <div id="chatbox">
+      <ul id = "messages"></ul>
 		</div>
-        <form id= "chat" method="">
-           <input id="msgin" type="text" name= "msg"> </input>
-			     <button id="sendmsg" class="btn-info">SEND</button>
+    <form id= "chat" method="">
+      <input id="msgin" type="text" name= "msg"> </input>
+		  <button id="sendmsg" class="btn-info">SEND</button>
 		</form>
-     </div>
-	 <script>
+  </div>
+
+  <script>
 		var socket = io();
 		socket.on('connect',function(){});
 		var form = document.getElementById('chat');
@@ -136,11 +139,11 @@
 			messages.appendChild(message);
 			document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight;
 		});
-		
+
 	</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	
+
 </body>
 </html>
