@@ -66,6 +66,7 @@ p#CurrentBet {
     border: none;
     color: white;
     width: 8%;
+    height:5%;
     visibility: hidden;
 }
 #Add10 {
@@ -81,6 +82,7 @@ p#CurrentBet {
     color: white;
     visibility: hidden;
     width: 8%;
+    height:5%;
 }
 #Add25 {
     position: absolute;
@@ -325,7 +327,7 @@ div#chatroom{
     margin-top:3%;
 }
 ul#messages{
-    padding:1%;   
+    padding:1%;
 }
 div#chatbox {
     height: 85%;
@@ -499,7 +501,7 @@ button#sendmsg{
         width: auto;
         display: inline-block;
     }
-    
+
     /*CARDS PLACEMENT MOBILE*/
     img.card {
         position: absolute;
@@ -574,4 +576,9 @@ button#sendmsg{
         width:78%;
     }
 
+}
+
+@viewport {
+  width: device-width ;
+  zoom: 1.0 ;
 }
