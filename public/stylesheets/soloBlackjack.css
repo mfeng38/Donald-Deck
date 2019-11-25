@@ -195,7 +195,7 @@ p#CurrentBet {
 #hit {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 45%;
     transform: translate(-50%, -50%);
     padding: 1%;
     width:10%;
@@ -205,7 +205,7 @@ p#CurrentBet {
 #stay {
     position: absolute;
     left: 50%;
-    top: 60%;
+    top: 35%;
     transform: translate(-50%, -50%);
     padding: 1%;
     width: 10%;
@@ -238,74 +238,74 @@ img#backofcard {
 }
 img#d1 {
     left: 45%;
-    top: 17%;
+    top: 6%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d2 {
     left: 47%;
-    top: 15%;
+    top: 8%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d3 {
     left: 49%;
-    top: 13%;
+    top: 10%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d4 {
     left: 51%;
-    top: 11%;
+    top:12%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d5 {
     left: 53%;
-    top: 9%;
+    top: 14%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d6 {
     left: 55%;
-    top: 7%;
+    top: 16%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#c1 {
     left: 45%;
     transform: translate(-50%);
-    top:70%;
+    top: 60%;
     visibility: hidden;
 }
 img#c2 {
     left: 47%;
     transform: translate(-50%);
-    top: 68%;
+    top: 58%;
     visibility: hidden;
 }
 img#c3 {
     left: 49%;
     transform: translate(-50%);
-    top: 66%;
+    top: 56%;
     visibility: hidden;
 }
 img#c4 {
     left: 51%;
     transform: translate(-50%);
-    top: 64%;
+    top: 54%;
     visibility: hidden;
 }
 img#c5 {
     left: 53%;
     transform: translate(-50%);
-    top: 62%;
+    top: 52%;
     visibility: hidden;
 }
 img#c6 {
     left: 55%;
     transform: translate(-50%);
-    top: 60%;
+    top: 50%;
     visibility: hidden;
 }
 
