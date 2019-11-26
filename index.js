@@ -198,6 +198,7 @@ io.on('connection', function(socket){
                             }
                             else{
                                 io.to(`${socket.id}`).emit('startGame', newCreditCount);
+                                io.to(`${socket.id}`).emit('newCredits', newCreditCount);
                             }
                         });
                     }
@@ -222,7 +223,7 @@ io.on('connection', function(socket){
                         if (error) socket.emit("ERROR", err);
                         else{
                             //console.log("new credits: ", newCreditCount);
-                            io.to(`${socket.id}`).emit('paid', newCreditCount);
+                            io.to(`${socket.id}`).emit('newCredits', newCreditCount);
                         }
                     });
                 }
