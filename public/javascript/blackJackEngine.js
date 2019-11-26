@@ -82,11 +82,11 @@ async function gameStart(){
           }
           if(i%2 == 0){
             if(i == 0){
-              dealerCard.src = temp.cards[i].image;
+              dealerHiddenCard = temp.cards[i].image;
               dealerCard.style.visibility = "visible";
             }
             else{
-              dealerHiddenCard = temp.cards[i].image;
+              dealerCard.src = temp.cards[i].image;
               dealerCard.style.visibility = "visible";
             }
             dealerCardIndex++;
