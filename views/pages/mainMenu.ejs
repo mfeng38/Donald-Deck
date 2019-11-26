@@ -7,49 +7,6 @@
   </head>
   <body>
     <% rows.forEach((r) => { %>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <img src="assets/logo_circle.png" width="50" height="50" alt="">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <form method="POST" action='/mainMenu'>
-                    <input type="hidden" name="id" value=<%= r.username %>>
-                    <input type="submit" class="btn my-2 my-sm-0" value="Main Menu"/>
-                </form>
-            </li>
-            <li class="nav-item">
-                <form method="POST" action='/myStats'>
-                    <input type="hidden" name="id" value=<%= r.username %>>
-                    <input type="submit" class="btn my-2 my-sm-0" value="View Stats"/>
-                </form>
-            </li>
-            <li class="nav-item">
-                <form method="POST" action='/soloBlackjack'>
-                    <input type="hidden" name="id" value=<%= r.username %>>
-                    <input type="submit" class="btn my-2 my-sm-0" value="Play Solo"/>
-                </form>
-            </li>
-            <li class="nav-item">
-                <form method="POST" action='/createMatch'>
-                    <input type="hidden" name="id" value=<%= r.username %>>
-                    <input type="submit" class="btn my-2 my-sm-0" value="Create Match"/>
-                </form>
-            </li>
-            <li class="nav-item">
-                <form method="POST" action='/joinMatch'>
-                    <input type="hidden" name="id" value=<%= r.username %>>
-                    <input type="submit" class="btn my-2 my-sm-0" value="Join Match"/>
-                </form>
-            </li>
-          </ul>
-        </div>
-    </nav>
-
-    <br> -->
     <div class="container-fluid">
         <div class="row">
           <div class="col-sm">
