@@ -101,7 +101,7 @@ async function gameStart(){
             console.log("Player dealt")
           }
           //If first card dealt to dealer, display ONLY that value.
-          if(i == 0){
+          if(i == 1){
             dealerVisibleHandValue = dealerHandValue;
           }
         }
