@@ -199,6 +199,7 @@ p#CurrentBet {
     transform: translate(-50%, -50%);
     padding: 1%;
     width:10%;
+    height: 7%;
     visibility: hidden;
 }
 
@@ -209,6 +210,7 @@ p#CurrentBet {
     transform: translate(-50%, -50%);
     padding: 1%;
     width: 10%;
+    height: 7%;
     visibility: hidden;
 }
 #changeBet{
