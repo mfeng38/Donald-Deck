@@ -200,6 +200,7 @@ p#CurrentBet {
     padding: 1%;
     width:10%;
     height: 7%;
+    text-align: center;
     visibility: hidden;
 }
 
@@ -211,6 +212,7 @@ p#CurrentBet {
     padding: 1%;
     width: 10%;
     height: 7%;
+    text-align: center;
     visibility: hidden;
 }
 #changeBet{
