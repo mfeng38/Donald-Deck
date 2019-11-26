@@ -102,7 +102,7 @@ async function gameStart(){
           }
           //If first card dealt to dealer, display ONLY that value.
           if(i == 1){
-            dealerVisibleHandValue = dealerHandValue;
+            dealerVisibleHandValue = parseInt(temp.cards[i].value);
           }
         }
         while(playerAces > 0 && playerHandValue > 21){
