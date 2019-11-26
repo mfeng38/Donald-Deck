@@ -29,7 +29,7 @@ async function deckID(){
     })
   return newDeckID;
 }
-async function betOk(){ 
+async function betOk(){
     //tests if bet is within the amount of credits and returns t/f
     //using socket.io
 }
@@ -49,7 +49,7 @@ async function gameStart(){
         playerCardIndex = 1;
         dealerAces = 0;
         playerAces = 0;
-        document.getElementById("d2").src = "/images/cardback.png";
+        document.getElementById("d1").src = "/images/cardback.png";
         for(var i = 0; i < temp.cards.length; i++){
           var playerCard = document.getElementById(`c${playerCardIndex}`);
           var dealerCard = document.getElementById(`d${dealerCardIndex}`);
@@ -208,7 +208,7 @@ async function hit(){
 */
 
 async function dealer(){
-  document.getElementById('d2').src = dealerHiddenCard;
+  document.getElementById('d1').src = dealerHiddenCard;
   document.getElementById("dealerCounter").innerHTML = dealerHandValue;
   while(dealerHandValue < 17){
     await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=1`)
