@@ -29,14 +29,10 @@ async function deckID(){
     })
   return newDeckID;
 }
-async function betOk(){ 
-    //tests if bet is within the amount of credits and returns t/f
-    //using socket.io
-}
+
+//betting see ejs file since it uses socket 
 
 async function gameStart(){
-  var isBetOk = betOk();
-
   await deckID();
   await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=4`)
     .then(async (response) => {
@@ -112,13 +108,15 @@ async function gameStart(){
         document.getElementById("playerCounter").innerHTML = playerHandValue;
         document.getElementById("dealerCounter").innerHTML = dealerVisibleHandValue;
         if(playerHandValue == 21){
-          //BLACKJACK and PAYOUT
-          document.getElementById('winloss').innerHTML = "BLACKJACK!";
-          document.getElementById('winloss').style.visibility = "visible";
-          document.getElementById("hit").style.visibility = "hidden";
-          document.getElementById("stay").style.visibility = "hidden";
-          document.getElementById("changeBet").style.visibility = "visible";
-          document.getElementById("playAgain").style.visibility = "visible";
+          //BLACKJACK
+            document.getElementById('winloss').innerHTML = "BLACKJACK!";
+            document.getElementById('winloss').style.visibility = "visible";
+            document.getElementById("hit").style.visibility = "hidden";
+            document.getElementById("stay").style.visibility = "hidden";
+            document.getElementById("changeBet").style.visibility = "visible";
+            document.getElementById("playAgain").style.visibility = "visible";
+            //player also wins
+            payout();
         }
       } else {
         throw new Error('Response did not return 200');
@@ -255,7 +253,10 @@ async function dealer(){
   if(dealerHandValue > 21 || dealerHandValue < playerHandValue){
       //PAY PLAYER
       document.getElementById('winloss').innerHTML = "YOU WIN";
+      //win = need to pay player
       document.getElementById('winloss').style.visibility = "visible";
+      console.log('payout called');
+      payout();
   }
   else if(dealerHandValue > playerHandValue){
       //PLAYER LOSES
@@ -266,6 +267,7 @@ async function dealer(){
       //DRAW;PUSH
       document.getElementById('winloss').innerHTML = "PUSH";
       document.getElementById('winloss').style.visibility = "visible";
+      push();
   }
   return true
 }
