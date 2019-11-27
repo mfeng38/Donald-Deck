@@ -30,8 +30,7 @@ async function deckID(){
   return newDeckID;
 }
 
-//betting see ejs file since it uses socket 
-
+//betting see ejs file since it uses socket
 async function gameStart(){
   await deckID();
   await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=4`)
@@ -45,7 +44,7 @@ async function gameStart(){
         playerCardIndex = 1;
         dealerAces = 0;
         playerAces = 0;
-        document.getElementById("d2").src = "/images/cardback.png";
+        document.getElementById("d1").src = "/images/cardback.png";
         for(var i = 0; i < temp.cards.length; i++){
           var playerCard = document.getElementById(`c${playerCardIndex}`);
           var dealerCard = document.getElementById(`d${dealerCardIndex}`);
@@ -53,6 +52,9 @@ async function gameStart(){
           if(temp.cards[i].value == "JACK" || temp.cards[i].value == "QUEEN" || temp.cards[i].value == "KING"){
             if(i%2 == 0){
               dealerHandValue += 10;
+              if(i == 2){
+                dealerVisibleHandValue = 10;
+              }
             }
             else{
               playerHandValue += 10;
@@ -62,6 +64,9 @@ async function gameStart(){
             if(i%2 == 0){
               dealerHandValue += 11;
               dealerAces++;
+              if(i == 2){
+                dealerVisibleHandValue = 11;
+              }
             }
             else{
               playerHandValue += 11;
@@ -71,6 +76,9 @@ async function gameStart(){
           else {
             if(i%2 == 0){
               dealerHandValue += parseInt(temp.cards[i].value);
+              if(i == 2){
+                dealerVisibleHandValue = parseInt(temp.cards[i].value);
+              }
             }
             else{
               playerHandValue += parseInt(temp.cards[i].value);
@@ -78,11 +86,11 @@ async function gameStart(){
           }
           if(i%2 == 0){
             if(i == 0){
-              dealerCard.src = temp.cards[i].image;
+              dealerHiddenCard = temp.cards[i].image;
               dealerCard.style.visibility = "visible";
             }
             else{
-              dealerHiddenCard = temp.cards[i].image;
+              dealerCard.src = temp.cards[i].image;
               dealerCard.style.visibility = "visible";
             }
             dealerCardIndex++;
@@ -96,10 +104,6 @@ async function gameStart(){
             playerCardIndex++;
             console.log("Player dealt")
           }
-          //If first card dealt to dealer, display ONLY that value.
-          if(i == 0){
-            dealerVisibleHandValue = dealerHandValue;
-          }
         }
         while(playerAces > 0 && playerHandValue > 21){
           playerAces--;
@@ -107,16 +111,17 @@ async function gameStart(){
         }
         document.getElementById("playerCounter").innerHTML = playerHandValue;
         document.getElementById("dealerCounter").innerHTML = dealerVisibleHandValue;
+
+        //Player hits Blackjack + payout
         if(playerHandValue == 21){
-          //BLACKJACK
-            document.getElementById('winloss').innerHTML = "BLACKJACK!";
-            document.getElementById('winloss').style.visibility = "visible";
-            document.getElementById("hit").style.visibility = "hidden";
-            document.getElementById("stay").style.visibility = "hidden";
-            document.getElementById("changeBet").style.visibility = "visible";
-            document.getElementById("playAgain").style.visibility = "visible";
-            //player also wins
-            payout();
+          document.getElementById('winloss').innerHTML = "BLACKJACK!";
+          document.getElementById('winloss').style.visibility = "visible";
+          document.getElementById("hit").style.visibility = "hidden";
+          document.getElementById("stay").style.visibility = "hidden";
+          document.getElementById("changeBet").style.visibility = "visible";
+          document.getElementById("playAgain").style.visibility = "visible";
+
+          payout();
         }
       } else {
         throw new Error('Response did not return 200');
@@ -206,7 +211,7 @@ async function hit(){
 */
 
 async function dealer(){
-  document.getElementById('d2').src = dealerHiddenCard;
+  document.getElementById('d1').src = dealerHiddenCard;
   document.getElementById("dealerCounter").innerHTML = dealerHandValue;
   while(dealerHandValue < 17){
     await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=1`)
@@ -250,6 +255,7 @@ async function dealer(){
   document.getElementById("stay").style.visibility = "hidden";
   document.getElementById("changeBet").style.visibility = "visible";
   document.getElementById("playAgain").style.visibility = "visible";
+
   if(dealerHandValue > 21 || dealerHandValue < playerHandValue){
       //PAY PLAYER
       document.getElementById('winloss').innerHTML = "YOU WIN";
