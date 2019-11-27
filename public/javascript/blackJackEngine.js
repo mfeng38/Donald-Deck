@@ -276,7 +276,6 @@ async function dealer(){
   return true
 }
 
-//Changing bet reset
 async function gameStateReset(){
   cardReset = document.getElementsByClassName("card");
   for(var i = 0; i < cardReset.length; i++)
