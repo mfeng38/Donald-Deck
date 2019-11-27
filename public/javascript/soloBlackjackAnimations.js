@@ -130,7 +130,7 @@ document.getElementById('start').addEventListener('click', function () {
 
 });
 
-document.getElementsByClassName('startround').addEventListener('click', function () {
+document.getElementById('startround').addEventListener('click', function () {
     var bet = document.getElementById("CurrentBet").value;
     if (Number.isNaN(bet) || bet==0||bet==undefined){
         return;
@@ -167,12 +167,25 @@ document.getElementById('changeBet').addEventListener('click', function () {
 });
 
 document.getElementById('playAgain').addEventListener('click', function () {
-    document.getElementById("startround").style.visibility = "visible";
-    document.getElementById("backofcard").style.visibility = "visible";
-    document.getElementById("Dealer").style.visibility = "hidden";
-    document.getElementById("Player").style.visibility = "hidden";
-    document.getElementById("dealerCounter").style.visibility = "hidden";
-    document.getElementById("playerCounter").style.visibility = "hidden";
+  var bet = document.getElementById("CurrentBet").value;
+  if (Number.isNaN(bet) || bet==0||bet==undefined){
+      return;
+  }
+  else {
+      console.log(bet);
+      document.getElementById('startround').style.visibility = 'hidden';
+      document.getElementById("CurrentBet").style.visibility = "hidden";
+
+      document.getElementById("bet").innerHTML = `Bet: ${bet}`;
+      document.getElementById("bet").style.visibility = "visible";
+
+      document.getElementById("Player").style.visibility = "visible";
+      document.getElementById("Dealer").style.visibility = "visible";
+      document.getElementById("playerCounter").style.visibility = "visible";
+      document.getElementById("dealerCounter").style.visibility = "visible";
+      document.getElementById("backofcard").style.visibility = "hidden";
+      document.getElementById("hit").style.visibility = "visible";
+      document.getElementById("stay").style.visibility = "visible";
 
 });
 
