@@ -167,12 +167,14 @@ document.getElementById('changeBet').addEventListener('click', function () {
 });
 
 document.getElementById('playAgain').addEventListener('click', function () {
+  /*
     document.getElementById("startround").style.visibility = "visible";
     document.getElementById("backofcard").style.visibility = "visible";
     document.getElementById("Dealer").style.visibility = "hidden";
     document.getElementById("Player").style.visibility = "hidden";
     document.getElementById("dealerCounter").style.visibility = "hidden";
     document.getElementById("playerCounter").style.visibility = "hidden";
+    */
 
 });
 
