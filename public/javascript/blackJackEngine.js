@@ -288,6 +288,18 @@ async function gameStateReset(){
   return true
 }
 
+async function gameStateResetNoChange(){
+  cardReset = document.getElementsByClassName("card");
+  for(var i = 0; i < cardReset.length; i++)
+  {
+    cardReset[i].style.visibility = "hidden";
+  }
+  document.getElementById('winloss').style.visibility = "hidden";
+  document.getElementById("changeBet").style.visibility = "hidden";
+  document.getElementById("playAgain").style.visibility = "hidden";
+  gameStart();
+}
+
 async function shuffleDeck(){
   await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/shuffle/`)
     .then(async (response) => {

@@ -127,7 +127,6 @@ document.getElementById('start').addEventListener('click', function () {
     document.getElementById("start").style.display = "none";
     document.getElementById("startround").style.visibility = "visible";
     showBetButtons();
-
 });
 
 document.getElementById('startround').addEventListener('click', function () {
@@ -169,7 +168,6 @@ document.getElementById('changeBet').addEventListener('click', function () {
 document.getElementById('playAgain').addEventListener('click', function () {
     var bet = document.getElementById("CurrentBet").value;
     console.log(bet);
-    document.getElementById('startround').style.visibility = 'hidden';
     document.getElementById("CurrentBet").style.visibility = "hidden";
 
     document.getElementById("bet").innerHTML = `Bet: ${bet}`;

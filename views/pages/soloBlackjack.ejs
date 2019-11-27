@@ -69,7 +69,8 @@
 		<input id="id" type="hidden" value=<%=row.username%>>
 
     <p id="CurrentBet" value = "0" >Current Bet: 0</p>
-		<button id="startround" class="btn-danger">START ROUND</button>
+
+    <button class="btn-danger" id="start"> START GAME</button>
 		<button id="Add5" class="btn-danger" >+5</button>
     <button id="Add10" class="btn-danger" >+10</button>
 		<button id="Add25" class="btn-danger" >+25</button>
@@ -78,7 +79,7 @@
     <button id="Sub10" class="btn-info" >-10</button>
 		<button id="Sub25" class="btn-info" >-25</button>
 		<button id="Sub100" class="btn-info" >-100</button>
-    <button class="btn-danger" id="start"> START GAME</button>
+    <button id="startround" class="btn-danger">START ROUND</button>
 
     <p id="bet">Bet: 0</p>
 		<img class="card" src="/images/cardback.png" alt="dealer1" id = "d1"/>
@@ -101,7 +102,7 @@
 		<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
 		<button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
 		<button id="changeBet" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
-		<button id="playAgain" onclick = "gameStateReset()" class="btn-danger">Play Again</button>
+		<button id="playAgain" onclick = "gameStateResetNoChange()" class="btn-danger">Play Again</button>
 		<p id="winloss"></p>
   </div>
 
