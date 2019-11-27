@@ -7,7 +7,6 @@ const http = require('http').Server(app);
 const { Pool, Client } = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: true,
 });
 
 
@@ -222,9 +221,6 @@ io.on('connection', function(socket){
         console.log("username " + username + " and socket.id: " + socket.id);
         io.emit('chat msg', `${socket.username} has joined the chat!`)
     });
-<<<<<<< HEAD
-});
-=======
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
         //console.log("mystats",findUser);
