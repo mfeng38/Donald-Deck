@@ -299,7 +299,7 @@ async function gameStateResetNoChange(){
   document.getElementById('winloss').style.visibility = "hidden";
   document.getElementById("changeBet").style.visibility = "hidden";
   document.getElementById("playAgain").style.visibility = "hidden";
-  gameStart();
+  return true
 }
 
 async function shuffleDeck(){
