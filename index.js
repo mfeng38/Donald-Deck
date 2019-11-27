@@ -7,7 +7,6 @@ const http = require('http').Server(app);
 const { Pool, Client } = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: true,
 });
 
 
@@ -30,7 +29,7 @@ app.post('/soloBlackjack',(req,res)=> {
             var userinfo= {'row' : result.rows[0]};
             console.log(userinfo);
             if (userinfo === undefined || result.rows.length == 0) {
-                res.redirect('pages/loginUI.html'); //fail in staying logged in
+                res.redirect('loginUI.html'); //fail in staying logged in
             }
             else{
                 res.render('pages/soloBlackjack', userinfo);
@@ -146,7 +145,7 @@ app.post('/joinMatch', (req, res) => {
             else {
                 var userinfo= {'row' : result.rows[0]};
                 res.render('pages/JoinMatch.ejs', userinfo);
-
+                
             }
         }
     });
@@ -159,22 +158,35 @@ app.post('/rebuy', (req,res)=>{
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
     //console.log("mainmenu",findUser);
     pool.query(findUser, (error, result) => {
-        if (error)
+        if (error){
             res.send('ERROR',error);
+        }
         else {
             if (result.rowCount === 0) {
                 res.render('pages/createAccountIncorrect.ejs')
             }
             else {
-                newCreditCount = result.rows.credits + 100;
+                newCreditCount = result.rows[0].credits + 100;
                 var update = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${user}';`;
-                update = update + `UPDATE users SET rebuys = ${result.rows.rebuys +1} WHERE users.username = '${user}';`;
-                pool.query(update, (err,res)=>{
-                    if (err)
-                        res.send('ERROR', error);
-                    //otherwise, do nothing i suppose? or maybe send something?
+                console.log(result.rows[0].rebuys);
+                var newrebuys = result.rows[0].rebuys + 1;
+                update = update + ` UPDATE users SET rebuys = ${newrebuys} WHERE users.username = '${user}';`;
+                console.log(update);
+                pool.query(update, (erroragain,resultagain)=>{
+                    if (erroragain)
+                        res.send('ERROR', erroragain);
+                        //otherwise, do nothing i suppose? or maybe send something?
                     else{
-                        //res.send() or reload page with res.render?
+                        pool.query(findUser, (erragains, finalinfo)=>{
+                            if (erragains){
+                                res.send('ERROR', erragains);
+                            }
+                            else{
+                                var userinfo = {'row': result.rows[0]};
+                                res.render('pages/mystats.ejs', userinfo);
+                            }
+                        })
+                        
                     }
                 });
             }
@@ -222,9 +234,6 @@ io.on('connection', function(socket){
         console.log("username " + username + " and socket.id: " + socket.id);
         io.emit('chat msg', `${socket.username} has joined the chat!`)
     });
-<<<<<<< HEAD
-});
-=======
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
         //console.log("mystats",findUser);
@@ -279,6 +288,6 @@ io.on('connection', function(socket){
                 }
             }
         });
-
+        
     });
 });

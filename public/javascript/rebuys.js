@@ -1,15 +1,12 @@
 //js for rebuys (client side)
 //rebuys
 var div = document.getElementById("rebuyPrompt");
-div.display = "none";
-var numcredits = document.getElementById('creditnumber');
+var numcredits = document.getElementById('creditnumber').innerHTML;
+console.log('numcred', numcredits);
 if (numcredits < 500) {
-    div.display = "block";
+    console.log('less');
+    div.className = '';
 }
-
-document.getElementById('rebuy').addEventListener('click', function () {
-    //send post request to index.js
-    var http = new XMLHttpRequest();
-    http.open("POST", "/rebuy", true);
-    http.send();
-});
+else {
+    div.className = 'hidden';
+}
