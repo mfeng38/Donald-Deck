@@ -62,6 +62,7 @@ p#CurrentBet {
     transform: translate(-50%, -50%);
     /* button design*/
     text-align: center;
+    /*font-size: 16px;*/
     padding: 1%;
     border: none;
     color: white;
@@ -79,8 +80,8 @@ p#CurrentBet {
     padding: 1%;
     border: none;
     color: white;
-    visibility: hidden;
     width: 8%;
+    visibility: hidden;
 }
 #Add25 {
     position: absolute;
@@ -130,12 +131,11 @@ p#CurrentBet {
     transform: translate(-50%, -50%);
     /* button design*/
     text-align: center;
-    /*background-color: #156025;*/
     padding: 1%;
     border: none;
     color: white;
-    visibility: hidden;
     width: 8%;
+    visibility: hidden;
 }
 
 #Sub25 {
@@ -197,18 +197,23 @@ p#CurrentBet {
     left: 50%;
     top: 45%;
     transform: translate(-50%, -50%);
-    padding: 1%;
+    padding: 0%;
     width:10%;
+    height: 7%;
+    text-align: center;
+    vertical-align: center;
     visibility: hidden;
 }
 
 #stay {
     position: absolute;
     left: 50%;
-    top: 55%;
+    top: 54%;
     transform: translate(-50%, -50%);
-    padding: 1%;
+    padding: 0%;
     width: 10%;
+    height: 7%;
+    text-align: center;
     visibility: hidden;
 }
 #changeBet{
@@ -238,74 +243,74 @@ img#backofcard {
 }
 img#d1 {
     left: 45%;
-    top: 17%;
+    top: 7%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d2 {
     left: 47%;
-    top: 15%;
+    top: 9%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d3 {
     left: 49%;
-    top: 13%;
+    top: 11%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d4 {
     left: 51%;
-    top: 11%;
+    top:13%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d5 {
     left: 53%;
-    top: 9%;
+    top: 15%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#d6 {
     left: 55%;
-    top: 7%;
+    top: 17%;
     transform: translate(-50%);
     visibility: hidden;
 }
 img#c1 {
     left: 45%;
     transform: translate(-50%);
-    top:70%;
+    top: 63%;
     visibility: hidden;
 }
 img#c2 {
     left: 47%;
     transform: translate(-50%);
-    top: 68%;
+    top: 61%;
     visibility: hidden;
 }
 img#c3 {
     left: 49%;
     transform: translate(-50%);
-    top: 66%;
+    top: 59%;
     visibility: hidden;
 }
 img#c4 {
     left: 51%;
     transform: translate(-50%);
-    top: 64%;
+    top: 57%;
     visibility: hidden;
 }
 img#c5 {
     left: 53%;
     transform: translate(-50%);
-    top: 62%;
+    top: 55%;
     visibility: hidden;
 }
 img#c6 {
     left: 55%;
     transform: translate(-50%);
-    top: 60%;
+    top: 53%;
     visibility: hidden;
 }
 
@@ -325,7 +330,7 @@ div#chatroom{
     margin-top:3%;
 }
 ul#messages{
-    padding:1%;   
+    padding:1%;
 }
 div#chatbox {
     height: 85%;
@@ -499,7 +504,7 @@ button#sendmsg{
         width: auto;
         display: inline-block;
     }
-    
+
     /*CARDS PLACEMENT MOBILE*/
     img.card {
         position: absolute;
@@ -574,4 +579,9 @@ button#sendmsg{
         width:78%;
     }
 
+}
+
+@viewport {
+  width: device-width ;
+  zoom: 1.0 ;
 }
