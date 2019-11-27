@@ -57,6 +57,9 @@ async function gameStart(){
           if(temp.cards[i].value == "JACK" || temp.cards[i].value == "QUEEN" || temp.cards[i].value == "KING"){
             if(i%2 == 0){
               dealerHandValue += 10;
+              if(i == 2){
+                dealerVisibleHandValue = 10;
+              }
             }
             else{
               playerHandValue += 10;
@@ -66,6 +69,9 @@ async function gameStart(){
             if(i%2 == 0){
               dealerHandValue += 11;
               dealerAces++;
+              if(i == 2){
+                dealerVisibleHandValue = 11;
+              }
             }
             else{
               playerHandValue += 11;
@@ -75,6 +81,9 @@ async function gameStart(){
           else {
             if(i%2 == 0){
               dealerHandValue += parseInt(temp.cards[i].value);
+              if(i == 2){
+                dealerVisibleHandValue = parseInt(temp.cards[i].value);
+              }
             }
             else{
               playerHandValue += parseInt(temp.cards[i].value);
@@ -99,10 +108,6 @@ async function gameStart(){
             playerCard.style.visibility = "visible";
             playerCardIndex++;
             console.log("Player dealt")
-          }
-          //If first card dealt to dealer, display ONLY that value.
-          if(i == 2){
-            dealerVisibleHandValue = parseInt(temp.cards[i].value);
           }
         }
         while(playerAces > 0 && playerHandValue > 21){
