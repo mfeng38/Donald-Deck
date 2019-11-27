@@ -146,7 +146,7 @@ app.post('/joinMatch', (req, res) => {
             else {
                 var userinfo= {'row' : result.rows[0]};
                 res.render('pages/JoinMatch.ejs', userinfo);
-                
+
             }
         }
     });
@@ -279,9 +279,6 @@ io.on('connection', function(socket){
                 }
             }
         });
-        
+
     });
 });
-
-
->>>>>>> ad46100ebef24e2abe7704ded6a0f28611cf9b89
