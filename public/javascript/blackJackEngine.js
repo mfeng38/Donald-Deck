@@ -259,6 +259,7 @@ async function dealer(){
   if(dealerHandValue > 21 || dealerHandValue < playerHandValue){
       //PAY PLAYER
       document.getElementById('winloss').innerHTML = "YOU WIN";
+      //win = need to pay player
       document.getElementById('winloss').style.visibility = "visible";
       console.log('payout called');
       payout();
@@ -272,7 +273,7 @@ async function dealer(){
       //DRAW;PUSH
       document.getElementById('winloss').innerHTML = "PUSH";
       document.getElementById('winloss').style.visibility = "visible";
-      push(); //added
+      push();
   }
   return true
 }

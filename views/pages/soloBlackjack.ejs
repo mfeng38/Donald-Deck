@@ -89,7 +89,6 @@
 		<img class="card" src="/images/cardback.png" alt="dealer5" id = "d5"/>
 		<img class="card" src="/images/cardback.png" alt="dealer6" id = "d6"/>
 
-
 		<img class="card" src="/images/cardback.png" alt="c1" id="c1"/>
 		<img class="card" src="/images/cardback.png" alt="c2" id="c2" />
 		<img class="card" src="/images/cardback.png" alt="c3" id="c3"/>
@@ -104,11 +103,11 @@
 		<button id="changeBet" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
 		<button id="playAgain" onclick = "gameStateReset()" class="btn-danger">Play Again</button>
 		<p id="winloss"></p>
-  </div>
-
-  <div id = "chatroom">
-    <div id="chatbox">
-      <ul id = "messages"></ul>
+    </div>
+	<h2 id = creditcount>You have <%=row.credits%> credits</h2>
+    <div id = "chatroom">
+		<div id="chatbox">
+		    <ul id = "messages"></ul>
 		</div>
     <form id= "chat" method="">
       <input id="msgin" type="text" name= "msg"> </input>
@@ -118,9 +117,12 @@
 
   <script>
 		var socket = io();
+		//connection and sending in username
 		socket.on('connect',function(){});
+		var username = document.getElementById('id').value;
+		socket.emit('username', username);
 		var form = document.getElementById('chat');
-		//form.addEventListener('submit', sendmsg(event));
+		//for chat
 		form.addEventListener("submit", function(event){
 			event.preventDefault();
 			var msg = document.getElementById('msgin');
@@ -128,8 +130,7 @@
 			msg.value='';
 			return false;
 		});
-		var username = document.getElementById('id').value;
-		socket.emit('username', username);
+		//getting chat messages from server
 		socket.on('chat msg',function(msg){
 			var messages = document.getElementById("messages");
 			var message = document.createElement("LI");
@@ -141,7 +142,35 @@
 			messages.appendChild(message);
 			document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight;
 		});
-
+		//betting
+		document.getElementById('startround').addEventListener('click', function () {
+			var bet = document.getElementById("CurrentBet").value;
+			if (Number.isNaN(bet) || bet==0||bet==undefined){
+				return;
+			}
+			else{
+				//check socket.io
+				socket.emit('checkBet', bet);
+			}
+		});
+		socket.on('startGame', function(credits){
+			gameStart();
+		});
+		//payout if player wins
+		async function payout(){
+			var bet = document.getElementById("CurrentBet").value;
+			//console.log("player needs to get his money back");
+			socket.emit('payout', bet);
+		}
+		async function push(){
+			var bet = document.getElementById("CurrentBet").value;
+			bet = bet/2;
+			//console.log("push player");
+			socket.emit('payout',bet);
+		}
+		socket.on('newCredits', function(credits){
+			document.getElementById('creditcount').innerHTML = "You have " + credits + " credits";
+		});
 	</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
