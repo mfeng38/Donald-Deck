@@ -257,6 +257,7 @@ async function dealer(){
   document.getElementById("stay").style.visibility = "hidden";
   document.getElementById("changeBet").style.visibility = "visible";
   document.getElementById("playAgain").style.visibility = "visible";
+
   if(dealerHandValue > 21 || dealerHandValue < playerHandValue){
       //PAY PLAYER
       document.getElementById('winloss').innerHTML = "YOU WIN";
@@ -275,6 +276,7 @@ async function dealer(){
   return true
 }
 
+//Changing bet reset
 async function gameStateReset(){
   cardReset = document.getElementsByClassName("card");
   for(var i = 0; i < cardReset.length; i++)
@@ -285,6 +287,19 @@ async function gameStateReset(){
   document.getElementById("changeBet").style.visibility = "hidden";
   document.getElementById("playAgain").style.visibility = "hidden";
   return true
+}
+
+//No changes to bet reset
+async function gameStateResetNoChange(){
+  cardReset = document.getElementsByClassName("card");
+  for(var i = 0; i < cardReset.length; i++)
+  {
+    cardReset[i].style.visibility = "hidden";
+  }
+  document.getElementById('winloss').style.visibility = "hidden";
+  document.getElementById("changeBet").style.visibility = "hidden";
+  document.getElementById("playAgain").style.visibility = "hidden";
+  gameStart();
 }
 
 async function shuffleDeck(){
