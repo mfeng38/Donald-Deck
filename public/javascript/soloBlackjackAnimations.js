@@ -166,11 +166,6 @@ document.getElementById('changeBet').addEventListener('click', function () {
 });
 
 document.getElementById('playAgain').addEventListener('click', function () {
-    var bet = document.getElementById("CurrentBet").value;
-    console.log(bet);
-    document.getElementById("CurrentBet").style.visibility = "hidden";
-
-    document.getElementById("bet").innerHTML = `Bet: ${bet}`;
     document.getElementById("bet").style.visibility = "visible";
 
     document.getElementById("Player").style.visibility = "visible";
