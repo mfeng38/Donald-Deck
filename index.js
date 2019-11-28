@@ -266,7 +266,8 @@ setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
 io.on('connection', function(socket){
     console.log('connection index');
     //Check how long it has been since last login
-    playerIDs.push(socket);
+    playerIDs.push(socket.id);
+    io.emit('IDlist', playerIDs)
     socket.on('chat msg', function(message){
         //console.log(message);
         io.emit('chat msg', socket.username + ' said: ' + message );
@@ -275,11 +276,6 @@ io.on('connection', function(socket){
         socket.username = username;
         console.log("username " + username + " and socket.id: " + socket.id);
         io.emit('chat msg', `${socket.username} has joined the chat!`)
-        io.emit('IDlist', playerIDs)
-    });
-    socket.on('disconnect', function() {
-        var i = playerIDs.indexOf(socket);
-        allClients.splice(i, 1);
     });
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
@@ -336,5 +332,9 @@ io.on('connection', function(socket){
             }
         });
 
+    });
+    socket.on('disconnect', function() {
+        var i = playerIDs.indexOf(socket);
+        allClients.splice(i, 1);
     });
 });
