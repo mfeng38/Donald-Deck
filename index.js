@@ -261,6 +261,7 @@ var server = http.listen(PORT, function(){
 
 
 // Socket.io stuff
+var playerIDs = [];
 setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
 io.on('connection', function(socket){
     console.log('connection index');
@@ -273,6 +274,8 @@ io.on('connection', function(socket){
     socket.on('username', function(username){
         socket.username = username;
         console.log("username " + username + " and socket.id: " + socket.id);
+        playerIDs.push(socket.id);
+        console.log(playerIDs);
         io.emit('chat msg', `${socket.username} has joined the chat!`)
     });
     socket.on('checkBet', function(bet){
