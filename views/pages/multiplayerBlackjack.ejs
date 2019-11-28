@@ -8,8 +8,8 @@
     <title>Donald Deck - Playing Solo</title>
     <link rel="stylesheet" href="/stylesheets/soloBlackjack.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
-    <script src="/javascript/soloBlackjackAnimations.js" defer ></script>
-    <script src="/javascript/soloBlackjackAnimations.js" defer ></script>
+    <script src="/javascript/multiBlackjackAnimations.js" defer ></script>
+    <script src="/javascript/sharedBlackjackAnimations.js" defer ></script>
     <script src="/javascript/blackJackEngine.js" defer></script>
 	  <script src="/socket.io/socket.io.js"></script>
 </head>
@@ -61,18 +61,18 @@
         </div>
     </nav>
 	  <h1> Hello <%=row.username%>!</h1>
-    <div id="multiwrapper">
-      <div id="multicontainer">
-        <!-- when DB is made, need to pull that info... this is temp for  now -->
-        <p id="roomID">Your game code is: <%=row.roomid%></p>
-        <button id="readyUp">Ready to Start</button>
-      </div>
-    </div>
 
     <div id="solocontainer">
   		<!--
       <img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
       -->
+      <div id="multicontainer">
+        <!-- when DB is made, need to pull that info... this is temp for  now -->
+        <img class="card" src="/images/cardback.png" alt="backofcard" id = "backOfCardRework"/>
+        <p id="roomID">Your game code is: <%=row.roomid%></p>
+        <button id="readyUp" class="btn-danger" >Ready to Start</button>
+      </div>
+
   		<input id="id" type="hidden" value=<%=row.username%>>
 
       <p id="CurrentBet" value = "0" >Current Bet: 0</p>
@@ -107,11 +107,11 @@
       <p id="playerCounter"> 0 </p>
   		<p id="dealerCounter"> 0 </p>
 
-      <button id="viewLeaderboard">Leaderboard</button>
+      <button id="viewLeaderboard" class="btn-danger">Leaderboard</button>
   		<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
   		<button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
   		<button id="changeBet" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
-  		<button id="playAgain" onclick = "gameStateReset()" class="btn-danger">Play Again</button>
+  		<button id="playAgain" class="btn-danger" onclick = "gameStateReset()">Play Again</button>
   		<p id="winloss"></p>
     </div>
     <h2 id = creditcount>You have <%=row.credits%> credits</h2>
