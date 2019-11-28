@@ -181,9 +181,8 @@
       players = playerIDs
       console.log(players)
     });
-    socket.on('delPlayer', function(id){
-      var i = players.indexOf(id);
-      players.splice(i, 1);
+    socket.on('test', function(id){
+      console.log(id)
     })
 		socket.on('startGame', function(credits){
 			gameStart();

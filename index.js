@@ -334,8 +334,6 @@ io.on('connection', function(socket){
 
     });
     socket.on('disconnect', (reason) => {
-      var i = playerIDs.indexOf(id);
-      playerIDs.splice(i, 1);
-      io.emit('IDlist', playerIDs)
+      io.emit('test', socket.id)
     });
 });
