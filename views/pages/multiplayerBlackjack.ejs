@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="/stylesheets/soloBlackjack.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <script src="/javascript/soloBlackjackAnimations.js" defer ></script>
+    <script src="/javascript/soloBlackjackAnimations.js" defer ></script>
     <script src="/javascript/blackJackEngine.js" defer></script>
-    <script src="/javascript/blackJackEngineEvents.js" defer></script>
 	  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
@@ -61,15 +61,18 @@
         </div>
     </nav>
 	  <h1> Hello <%=row.username%>!</h1>
-
-    <div id="multicontainer">
-      <!-- when DB is made, need to pull that info... this is temp for  now -->
-      <p id="roomID">Your game code is: <%=row.roomid%></p>
-      <button id="readyUp">Ready to Start</button>
+    <div id="multiwrapper">
+      <div id="multicontainer">
+        <!-- when DB is made, need to pull that info... this is temp for  now -->
+        <p id="roomID">Your game code is: <%=row.roomid%></p>
+        <button id="readyUp">Ready to Start</button>
+      </div>
     </div>
 
     <div id="solocontainer">
-  		<img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
+  		<!--
+      <img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
+      -->
   		<input id="id" type="hidden" value=<%=row.username%>>
 
       <p id="CurrentBet" value = "0" >Current Bet: 0</p>
@@ -82,7 +85,7 @@
       <button id="Sub10" class="btn-info" >-10</button>
   		<button id="Sub25" class="btn-info" >-25</button>
   		<button id="Sub100" class="btn-info" >-100</button>
-      <button id="startround" class="btn-danger">START ROUND</button>
+      <button id="startMatch" class="btn-danger">START ROUND</button>
 
       <p id="bet">Bet: 0</p>
   		<img class="card" src="/images/cardback.png" alt="dealer1" id = "d1"/>
@@ -152,7 +155,7 @@
 			document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight;
 		});
 		//betting
-		document.getElementById('startround').addEventListener('click', function () {
+		document.getElementById('startMatch').addEventListener('click', function () {
 			var bet = document.getElementById("CurrentBet").value;
 			if (Number.isNaN(bet) || bet==0||bet==undefined){
 				return;
