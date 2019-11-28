@@ -274,21 +274,7 @@ div#multicontainer {
     visibility: hidden;
     width: 12%;
 }
-/*
-#changeBetMP{
-  position: absolute;
-  left:80%;
-  top:90%;
-  visibility:hidden;
-}
 
-#playAgainMP{
-  position: absolute;
-  left:80%;
-  top:95%;
-  visibility:hidden;
-}
-*/
 #viewLeaderboard{
   position: absolute;
   left:5%%;
