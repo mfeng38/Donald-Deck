@@ -262,8 +262,9 @@ img#backOfCardRework {
 #roomID{
   position: absolute;
   text-align: center;
+  font-weight: bold;
   left: 50%;
-  top: 10%;
+  top: 15%;
   font-size: 125%;
   width: 90%;
   transform: translate(-50%, -50%);
@@ -272,7 +273,7 @@ img#backOfCardRework {
 #readyUp {
   position: absolute;
   left: 50%;
-  top: 90%;
+  top: 85%;
   padding: 1%;
   width: 45%;
   transform: translate(-50%, -50%);
