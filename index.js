@@ -277,6 +277,7 @@ io.on('connection', function(socket){
         playerIDs.push(socket.id);
         console.log(playerIDs);
         io.emit('chat msg', `${socket.username} has joined the chat!`)
+        io.emit('IDlist', playerIDs)
     });
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;

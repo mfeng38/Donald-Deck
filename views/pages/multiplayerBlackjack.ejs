@@ -176,7 +176,9 @@
 				socket.emit('checkBet', bet);
 			}
 		});
-
+    socket.on('IDlist', function(playerIDs){
+      console.log(playerIDs)
+    });
 		socket.on('startGame', function(credits){
 			gameStart();
 		});
