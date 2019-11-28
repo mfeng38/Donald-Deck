@@ -33,6 +33,31 @@ document.getElementById('startMatch').addEventListener('click', function () {
     }
 });
 
+document.getElementById('changeBetMP').addEventListener('click', function () {
+    document.getElementById("Dealer").style.visibility = "hidden";
+    document.getElementById("Player").style.visibility = "hidden";
+    document.getElementById("dealerCounter").style.visibility = "hidden";
+    document.getElementById("playerCounter").style.visibility = "hidden";
+    document.getElementById("bet").style.visibility = "hidden";
+    document.getElementById('winloss').style.visibility = "hidden";
+    document.getElementById("changeBet").style.visibility = "hidden";
+    document.getElementById("playAgain").style.visibility = "hidden";
+
+    document.getElementById("startMatch").style.visibility = "visible";
+    document.getElementById("CurrentBet").style.visibility = "visible";
+    showBetButtons();
+});
+
+document.getElementById('playAgainMP').addEventListener('click', function () {
+    document.getElementById('winloss').style.visibility = "hidden";
+    document.getElementById("changeBet").style.visibility = "hidden";
+    document.getElementById("playAgainMP").style.visibility = "hidden";
+
+    document.getElementById("hit").style.visibility = "visible";
+    document.getElementById("stay").style.visibility = "visible";
+    gameStart();
+});
+
 //Fill this boi with leaderboard stuff
 document.getElementById('viewLeaderboard').addEventListener('click', function() {
 

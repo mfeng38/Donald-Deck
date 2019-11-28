@@ -284,9 +284,6 @@ async function gameStateReset(){
   {
     cardReset[i].style.visibility = "hidden";
   }
-  document.getElementById('winloss').style.visibility = "hidden";
-  document.getElementById("changeBet").style.visibility = "hidden";
-  document.getElementById("playAgain").style.visibility = "hidden";
   return true
 }
 
