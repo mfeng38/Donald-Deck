@@ -274,13 +274,12 @@ io.on('connection', function(socket){
     socket.on('username', function(username){
         socket.username = username;
         console.log("username " + username + " and socket.id: " + socket.id);
-        playerIDs.push(socket.id);
-        console.log(playerIDs);
+        playerIDs.push(socket);
         io.emit('chat msg', `${socket.username} has joined the chat!`)
         io.emit('IDlist', playerIDs)
     });
     socket.on('disconnect', function() {
-        var i = playerIDs.indexOf(socket.id);
+        var i = playerIDs.indexOf(socket);
         allClients.splice(i, 1);
     });
     socket.on('checkBet', function(bet){
