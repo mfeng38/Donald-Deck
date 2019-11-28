@@ -275,7 +275,7 @@ io.on('connection', function(socket){
         console.log("username " + username + " and socket.id: " + socket.id);
         io.emit('chat msg', `${socket.username} has joined the chat!`)
     });
-    io.clients((error, clients) => {
+    io.of('/').clients((error, clients) => {
       if (error) throw error;
       console.log(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
     });
