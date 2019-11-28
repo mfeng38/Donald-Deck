@@ -41,7 +41,7 @@
                 </form>
             </li>
             <li class="nav-item">
-                <form method="POST" action='/createMatch'>
+                <form method="POST" action='/multiplayerBlackjack'>
                     <input type="hidden" name="id" value=<%= row.username %>>
                     <input type="submit" class="btn my-2 my-sm-0" value="Create Match"/>
                 </form>
@@ -63,57 +63,59 @@
 	  <h1> Hello <%=row.username%>!</h1>
 
     <div id="solocontainer">
-		<img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
-		<p id="Dealer">Dealer</p>
-  	<p id="Player">Player</p>
-		<input id="id" type="hidden" value=<%=row.username%>>
+  		<img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
+  		<input id="id" type="hidden" value=<%=row.username%>>
 
-    <p id="CurrentBet" value = "0" >Current Bet: 0</p>
+      <p id="CurrentBet" value = "0" >Current Bet: 0</p>
 
-    <button id="start" class="btn-danger"> START GAME</button>
-		<button id="Add5" class="btn-danger" >+5</button>
-    <button id="Add10" class="btn-danger" >+10</button>
-		<button id="Add25" class="btn-danger" >+25</button>
-		<button id="Add100" class="btn-danger" >+100</button>
-		<button id="Sub5" class="btn-info" >-5</button>
-    <button id="Sub10" class="btn-info" >-10</button>
-		<button id="Sub25" class="btn-info" >-25</button>
-		<button id="Sub100" class="btn-info" >-100</button>
-    <button id="startround" class="btn-danger">START ROUND</button>
+      <button id="start" class="btn-danger"> START GAME</button>
+  		<button id="Add5" class="btn-danger" >+5</button>
+      <button id="Add10" class="btn-danger" >+10</button>
+  		<button id="Add25" class="btn-danger" >+25</button>
+  		<button id="Add100" class="btn-danger" >+100</button>
+  		<button id="Sub5" class="btn-info" >-5</button>
+      <button id="Sub10" class="btn-info" >-10</button>
+  		<button id="Sub25" class="btn-info" >-25</button>
+  		<button id="Sub100" class="btn-info" >-100</button>
+      <button id="startround" class="btn-danger">START ROUND</button>
 
-    <p id="bet">Bet: 0</p>
-		<img class="card" src="/images/cardback.png" alt="dealer1" id = "d1"/>
-		<img class="card" src="/images/cardback.png" alt="dealer2" id = "d2"/>
-		<img class="card" src="/images/cardback.png" alt="dealer3" id = "d3"/>
-		<img class="card" src="/images/cardback.png" alt="dealer4" id = "d4"/>
-		<img class="card" src="/images/cardback.png" alt="dealer5" id = "d5"/>
-		<img class="card" src="/images/cardback.png" alt="dealer6" id = "d6"/>
+      <p id="bet">Bet: 0</p>
+  		<img class="card" src="/images/cardback.png" alt="dealer1" id = "d1"/>
+  		<img class="card" src="/images/cardback.png" alt="dealer2" id = "d2"/>
+  		<img class="card" src="/images/cardback.png" alt="dealer3" id = "d3"/>
+  		<img class="card" src="/images/cardback.png" alt="dealer4" id = "d4"/>
+  		<img class="card" src="/images/cardback.png" alt="dealer5" id = "d5"/>
+  		<img class="card" src="/images/cardback.png" alt="dealer6" id = "d6"/>
 
-		<img class="card" src="/images/cardback.png" alt="c1" id="c1"/>
-		<img class="card" src="/images/cardback.png" alt="c2" id="c2" />
-		<img class="card" src="/images/cardback.png" alt="c3" id="c3"/>
-		<img class="card" src="/images/cardback.png" alt="c4" id="c4"/>
-		<img class="card" src="/images/cardback.png" alt="c5" id="c5"/>
-		<img class="card" src="/images/cardback.png" alt="c6" id="c6"/>
+  		<img class="card" src="/images/cardback.png" alt="c1" id="c1"/>
+  		<img class="card" src="/images/cardback.png" alt="c2" id="c2" />
+  		<img class="card" src="/images/cardback.png" alt="c3" id="c3"/>
+  		<img class="card" src="/images/cardback.png" alt="c4" id="c4"/>
+  		<img class="card" src="/images/cardback.png" alt="c5" id="c5"/>
+  		<img class="card" src="/images/cardback.png" alt="c6" id="c6"/>
 
-    <p id="playerCounter"> 0 </p>
-		<p id="dealerCounter"> 0 </p>
-		<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
-		<button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
-		<button id="changeBet" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
-		<button id="playAgain" onclick = "gameStateReset()" class="btn-danger">Play Again</button>
-		<p id="winloss"></p>
+      <p id="Dealer">Dealer</p>
+    	<p id="Player">Player</p>
+      <p id="playerCounter"> 0 </p>
+  		<p id="dealerCounter"> 0 </p>
+
+  		<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
+  		<button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
+  		<button id="changeBet" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
+  		<button id="playAgain" onclick = "gameStateReset()" class="btn-danger">Play Again</button>
+  		<p id="winloss"></p>
     </div>
-	<h2 id = creditcount>You have <%=row.credits%> credits</h2>
+
+    <h2 id = creditcount>You have <%=row.credits%> credits</h2>
     <div id = "chatroom">
-		<div id="chatbox">
-		    <ul id = "messages"></ul>
-		</div>
-    <form id= "chat" method="">
-      <input id="msgin" type="text" name= "msg"> </input>
-		  <button id="sendmsg" class="btn-info">SEND</button>
-		</form>
-  </div>
+  		<div id="chatbox">
+  		    <ul id = "messages"></ul>
+  		</div>
+      <form id= "chat" method="">
+        <input id="msgin" type="text" name= "msg"> </input>
+  		  <button id="sendmsg" class="btn-info">SEND</button>
+  		</form>
+    </div>
 
   <script>
 		var socket = io();
@@ -163,7 +165,7 @@
 				socket.emit('checkBet', bet);
 			}
 		});
-		
+
 		socket.on('startGame', function(credits){
 			gameStart();
 		});

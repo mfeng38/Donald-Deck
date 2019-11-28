@@ -150,6 +150,7 @@ document.getElementById('startround').addEventListener('click', function () {
         document.getElementById("backofcard").style.visibility = "hidden";
         document.getElementById("hit").style.visibility = "visible";
         document.getElementById("stay").style.visibility = "visible";
+        document.getElementById("viewLeaderboard").style.visibility = "visible";
         hideBetButtons();
     }
 });

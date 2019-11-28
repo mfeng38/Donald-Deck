@@ -19,27 +19,6 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.redirect('loginUI.html'));
 //app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 app.get('/test', (req, res) => res.render('pages/soloBlackjackTEST'));
-app.post('/soloBlackjack',(req,res)=> {
-    console.log("post soloBlackjack");
-    var findUser = `SELECT * FROM users WHERE users.username = '${req.body.id}'`; // Maybe not from users, maybe from diff table
-    pool.query(findUser, (error,result)=>{
-        if (error)
-            res.send(error);
-        else{
-            var userinfo= {'row' : result.rows[0]};
-            console.log(userinfo);
-            if (userinfo === undefined || result.rows.length == 0) {
-                res.redirect('loginUI.html'); //fail in staying logged in
-            }
-            else{
-                res.render('pages/soloBlackjack', userinfo);
-            }
-        }
-    })
-
-
-});
-
 app.post('/login', (req, res) => {
     var loginUsername = req.body.username;
     var loginPassword = req.body.password;
@@ -131,6 +110,68 @@ app.post('/mainMenu', (req,res)=>{
     });
 });
 
+app.post('/soloBlackjack',(req,res)=> {
+    console.log("post soloBlackjack");
+    var user = req.body.id;
+    var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    pool.query(findUser, (error,result)=>{
+        if (error)
+            res.send(error);
+        else{
+            var userinfo= {'row' : result.rows[0]};
+            console.log(userinfo);
+            if (userinfo === undefined || result.rows.length == 0) {
+                res.redirect('loginUI.html'); //fail in staying logged in
+            }
+            else{
+                res.render('pages/soloBlackjack', userinfo);
+            }
+        }
+    })
+
+
+});
+
+app.post('/multiplayerBlackjack',(req,res)=> {
+    console.log("post multiplayerBlackjack");
+    var user = req.body.id;
+    var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    pool.query(findUser, (error,result)=>{
+        if (error)
+            res.send(error);
+        else{
+            var userinfo= {'row' : result.rows[0]};
+            console.log(userinfo);
+            if (userinfo === undefined || result.rows.length == 0) {
+                res.redirect('loginUI.html'); //fail in staying logged in
+            }
+            else{
+                res.render('pages/multiplayerBlackjack', userinfo);
+            }
+        }
+    })
+   /*
+   //I made this before we chatted on discord so imma just leave it here in case it'll save you any work LOL.
+
+   var createRoom = req.body.roomid;
+   var createQuery = ` insert into rooms(roomid, username, score) select '${createRoom}', '${user}', 0);`;
+   console.log(createQuery);
+   pool.query(createQuery, (error, result) => {
+       if (error)
+           res.send('ERROR',error);
+       else {
+           if (result.rowCount === 0) {
+               res.render('pages/mainMenu.ejs')
+           }
+           else {
+               res.render('pages/multiplayerBlackjack.ejs')
+           }
+       }
+   });
+    */
+
+});
+
 app.post('/joinMatch', (req, res) => {
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
@@ -145,7 +186,7 @@ app.post('/joinMatch', (req, res) => {
             else {
                 var userinfo= {'row' : result.rows[0]};
                 res.render('pages/JoinMatch.ejs', userinfo);
-                
+
             }
         }
     });
@@ -186,7 +227,7 @@ app.post('/rebuy', (req,res)=>{
                                 res.render('pages/mystats.ejs', userinfo);
                             }
                         })
-                        
+
                     }
                 });
             }
@@ -288,6 +329,6 @@ io.on('connection', function(socket){
                 }
             }
         });
-        
+
     });
 });
