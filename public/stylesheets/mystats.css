@@ -44,4 +44,8 @@ p#credits{
 div#rebuyPrompt{
     position: absolute;
     top:70%;
+    
+}
+div.hidden {
+    display: none;
 }
