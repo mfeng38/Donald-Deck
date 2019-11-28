@@ -21,15 +21,10 @@ div#solocontainer {
 div#multicontainer {
     position:relative;
     margin: 0 auto;
+    transform: translate(-50%,-50%);
     background-color: DarkGreen;
-    vertical-align: middle;
-    opacity: 50%;
     height: 85%;
     width: 25%;
-}
-
-div#multiwrapper {
-    position:relative;
 }
 
 p#roomID{
