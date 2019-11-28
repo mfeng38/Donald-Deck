@@ -332,3 +332,7 @@ io.on('connection', function(socket){
 
     });
 });
+io.clients((error, clients) => {
+  if (error) throw error;
+  console.log(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
+});
