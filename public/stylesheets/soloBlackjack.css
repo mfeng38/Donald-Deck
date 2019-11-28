@@ -250,7 +250,7 @@ div#multicontainer {
 img#backOfCardRework {
     position:absolute;
     visibility: visible;
-    width:120px;
+    width:45%;
     left: 50%;
     top: 22%;
     box-shadow: 0 0 5px 2px;
@@ -263,7 +263,7 @@ img#backOfCardRework {
   position: absolute;
   text-align: center;
   left: 50%;
-  top: 45%;
+  top: 85%;
   font-size: 125%;
   width: 90%;
   transform: translate(-50%, -50%);
@@ -272,9 +272,9 @@ img#backOfCardRework {
 #readyUp {
   position: absolute;
   left: 50%;
-  top: 60%;
+  top: 92%;
   padding: 1%;
-  width: 40%%;
+  width: 45%;
   transform: translate(-50%, -50%);
 }
 
