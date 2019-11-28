@@ -31,6 +31,7 @@ document.getElementById('startMatch').addEventListener('click', function () {
         document.getElementById("viewLeaderboard").style.visibility = "visible";
         hideBetButtons();
     }
+    gameStart();
 });
 
 document.getElementById('changeBetMP').addEventListener('click', function () {

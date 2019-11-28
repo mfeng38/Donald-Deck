@@ -18,36 +18,6 @@ div#solocontainer {
     width: 98%;
 }
 
-div#multicontainer {
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: DarkGreen;
-    box-shadow: 0 0 5px 2px;
-    border: 1px solid;
-    border-radius: 5px;
-    height: 85%;
-    width: 25%;
-}
-
-#roomID{
-  position: absolute;
-  left: 50%;
-  top: 35%;
-  font-size: 125%;
-  transform: translate(-50%, -50%);
-}
-
-#readyUp {
-  position: absolute;
-  left: 50%;
-  top: 44%;
-  transform: translate(-50%, -50%);
-  padding: 1%;
-  width: 12%;
-}
-
 p#Dealer {
     position: absolute;
     left: 50%;
@@ -214,16 +184,6 @@ p#CurrentBet {
     transform: translate(-100%, -100%);
 }
 
-#startMatch {
-    position: absolute;
-    left: 50%;
-    top: 44%;
-    transform: translate(-50%, -50%);
-    padding: 1%;
-    visibility: hidden;
-    width: 12%;
-}
-
 #startround {
     position: absolute;
     left: 50%;
@@ -274,6 +234,47 @@ p#CurrentBet {
 }
 
 /*Multiplayer Version Only*/
+div#multicontainer {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: DarkGreen;
+    box-shadow: 0 0 5px 2px;
+    border: 1px solid;
+    border-radius: 5px;
+    height: 85%;
+    width: 25%;
+}
+
+#roomID{
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  font-size: 125%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+}
+
+#readyUp {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%);
+  padding: 1%;
+  width: 40%%;
+}
+
+#startMatch {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    transform: translate(-50%, -50%);
+    padding: 1%;
+    visibility: hidden;
+    width: 12%;
+}
+
 #changeBetMP{
   position: absolute;
   left:80%;
