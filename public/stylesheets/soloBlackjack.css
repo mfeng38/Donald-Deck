@@ -19,31 +19,33 @@ div#solocontainer {
 }
 
 div#multicontainer {
-    position:relative;
-    margin: 0 auto;
+    position:absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%,-50%);
     background-color: DarkGreen;
+    box-shadow: 0 0 5px 2px;
+    border: 1px solid;
+    border-radius: 5px;
     height: 85%;
     width: 25%;
 }
 
-p#roomID{
+#roomID{
   position: absolute;
   left: 50%;
   top: 35%;
   font-size: 125%;
   transform: translate(-50%, -50%);
-  color: #145BB4;
-  background-color: white;
 }
 
 #readyUp {
-    position: absolute;
-    left: 50%;
-    top: 44%;
-    transform: translate(-50%, -50%);
-    padding: 1%;
-    width: 12%;
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%);
+  padding: 1%;
+  width: 12%;
 }
 
 p#Dealer {
@@ -212,7 +214,7 @@ p#CurrentBet {
     transform: translate(-100%, -100%);
 }
 
-#startround {
+#startMatch {
     position: absolute;
     left: 50%;
     top: 44%;
@@ -222,7 +224,7 @@ p#CurrentBet {
     width: 12%;
 }
 
-#startMatch {
+#startround {
     position: absolute;
     left: 50%;
     top: 44%;
