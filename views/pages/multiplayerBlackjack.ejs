@@ -153,7 +153,10 @@
 			message.appendChild(text);
 			messages.appendChild(message);
 			document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight;
-      console.log(io.sockets.clients())
+      io.clients((error, clients) => {
+        if (error) throw error;
+        console.log(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
+      });
 		});
 		//betting
 		document.getElementById('startMatch').addEventListener('click', function () {
