@@ -247,22 +247,34 @@ div#multicontainer {
     width: 25%;
 }
 
+img#backOfCardRework {
+    position:absolute;
+    width:120px;
+    left: 50%;
+    top: 15%;
+    box-shadow: 0 0 5px 2px;
+    border: 1px solid;
+    padding: 1%;
+    transform: translate(-50%, -50%);
+}
+
 #roomID{
   position: absolute;
   text-align: center;
   left: 50%;
-  top: 35%;
+  top: 45%;
   font-size: 125%;
+  width: 90%;
   transform: translate(-50%, -50%);
 }
 
 #readyUp {
   position: absolute;
   left: 50%;
-  top: 44%;
-  transform: translate(-50%, -50%);
+  top: 60%;
   padding: 1%;
   width: 40%%;
+  transform: translate(-50%, -50%);
 }
 
 #startMatch {
