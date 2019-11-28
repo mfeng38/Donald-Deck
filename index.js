@@ -279,12 +279,10 @@ io.on('connection', function(socket){
         io.emit('chat msg', `${socket.username} has joined the chat!`)
         io.emit('IDlist', playerIDs)
     });
-    socket.on('disconnect', function() {
-      console.log('Got disconnect!');
-
-      var i = playerIDs.indexOf(socket.id);
-      playerIDs.splice(i, 1);
-    });
+    socket.on('delPlayer', function(id){
+        var i = playerIDs.indexOf(id);
+        playerID.splice(i, 1);
+    })
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
         //console.log("mystats",findUser);
