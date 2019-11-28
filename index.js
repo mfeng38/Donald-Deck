@@ -280,7 +280,9 @@ io.on('connection', function(socket){
         io.emit('IDlist', playerIDs)
     });
     socket.on('disconnect', function() {
-      socket.emit('dis', socket.id)
+        var i = playerIDs.indexOf(socket.id);
+        allClients.splice(i, 1);
+        io.emit('IDlist', playerIDs)
     });
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
