@@ -157,6 +157,10 @@
 		});
 		//betting
 		document.getElementById('startMatch').addEventListener('click', function () {
+      io.of('/').clients((error, clients) => {
+        if (error) throw error;
+        console.log(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
+      });
 			var bet = document.getElementById("CurrentBet").value;
 			if (Number.isNaN(bet) || bet==0||bet==undefined){
 				return;
