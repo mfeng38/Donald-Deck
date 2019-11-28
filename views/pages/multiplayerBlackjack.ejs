@@ -153,6 +153,7 @@
 			message.appendChild(text);
 			messages.appendChild(message);
 			document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight;
+      console.log(io.sockets.clients())
 		});
 		//betting
 		document.getElementById('startMatch').addEventListener('click', function () {
