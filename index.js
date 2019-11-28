@@ -282,6 +282,7 @@ io.on('connection', function(socket){
     socket.on('delPlayer', function(id){
         var i = playerIDs.indexOf(id);
         playerID.splice(i, 1);
+        io.emit('IDlist', playerID)
     })
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
