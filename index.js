@@ -266,7 +266,7 @@ setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
 io.on('connection', function(socket){
     console.log('connection index');
     //Check how long it has been since last login
-
+    playerIDs.push(socket);
     socket.on('chat msg', function(message){
         //console.log(message);
         io.emit('chat msg', socket.username + ' said: ' + message );
@@ -274,7 +274,6 @@ io.on('connection', function(socket){
     socket.on('username', function(username){
         socket.username = username;
         console.log("username " + username + " and socket.id: " + socket.id);
-        playerIDs.push(socket);
         io.emit('chat msg', `${socket.username} has joined the chat!`)
         io.emit('IDlist', playerIDs)
     });
