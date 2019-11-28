@@ -226,6 +226,16 @@ p#CurrentBet {
     width: 12%;
 }
 
+#startMatch {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    transform: translate(-50%, -50%);
+    padding: 1%;
+    visibility: hidden;
+    width: 12%;
+}
+
 #hit {
     position: absolute;
     left: 50%;

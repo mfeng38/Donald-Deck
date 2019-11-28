@@ -61,18 +61,19 @@
         </div>
     </nav>
 	  <h1> Hello <%=row.username%>!</h1>
-    <div id="multiwrapper">
-      <div id="multicontainer">
-        <!-- when DB is made, need to pull that info... this is temp for  now -->
-        <p id="roomID">Your game code is: <%=row.roomid%></p>
-        <button id="readyUp">Ready to Start</button>
-      </div>
-    </div>
 
     <div id="solocontainer">
   		<!--
       <img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
       -->
+      <div id="multiwrapper">
+        <div id="multicontainer">
+          <!-- when DB is made, need to pull that info... this is temp for  now -->
+          <p id="roomID">Your game code is: <%=row.roomid%></p>
+          <button id="readyUp" class="btn-danger" >Ready to Start</button>
+        </div>
+      </div>
+
   		<input id="id" type="hidden" value=<%=row.username%>>
 
       <p id="CurrentBet" value = "0" >Current Bet: 0</p>
