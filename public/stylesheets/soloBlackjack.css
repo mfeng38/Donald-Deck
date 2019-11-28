@@ -252,7 +252,7 @@ img#backOfCardRework {
     visibility: visible;
     width:45%;
     left: 50%;
-    top: 22%;
+    top: 50%;
     box-shadow: 0 0 5px 2px;
     border: 1px solid;
     padding: 1%;
@@ -263,7 +263,7 @@ img#backOfCardRework {
   position: absolute;
   text-align: center;
   left: 50%;
-  top: 85%;
+  top: 10%;
   font-size: 125%;
   width: 90%;
   transform: translate(-50%, -50%);
@@ -272,7 +272,7 @@ img#backOfCardRework {
 #readyUp {
   position: absolute;
   left: 50%;
-  top: 92%;
+  top: 90%;
   padding: 1%;
   width: 45%;
   transform: translate(-50%, -50%);
