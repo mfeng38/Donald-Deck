@@ -274,7 +274,7 @@ div#multicontainer {
     visibility: hidden;
     width: 12%;
 }
-
+/*
 #changeBetMP{
   position: absolute;
   left:80%;
@@ -288,7 +288,7 @@ div#multicontainer {
   top:95%;
   visibility:hidden;
 }
-
+*/
 #viewLeaderboard{
   position: absolute;
   left:5%%;

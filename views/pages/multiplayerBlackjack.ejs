@@ -8,7 +8,6 @@
     <title>Donald Deck - Playing Solo</title>
     <link rel="stylesheet" href="/stylesheets/soloBlackjack.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
-    <script src="/javascript/soloBlackjackAnimations.js" defer ></script>
     <script src="/javascript/multiBlackjackAnimations.js" defer ></script>
     <script src="/javascript/blackJackEngine.js" defer></script>
 	  <script src="/socket.io/socket.io.js"></script>
@@ -109,8 +108,8 @@
       <button id="viewLeaderboard" class="btn-danger">Leaderboard</button>
   		<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
   		<button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
-  		<button id="changeBetMP" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
-  		<button id="playAgainMP" class="btn-danger" onclick = "gameStateReset()">Play Again</button>
+  		<button id="changeBet" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
+  		<button id="playAgain" class="btn-danger" onclick = "gameStateReset()">Play Again</button>
   		<p id="winloss"></p>
     </div>
     <h2 id = creditcount>You have <%=row.credits%> credits</h2>
