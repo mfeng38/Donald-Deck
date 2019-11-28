@@ -249,6 +249,7 @@ div#multicontainer {
 
 img#backOfCardRework {
     position:absolute;
+    visibility: visible;
     width:120px;
     left: 50%;
     top: 15%;
