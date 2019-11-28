@@ -249,10 +249,10 @@ div#multicontainer {
 
 #roomID{
   position: absolute;
+  text-align: center;
   left: 50%;
   top: 35%;
   font-size: 125%;
-  width: 90%;
   transform: translate(-50%, -50%);
 }
 
