@@ -334,7 +334,6 @@ io.on('connection', function(socket){
 
     });
     socket.on('disconnect', function() {
-        var i = playerIDs.indexOf(socket);
-        allClients.splice(i, 1);
+        socket.emit('delPlayer', socket.id)
     });
 });
