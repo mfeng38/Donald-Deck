@@ -273,12 +273,28 @@ p#CurrentBet {
   visibility:hidden;
 }
 
+/*Multiplayer Version Only*/
+#changeBetMP{
+  position: absolute;
+  left:80%;
+  top:90%;
+  visibility:hidden;
+}
+
+#playAgainMP{
+  position: absolute;
+  left:80%;
+  top:95%;
+  visibility:hidden;
+}
+
 #viewLeaderboard{
   position: absolute;
   left:5%%;
   top:45%;
   visibility:hidden;
 }
+/* ------- */
 
 img.card{
     position:absolute;
