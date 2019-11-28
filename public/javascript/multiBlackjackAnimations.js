@@ -1,3 +1,6 @@
+//////////////////////////////////
+//    Multiplayer Animations    //
+//////////////////////////////////
 
 //Readying up
 document.getElementById('readyUp').addEventListener('click', function () {
@@ -63,7 +66,3 @@ document.getElementById('playAgain').addEventListener('click', function () {
 document.getElementById('viewLeaderboard').addEventListener('click', function() {
 
 });
-
-//////////////////////////////////
-//    Modified file end here    //
-//////////////////////////////////
