@@ -263,7 +263,7 @@ var server = http.listen(PORT, function(){
 // .io stuff
 var playerIDs = [];
 setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
-io.on('connection', function(socket){
+io.of("/multiplayerBlackjack").on('connection', function(socket){
     console.log('connection index');
     //Check how long it has been since last login
     playerIDs.push(socket.id);
@@ -333,13 +333,9 @@ io.on('connection', function(socket){
         });
 
     });
-    // socket.on('updatePlayers', function(players){
-    //   playerIDs = players
-    // })
     socket.on('disconnect', (reason) => {
       var j = playerIDs.indexOf(socket.id);
       playerIDs.splice(j,1);
       io.emit('IDlist',playerIDs);
-      // io.emit('delPlayer', socket.id)
     });
 });
