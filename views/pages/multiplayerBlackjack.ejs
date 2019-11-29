@@ -176,14 +176,18 @@
 				socket.emit('checkBet', bet);
 			}
 		});
+    
+    //code to keep track of players in room
     var players;
     socket.on('IDlist', function(playerIDs){
       players = playerIDs
       console.log(players)
     });
+
 		socket.on('startGame', function(credits){
 			gameStart();
 		});
+
 		//payout if player wins
 		async function payout(){
 			var bet = document.getElementById("CurrentBet").value;
