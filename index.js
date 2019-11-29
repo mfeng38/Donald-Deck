@@ -261,17 +261,11 @@ var server = http.listen(PORT, function(){
 
 
 // Socket.io stuff
-var playerIDs = [];
 setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
 io.on('connection', function(socket){
     console.log('connection index');
     //Check how long it has been since last login
-    playerIDs.push(socket.id);
-    io.emit('IDlist', playerIDs)
-    socket.on('updatePlayers' function(players){
-      //playerIDs = players;
-      //io.emit('IDlist', playerIDs)
-    })
+    io.emit('IDlist', socket.id)
     socket.on('chat msg', function(message){
         //console.log(message);
         io.emit('chat msg', socket.username + ' said: ' + message );
@@ -338,6 +332,6 @@ io.on('connection', function(socket){
 
     });
     socket.on('disconnect', (reason) => {
-      io.emit('test', socket.id)
+      io.emit('delPlayer', socket.id)
     });
 });

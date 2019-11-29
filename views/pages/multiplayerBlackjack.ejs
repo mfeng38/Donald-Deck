@@ -176,15 +176,14 @@
 				socket.emit('checkBet', bet);
 			}
 		});
-    var players;
-    socket.on('IDlist', function(playerIDs){
-      players = playerIDs
+    var players = [];
+    socket.on('IDlist', function(id){
+      players.push(id)
       console.log(players)
     });
     socket.on('delPlayer', function(id){
       var i = players.indexOf(id);
       players.splice(id,1);
-      socket.emit('updatePlayers', players)
     })
 		socket.on('startGame', function(credits){
 			gameStart();
