@@ -269,7 +269,7 @@ io.on('connection', function(socket){
     playerIDs.push(socket.id);
     io.emit('IDlist', playerIDs)
     socket.on('updatePlayers' function(players){
-      playerIDs = players;
+      //playerIDs = players;
       //io.emit('IDlist', playerIDs)
     })
     socket.on('chat msg', function(message){
