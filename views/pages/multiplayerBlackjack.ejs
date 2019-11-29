@@ -176,9 +176,9 @@
 				socket.emit('checkBet', bet);
 			}
 		});
-    var players = [];
-    socket.on('IDlist', function(id){
-      players.push(id)
+    var players;
+    socket.on('IDlist', function(playerIDs){
+      players = playerIDs
       console.log(players)
     });
     socket.on('delPlayer', function(id){
