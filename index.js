@@ -270,7 +270,7 @@ io.on('connection', function(socket){
     io.emit('IDlist', playerIDs)
     socket.on('updatePlayers' function(players){
       playerIDs = players;
-      io.emit('IDlist', playerIDs)
+      //io.emit('IDlist', playerIDs)
     })
     socket.on('chat msg', function(message){
         //console.log(message);
