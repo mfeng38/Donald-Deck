@@ -268,6 +268,10 @@ io.on('connection', function(socket){
     //Check how long it has been since last login
     playerIDs.push(socket.id);
     io.emit('IDlist', playerIDs)
+    socket.on('updatePlayers' function(players){
+      playerIDs = players;
+      io.emit('IDlist', playerIDs)
+    })
     socket.on('chat msg', function(message){
         //console.log(message);
         io.emit('chat msg', socket.username + ' said: ' + message );
