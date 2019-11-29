@@ -183,7 +183,7 @@
     });
     socket.on('delPlayer', function(id){
       var i = players.indexOf(id);
-      players.splice(id,1);
+      players.splice(i,1);
     })
 		socket.on('startGame', function(credits){
 			gameStart();
