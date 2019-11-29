@@ -130,7 +130,7 @@
   <script>
 		var socket = io();
 		//connection and sending in username
-		socket.on('connect',function(){});
+		socket.of("/multiplayerBlackjack").on('connect',function(){});
 		var username = document.getElementById('id').value;
 		socket.emit('username', username);
 		var form = document.getElementById('chat');
