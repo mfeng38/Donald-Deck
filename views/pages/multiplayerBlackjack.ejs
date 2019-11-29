@@ -128,9 +128,9 @@
     </div>
 
   <script>
-		var socket = io();
+		var socket = io('/multiplayerBlackjack');
 		//connection and sending in username
-		socket.of("/multiplayerBlackjack").on('connect',function(){});
+		socket.on('connect',function(){});
 		var username = document.getElementById('id').value;
 		socket.emit('username', username);
 		var form = document.getElementById('chat');

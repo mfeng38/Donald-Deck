@@ -263,7 +263,7 @@ var server = http.listen(PORT, function(){
 // .io stuff
 var playerIDs = [];
 setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
-io.of("/multiplayerBlackjack").on('connection', function(socket){
+io.of('/multiplayerBlackjack').on('connection', function(socket){
     console.log('connection index');
     //Check how long it has been since last login
     playerIDs.push(socket.id);
