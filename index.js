@@ -267,15 +267,15 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
     console.log('connection index');
     //Check how long it has been since last login
     playerIDs.push(socket.id);
-    io.emit('IDlist', playerIDs)
+    io.of('/multiplayerBlackjack').emit('IDlist', playerIDs)
     socket.on('chat msg', function(message){
         //console.log(message);
-        io.emit('chat msg', socket.username + ' said: ' + message );
+        io.of('/multiplayerBlackjack').emit('chat msg', socket.username + ' said: ' + message );
     });
     socket.on('username', function(username){
         socket.username = username;
         console.log("username " + username + " and socket.id: " + socket.id);
-        io.emit('chat msg', `${socket.username} has joined the chat!`)
+        io.of('/multiplayerBlackjack').emit('chat msg', `${socket.username} has joined the chat!`)
     });
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
@@ -299,8 +299,8 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
                                 socket.emit("ERROR:", error);
                             }
                             else{
-                                io.to(`${socket.id}`).emit('startGame', newCreditCount);
-                                io.to(`${socket.id}`).emit('newCredits', newCreditCount);
+                                io.of('/multiplayerBlackjack').to(`${socket.id}`).emit('startGame', newCreditCount);
+                                io.of('/multiplayerBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
                             }
                         });
                     }
@@ -325,7 +325,7 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
                         if (error) socket.emit("ERROR", err);
                         else{
                             //console.log("new credits: ", newCreditCount);
-                            io.to(`${socket.id}`).emit('newCredits', newCreditCount);
+                            io.of('/multiplayerBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
                         }
                     });
                 }
@@ -336,6 +336,6 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
     socket.on('disconnect', (reason) => {
       var j = playerIDs.indexOf(socket.id);
       playerIDs.splice(j,1);
-      io.emit('IDlist',playerIDs);
+      io.of('/multiplayerBlackjack').emit('IDlist',playerIDs);
     });
 });
