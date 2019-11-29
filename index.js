@@ -333,10 +333,13 @@ io.on('connection', function(socket){
         });
 
     });
-    socket.on('updatePlayers', function(players){
-      playerIDs = players
-    })
+    // socket.on('updatePlayers', function(players){
+    //   playerIDs = players
+    // })
     socket.on('disconnect', (reason) => {
-      io.emit('delPlayer', socket.id)
+      var j = playerIDs.indexOf(socket.id);
+      playerIDs.splice(j,1);
+      io.emit('IDlist',playerIDs);
+      // io.emit('delPlayer', socket.id)
     });
 });
