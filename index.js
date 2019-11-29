@@ -260,7 +260,7 @@ var server = http.listen(PORT, function(){
 });
 
 
-// Socket.io stuff
+// .io stuff
 var playerIDs = [];
 setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
 io.on('connection', function(socket){
