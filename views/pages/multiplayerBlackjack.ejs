@@ -128,7 +128,7 @@
     </div>
 
   <script>
-		var socket = io({transports: ['websocket'], upgrade: false});
+		var socket = io();
 		//connection and sending in username
 		socket.on('connect',function(){});
 		var username = document.getElementById('id').value;
