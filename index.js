@@ -9,7 +9,21 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
 });
 
-
+async function deckID(){
+  await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6')
+    .then(async (response) => {
+      if (response.ok) {
+        var temp = await response.json();
+        var newDeckID = temp.deck_id;
+      } else {
+        throw new Error('Response did not return 200');
+      }
+    })
+    .catch(async (error) => {
+        console.log(error);
+    })
+  return newDeckID;
+}
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -140,13 +154,11 @@ app.post('/multiplayerBlackjack',(req,res)=> {
         if (error)
             res.send(error);
         else{
-            var userinfo= {'row' : result.rows[0]};
-            console.log(userinfo);
             if (userinfo === undefined || result.rows.length == 0) {
                 res.redirect('loginUI.html'); //fail in staying logged in
             }
             else{
-                res.render('pages/multiplayerBlackjack', userinfo);
+                res.render('pages/multiplayerBlackjack', {'row' : result.rows[0], 'roomNum': deckID()});
             }
         }
     })
@@ -403,7 +415,7 @@ io.of('/soloBlackjack').on('connection', function(socket){
                         if (error) socket.emit("ERROR", err);
                         else{
                             //console.log("new credits: ", newCreditCount);
-                            io.of('/soloBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
+                            io.of('/multiplayerBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
                         }
                     });
                 }

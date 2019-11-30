@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <script src="/javascript/multiBlackjackAnimations.js" defer ></script>
     <script src="/javascript/sharedBlackjackAnimations.js" defer ></script>
-    <script src="/javascript/blackJackEngine.js" defer></script>
+    <script src="/javascript/multiBlackJackEngine.js" defer></script>
 	  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
@@ -69,7 +69,7 @@
       <div id="multicontainer">
         <!-- when DB is made, need to pull that info... this is temp for  now -->
         <img class="card" src="/images/cardback.png" alt="backofcard" id = "backOfCardRework"/>
-        <p id="roomID">Your game code is: <%=row.roomid%></p>
+        <p id="roomID">Your game code is: <%=roomNum%></p>
         <button id="readyUp" class="btn-danger" >Ready to Start</button>
       </div>
 
@@ -176,7 +176,7 @@
 				socket.emit('checkBet', bet);
 			}
 		});
-    
+
     //code to keep track of players in room
     var players;
     socket.on('IDlist', function(playerIDs){
