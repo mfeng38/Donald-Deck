@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <script src="/javascript/multiBlackjackAnimations.js" defer ></script>
     <script src="/javascript/sharedBlackjackAnimations.js" defer ></script>
-    <script src="/javascript/multiBlackJackEngine.js" defer></script>
+    <script src="/javascript/blackJackEngine.js" defer></script>
 	  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
@@ -41,7 +41,7 @@
                 </form>
             </li>
             <li class="nav-item">
-                <form method="POST" action='/multiplayerBlackjack'>
+                <form method="POST" action='/createMatch'>
                     <input type="hidden" name="id" value=<%= row.username %>>
                     <input type="submit" class="btn my-2 my-sm-0" value="Create Match"/>
                 </form>
@@ -69,7 +69,7 @@
       <div id="multicontainer">
         <!-- when DB is made, need to pull that info... this is temp for  now -->
         <img class="card" src="/images/cardback.png" alt="backofcard" id = "backOfCardRework"/>
-        <p id="roomID">Your game code is: <%=roomNum%></p>
+        <p id="roomID">Your game code is: <%=row.roomid%></p>
         <button id="readyUp" class="btn-danger" >Ready to Start</button>
       </div>
 
@@ -115,7 +115,7 @@
   		<p id="winloss"></p>
     </div>
     <h2 id = creditcount>You have <%=row.credits%> credits</h2>
-
+	<h1 id= "globalchatheader"> Chat Room</h1>
     <div id = "chatroom">
 		    <div id="chatbox">
 		        <ul id = "messages"></ul>
@@ -130,7 +130,9 @@
   <script>
 		var socket = io('/multiplayerBlackjack');
 		//connection and sending in username
-		socket.on('connect',function(){});
+		socket.on('connect',function(){
+			socket.emit('room',roomId);
+		});
 		var username = document.getElementById('id').value;
 		socket.emit('username', username);
 		var form = document.getElementById('chat');
@@ -176,7 +178,7 @@
 				socket.emit('checkBet', bet);
 			}
 		});
-
+    
     //code to keep track of players in room
     var players;
     socket.on('IDlist', function(playerIDs){
@@ -199,6 +201,12 @@
 			bet = bet/2;
 			//console.log("push player");
 			socket.emit('payout',bet);
+		}
+		async function blackjackPayout(){
+			var bet = document.getElementById("CurrentBet").value;
+			bet = bet/2;
+			//console.log("push player");
+			socket.emit('blackjackPay',bet);
 		}
 		socket.on('newCredits', function(credits){
 			document.getElementById('creditcount').innerHTML = "You have " + credits + " credits";

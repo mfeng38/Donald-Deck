@@ -31,6 +31,7 @@ async function deckID(){
 }
 
 //betting see ejs file since it uses socket
+//multiplayer for deck needed
 async function gameStart(){
   await deckID();
   await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=4`)
@@ -121,7 +122,7 @@ async function gameStart(){
           document.getElementById("changeBet").style.visibility = "visible";
           document.getElementById("playAgain").style.visibility = "visible";
 
-          payout();
+          blackjackPayout();
         }
       } else {
         throw new Error('Response did not return 200');
