@@ -41,3 +41,11 @@ p#credits{
     transform:translate(-50%,-50%);
     top:66%;
 }
+div#rebuyPrompt{
+    position: absolute;
+    top:70%;
+    
+}
+div.hidden {
+    display: none;
+}

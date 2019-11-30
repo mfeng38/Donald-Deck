@@ -1,12 +1,15 @@
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
-var app = express();
+const app = express();
+const http = require('http').Server(app);
 
 const { Pool, Client } = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
 });
+
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -14,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.redirect('loginUI.html'));
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+//app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 app.get('/test', (req, res) => res.render('pages/soloBlackjackTEST'));
 app.post('/soloBlackjack',(req,res)=> {
     console.log("post soloBlackjack");
@@ -26,7 +29,7 @@ app.post('/soloBlackjack',(req,res)=> {
             var userinfo= {'row' : result.rows[0]};
             console.log(userinfo);
             if (userinfo === undefined || result.rows.length == 0) {
-                res.redirect('pages/loginUI.html'); //fail in staying logged in
+                res.redirect('loginUI.html'); //fail in staying logged in
             }
             else{
                 res.render('pages/soloBlackjack', userinfo);
@@ -108,7 +111,7 @@ app.post('/myStats', (req, res) => {
             }
             else {
                 var userinfo= {'row' : result.rows[0]};
-                console.log(`mystats index.js`, userinfo);
+                //console.log(`mystats index.js`, userinfo);
                 res.render('pages/mystats.ejs', userinfo);
                 //console.log("rendered");
             }
@@ -135,6 +138,69 @@ app.post('/mainMenu', (req,res)=>{
     });
 });
 
+app.post('/joinMatch', (req, res) => {
+    var user = req.body.id;
+    var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    //console.log("mystats",findUser);
+    pool.query(findUser, (error, result) => {
+        if (error)
+            res.send('ERROR',error);
+        else {
+            if (result.rowCount === 0) {
+                res.render('pages/createAccountIncorrect.ejs')
+            }
+            else {
+                var userinfo= {'row' : result.rows[0]};
+                res.render('pages/JoinMatch.ejs', userinfo);
+                
+            }
+        }
+    });
+});
+
+
+//rebuys
+app.post('/rebuy', (req,res)=>{
+    var user = req.body.id;
+    var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    //console.log("mainmenu",findUser);
+    pool.query(findUser, (error, result) => {
+        if (error){
+            res.send('ERROR',error);
+        }
+        else {
+            if (result.rowCount === 0) {
+                res.render('pages/createAccountIncorrect.ejs')
+            }
+            else {
+                newCreditCount = result.rows[0].credits + 100;
+                var update = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${user}';`;
+                console.log(result.rows[0].rebuys);
+                var newrebuys = result.rows[0].rebuys + 1;
+                update = update + ` UPDATE users SET rebuys = ${newrebuys} WHERE users.username = '${user}';`;
+                console.log(update);
+                pool.query(update, (erroragain,resultagain)=>{
+                    if (erroragain)
+                        res.send('ERROR', erroragain);
+                        //otherwise, do nothing i suppose? or maybe send something?
+                    else{
+                        pool.query(findUser, (erragains, finalinfo)=>{
+                            if (erragains){
+                                res.send('ERROR', erragains);
+                            }
+                            else{
+                                var userinfo = {'row': result.rows[0]};
+                                res.render('pages/mystats.ejs', userinfo);
+                            }
+                        })
+                        
+                    }
+                });
+            }
+        }
+    });
+});
+
 
 
 // If Log in as administrator, redirect to here
@@ -150,4 +216,85 @@ app.get('/admin', (req,res)=>{
             res.render('pages/adminview.ejs', results);
         }
     })
+});
+
+
+//For socket.io using express
+const io = require('socket.io')(http);
+var server = http.listen(PORT, function(){
+    console.log('listening http index.js Port: ' + PORT);
+});
+
+
+// Socket.io stuff
+setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
+io.on('connection', function(socket){
+    console.log('connection index');
+    //Check how long it has been since last login
+
+    socket.on('chat msg', function(message){
+        //console.log(message);
+        io.emit('chat msg', socket.username + ' said: ' + message );
+    });
+    socket.on('username', function(username){
+        socket.username = username;
+        console.log("username " + username + " and socket.id: " + socket.id);
+        io.emit('chat msg', `${socket.username} has joined the chat!`)
+    });
+    socket.on('checkBet', function(bet){
+        var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
+        //console.log("mystats",findUser);
+        pool.query(findUser, (error, result) => {
+            if (error)
+                socket.emit('ERROR',error);
+            else {
+                if (result.rowCount === 0) {
+                    socket.emit('ERROR', error);
+                }
+                else {
+                    var credits = result.rows[0].credits;
+                    console.log(`index.js finds credits: `, credits);
+                    var newCreditCount = credits - bet;
+                    if (newCreditCount >= 0){
+                        //pool query again replace new credit count
+                        var UpdateQuery = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
+                        pool.query(UpdateQuery, (error,result)=>{
+                            if (error){
+                                socket.emit("ERROR:", error);
+                            }
+                            else{
+                                io.to(`${socket.id}`).emit('startGame', newCreditCount);
+                                io.to(`${socket.id}`).emit('newCredits', newCreditCount);
+                            }
+                        });
+                    }
+                }
+            }
+        });
+    });
+    socket.on('payout', function(bet){
+        var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
+        pool.query(findUser, (error, result)=>{
+            if (error)
+                socket.emit('ERROR', error);
+            else{
+                if (result.rowCount === 0){
+                    socket.emit('ERROR', error);
+                }
+                else{
+                    var credits = result.rows[0].credits;
+                    var newCreditCount = bet * 3 + credits;
+                    var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
+                    pool.query(addCredits, (err, res)=>{
+                        if (error) socket.emit("ERROR", err);
+                        else{
+                            //console.log("new credits: ", newCreditCount);
+                            io.to(`${socket.id}`).emit('newCredits', newCreditCount);
+                        }
+                    });
+                }
+            }
+        });
+        
+    });
 });

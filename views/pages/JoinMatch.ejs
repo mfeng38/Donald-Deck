@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
-    <title> solo blackjack</title>
-	<link rel="stylesheet" href="/stylesheets/bootstrap.css">
-    <link rel="stylesheet" href="/stylesheets/mystats.css">
-	<script src="/javascript/rebuys.js" defer ></script>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<html>
+  <head>
+    <title> Donald Deck - Main Menu </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+	<link rel="stylesheet" href="/stylesheets/mystats.css">
+  </head>
+  <body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="/assets/logo_circle.png" width="50" height="50" alt="">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -56,32 +53,26 @@
             </ul>
         </div>
     </nav>
-    <div>
-	<h1 id='id'><%=row.username%></h1>
-	<p>Hi <%=row.username%>! Here are some of your statistics!</p>
-	<br>
-	<br>
-	<br>
-	<div class = "coinbox">
-		<img class="coin" src="/images/circle.png" alt="circle"/>
-		<p id="youhave"> You have </p>
-		<h3 id = "creditnumber"><%=row.credits%></h3>
-		<p id= "credits" > credits! </p>
-	</div>
-	</div>
-	<div id="rebuyPrompt">
-		<p id ="rebuys">You have rebought credits <%=row.rebuys%> times! <p>
-		<form  action= "/rebuy" method="POST">
-			<p> You have <%=row.credits%> credits left. Click Below to get 100 more credits.<p>
-			<input type = "hidden" name="id" value=<%= row.username %>>
-			<button class= "btn btn-info"> Get 100 Credits </button>
-		</form>
-	</div>
-	
-	
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+                <h1 class="text-center"> Hello, <%=row.username %>! </h1>
+                <form method='POST' action='/roomNum'>
+                    <input type="hidden" name="id" value=<%= row.username %>>
+					<input type="text" name = "roomid" class= "form-control" style="margin-top: 2%;margin-bottom:5%;" placeholder = "Type Room Code Here">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Room Code"/>
+                </form>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 </body>
 </html>
