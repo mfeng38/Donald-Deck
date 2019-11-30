@@ -132,44 +132,90 @@ app.post('/soloBlackjack',(req,res)=> {
 
 });
 
+var roomIDs = [];  // FOR MULTIPLAYER
+app.post('/createMatch', (req,res)=>{
+    //create a room ID that's not already there
+    var roomID = roomIDs.length;
+    roomIDs.push(roomID);
+    console.log('create match room ID: ', roomID); 
+    var user = req.body.id;
+    var UsertoRoom = 'UPDATE users SET roomid ='
+    UsertoRoom = UsertoRoom + `'${roomID}' WHERE username = '${user}';`;
+    console.log('usertoRoom: ', UsertoRoom);
+    pool.query(UsertoRoom,(error, result)=>{
+        if (error)
+            res.send('createMatch ERROR: ' + error);
+        else{
+            var findUser = `SELECT * FROM users WHERE username = '${user}'`;
+            pool.query(findUser, (error2,result2)=>{
+                if (error2)
+                    res.send(error2);
+                else{
+
+                    var userinfo= {'row' : result2.rows[0]};
+                    console.log(userinfo);
+                    if (userinfo === undefined || result2.rows.length == 0) {
+                        res.redirect('loginUI.html'); //fail in staying logged in
+                    }
+                    else{
+                        res.render('pages/multiplayerBlackjack', userinfo);
+                    }
+                }
+            });
+        }
+    });
+});
+
 app.post('/multiplayerBlackjack',(req,res)=> {
+    // this is for joining rooms that have already been created
     console.log("post multiplayerBlackjack");
     var user = req.body.id;
+    var givenRoomID = req.body.roomid;
+    //search current room IDs
+    for (var i=0; i< roomIDs.length; i++){
+        if (roomIDs[i] == givenRoomID){
+            var UsertoRoom = `UPDATE users SET roomid = '${givenRoomID}' WHERE username = '${user}';`;
+            console.log('usertoRoom: ', UsertoRoom);
+            pool.query(UsertoRoom,(error, result)=>{
+                if (error)
+                    res.send('joinMatch ERROR: ' + error);
+                else{
+                    var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+                    pool.query(findUser, (error2,result2)=>{
+                        if (error2)
+                            res.send(error2);
+                        else{
+                            var userinfo= {'row' : result2.rows[0]};
+                            console.log(userinfo);
+                            if (userinfo === undefined || result2.rows.length == 0) {
+                                res.redirect('loginUI.html'); //fail in staying logged in
+                            }
+                            else{
+                                res.render('pages/multiplayerBlackjack', userinfo);
+                                
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    }
+    //If cannot find, load the join fail page
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    pool.query(findUser, (error,result)=>{
-        if (error)
-            res.send(error);
+    pool.query(findUser, (error2,result2)=>{
+        if (error2)
+            res.send(error2);
         else{
-            var userinfo= {'row' : result.rows[0]};
+            var userinfo= {'row' : result2.rows[0]};
             console.log(userinfo);
-            if (userinfo === undefined || result.rows.length == 0) {
+            if (userinfo === undefined || result2.rows.length == 0) {
                 res.redirect('loginUI.html'); //fail in staying logged in
             }
             else{
-                res.render('pages/multiplayerBlackjack', userinfo);
+                res.render('pages/JoinMatchfail.ejs', userinfo);
             }
         }
-    })
-   /*
-   //I made this before we chatted on discord so imma just leave it here in case it'll save you any work LOL.
-
-   var createRoom = req.body.roomid;
-   var createQuery = ` insert into rooms(roomid, username, score) select '${createRoom}', '${user}', 0);`;
-   console.log(createQuery);
-   pool.query(createQuery, (error, result) => {
-       if (error)
-           res.send('ERROR',error);
-       else {
-           if (result.rowCount === 0) {
-               res.render('pages/mainMenu.ejs')
-           }
-           else {
-               res.render('pages/multiplayerBlackjack.ejs')
-           }
-       }
-   });
-    */
-
+    });
 });
 
 app.post('/joinMatch', (req, res) => {
@@ -186,7 +232,6 @@ app.post('/joinMatch', (req, res) => {
             else {
                 var userinfo= {'row' : result.rows[0]};
                 res.render('pages/JoinMatch.ejs', userinfo);
-
             }
         }
     });
@@ -262,7 +307,7 @@ var server = http.listen(PORT, function(){
 
 // .io stuff --> multiplayer
 var playerIDs = [];
-setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
+//setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
 io.of('/multiplayerBlackjack').on('connection', function(socket){
     console.log('connection index');
     //Check how long it has been since last login
@@ -308,6 +353,30 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
             }
         });
     });
+    socket.on('blackjackPay',function(bet){ //if get 21 - pay 3:2
+        var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
+        pool.query(findUser, (error, result)=>{
+            if (error)
+                socket.emit('ERROR', error);
+            else{
+                if (result.rowCount === 0){
+                    socket.emit('ERROR', error);
+                }
+                else{
+                    var credits = result.rows[0].credits;
+                    var newCreditCount = bet *3 + credits;
+                    var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
+                    pool.query(addCredits, (err, res)=>{
+                        if (error) socket.emit("ERROR", err);
+                        else{
+                            console.log("index bjplay new credits: ", newCreditCount);
+                            io.of('/multiplayerBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
+                        }
+                    });
+                }
+            }
+        });
+    });
     socket.on('payout', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
         pool.query(findUser, (error, result)=>{
@@ -324,7 +393,7 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
                     pool.query(addCredits, (err, res)=>{
                         if (error) socket.emit("ERROR", err);
                         else{
-                            //console.log("new credits: ", newCreditCount);
+                            console.log("multiplayer index new credits: ", newCreditCount);
                             io.of('/multiplayerBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
                         }
                     });
@@ -369,7 +438,7 @@ io.of('/soloBlackjack').on('connection', function(socket){
                     var newCreditCount = credits - bet;
                     if (newCreditCount >= 0){
                         //pool query again replace new credit count
-                        var UpdateQuery = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
+                        var UpdateQuery = `UPDATE users SET credits = '${newCreditCount}' WHERE users.username = '${socket.username}'`;
                         pool.query(UpdateQuery, (error,result)=>{
                             if (error){
                                 socket.emit("ERROR:", error);
@@ -395,17 +464,19 @@ io.of('/soloBlackjack').on('connection', function(socket){
                 }
                 else{
                     var credits = result.rows[0].credits;
-                    var newCreditCount = bet/2 *3 + credits;
+                    var newCreditCount = bet *3 + credits;
                     var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
                     pool.query(addCredits, (err, res)=>{
-                        if (error) socket.emit("ERROR", err);
+                        if (error) 
+                            socket.emit("ERROR", err);
                         else{
-                            //console.log("new credits: ", newCreditCount);
+                            //console.log("index bjplay new credits: ", newCreditCount);
                             io.of('/soloBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
                         }
                     });
                 }
             }
+        });
     });
     socket.on('payout', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
@@ -423,13 +494,12 @@ io.of('/soloBlackjack').on('connection', function(socket){
                     pool.query(addCredits, (err, res)=>{
                         if (error) socket.emit("ERROR", err);
                         else{
-                            //console.log("new credits: ", newCreditCount);
+                            //console.log("index payout solo new credits: ", newCreditCount);
                             io.of('/soloBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
                         }
                     });
                 }
             }
         });
-
     });
 });

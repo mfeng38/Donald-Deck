@@ -41,7 +41,7 @@
                 </form>
             </li>
             <li class="nav-item">
-                <form method="POST" action='/multiplayerBlackjack'>
+                <form method="POST" action='/createMatch'>
                     <input type="hidden" name="id" value=<%= row.username %>>
                     <input type="submit" class="btn my-2 my-sm-0" value="Create Match"/>
                 </form>
@@ -106,7 +106,8 @@
   		<p id="winloss"></p>
     </div>
 
-    <h2 id = creditcount>You have <%=row.credits%> credits</h2>
+    <h2 id = "creditcount">You have <%=row.credits%> credits</h2>
+	<h1 id= "globalchatheader"> Global Chat </h1>
     <div id = "chatroom">
   		<div id="chatbox">
   		    <ul id = "messages"></ul>
