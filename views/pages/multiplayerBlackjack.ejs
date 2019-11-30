@@ -200,6 +200,12 @@
 			//console.log("push player");
 			socket.emit('payout',bet);
 		}
+		async function blackjackPayout(){
+			var bet = document.getElementById("CurrentBet").value;
+			bet = bet/2;
+			//console.log("push player");
+			socket.emit('blackjackPay',bet);
+		}
 		socket.on('newCredits', function(credits){
 			document.getElementById('creditcount').innerHTML = "You have " + credits + " credits";
 		});

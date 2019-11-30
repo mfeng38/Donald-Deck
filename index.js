@@ -260,7 +260,7 @@ var server = http.listen(PORT, function(){
 });
 
 
-// .io stuff
+// .io stuff --> multiplayer
 var playerIDs = [];
 setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
 io.of('/multiplayerBlackjack').on('connection', function(socket){
@@ -319,7 +319,7 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
                 }
                 else{
                     var credits = result.rows[0].credits;
-                    var newCreditCount = bet * 3 + credits;
+                    var newCreditCount = bet * 2 + credits;
                     var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
                     pool.query(addCredits, (err, res)=>{
                         if (error) socket.emit("ERROR", err);
@@ -337,5 +337,99 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
       var j = playerIDs.indexOf(socket.id);
       playerIDs.splice(j,1);
       io.of('/multiplayerBlackjack').emit('IDlist',playerIDs);
+    });
+});
+
+
+//solo  
+
+io.of('/soloBlackjack').on('connection', function(socket){
+    socket.on('chat msg', function(message){
+        //console.log(message);
+        io.of('/soloBlackjack').emit('chat msg', socket.username + ' said: ' + message );
+    });
+    socket.on('username', function(username){
+        socket.username = username;
+        console.log("username " + username + " and socket.id: " + socket.id);
+        io.of('/soloBlackjack').emit('chat msg', `${socket.username} has joined the chat!`)
+    });
+    socket.on('checkBet', function(bet){
+        var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
+        //console.log("mystats",findUser);
+        pool.query(findUser, (error, result) => {
+            if (error)
+                socket.emit('ERROR',error);
+            else {
+                if (result.rowCount === 0) {
+                    socket.emit('ERROR', error);
+                }
+                else {
+                    var credits = result.rows[0].credits;
+                    console.log(`index.js finds credits: `, credits);
+                    var newCreditCount = credits - bet;
+                    if (newCreditCount >= 0){
+                        //pool query again replace new credit count
+                        var UpdateQuery = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
+                        pool.query(UpdateQuery, (error,result)=>{
+                            if (error){
+                                socket.emit("ERROR:", error);
+                            }
+                            else{
+                                io.of('/soloBlackjack').to(`${socket.id}`).emit('startGame', newCreditCount);
+                                io.of('/soloBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
+                            }
+                        });
+                    }
+                }
+            }
+        });
+    });
+    socket.on('blackjackPay',function(bet){ //if get 21 - pay 3:2
+        var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
+        pool.query(findUser, (error, result)=>{
+            if (error)
+                socket.emit('ERROR', error);
+            else{
+                if (result.rowCount === 0){
+                    socket.emit('ERROR', error);
+                }
+                else{
+                    var credits = result.rows[0].credits;
+                    var newCreditCount = bet/2 *3 + credits;
+                    var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
+                    pool.query(addCredits, (err, res)=>{
+                        if (error) socket.emit("ERROR", err);
+                        else{
+                            //console.log("new credits: ", newCreditCount);
+                            io.of('/soloBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
+                        }
+                    });
+                }
+            }
+    });
+    socket.on('payout', function(bet){
+        var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
+        pool.query(findUser, (error, result)=>{
+            if (error)
+                socket.emit('ERROR', error);
+            else{
+                if (result.rowCount === 0){
+                    socket.emit('ERROR', error);
+                }
+                else{
+                    var credits = result.rows[0].credits;
+                    var newCreditCount = bet * 2 + credits;
+                    var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
+                    pool.query(addCredits, (err, res)=>{
+                        if (error) socket.emit("ERROR", err);
+                        else{
+                            //console.log("new credits: ", newCreditCount);
+                            io.of('/soloBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
+                        }
+                    });
+                }
+            }
+        });
+
     });
 });

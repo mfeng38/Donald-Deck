@@ -118,7 +118,7 @@
     </div>
 
   <script>
-		var socket = io();
+		var socket = io('/soloBlackjack');
 		//connection and sending in username
 		socket.on('connect',function(){});
 		var username = document.getElementById('id').value;
@@ -180,6 +180,12 @@
 			bet = bet/2;
 			//console.log("push player");
 			socket.emit('payout',bet);
+		}
+		async function blackjackPayout(){
+			var bet = document.getElementById("CurrentBet").value;
+			bet = bet/2;
+			//console.log("push player");
+			socket.emit('blackjackPay',bet);
 		}
 		socket.on('newCredits', function(credits){
 			document.getElementById('creditcount').innerHTML = "You have " + credits + " credits";
