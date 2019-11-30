@@ -7,9 +7,10 @@ CREATE TABLE users(
     username TEXT UNIQUE PRIMARY KEY,
     password TEXT,
     credits INTEGER,
-    rebuys INTEGER DEFAULT 0, (check that with one on david's branch)
-    roomID TEXT (made by: ALTER TABLE users ADD COLUMN roomID TEXT;)
+    rebuys INTEGER
 );
+
+/* Create Rooms table (do in iteration 2/3)*/
 
 /* Table for User cards while playing --> should we put credits here, or is it better to access two tables*/
 CREATE TABLE games(

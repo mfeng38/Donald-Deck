@@ -34,9 +34,15 @@
                 </form>
             </li>
             <li class="nav-item">
-                <form method="POST" action='/createMatch'>
+                <form method="POST" action='/multiplayerBlackjack'>
                     <input type="hidden" name="id" value=<%= row.username %>>
                     <input type="submit" class="btn my-2 my-sm-0" value="Create Match"/>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form method="POST" action='/joinMatch'>
+                    <input type="hidden" name="id" value=<%= row.username %>>
+                    <input type="submit" class="btn my-2 my-sm-0" value="Join Match"/>
                 </form>
             </li>
 			<li class="nav-item">
@@ -54,9 +60,9 @@
           </div>
           <div class="col-sm">
                 <h1 class="text-center"> Where to, <%=row.username %>? </h1>
-                <form method='POST' action='/multiplayerBlackjack'>
+                <form method='POST' action='/roomNum'>
                     <input type="hidden" name="id" value=<%= row.username %>>
-					<input type="text" name = "roomid" class= "form-control" style="margin-top: 2%;margin-bottom:5%;" placeholder = "Type Room Code Here">
+					          <input type="text" name = "roomid" class= "form-control" style="margin-top: 2%;margin-bottom:5%;" placeholder = "Type Room Code Here">
                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Room Code"/>
                 </form>
           </div>
