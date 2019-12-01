@@ -219,30 +219,31 @@ app.post('/joinMatch', (req, res) => {
     });
 });
 
-// app.post('/roomNum',(req,res)=> {
-//     var user = req.body.id;
-//     roomNum = req.body.roomid;
-//     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-//     pool.query(findUser, async (error,result)=>{
-//       try{
-//         if (error)
-//             res.send(error);
-//         else{
-//             var userinfo= {'row' : result.rows[0]};
-//             console.log(userinfo);
-//             if (userinfo === undefined || result.rows.length == 0) {
-//                 res.redirect('loginUI.html'); //fail in staying logged in
-//             }
-//             else{
-//                 console.log("CHECK HERE", roomNum)
-//                 res.render('pages/multiplayerBlackjack', userinfo);
-//             }
-//         }
-//       }
-//       catch (error){
-//         res.send(error)
-//       }
-//     })
+app.post('/roomNum',(req,res)=> {
+    var user = req.body.id;
+    roomNum = req.body.roomid;
+    var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    pool.query(findUser, async (error,result)=>{
+      try{
+        if (error)
+            res.send(error);
+        else{
+            var userinfo= {'row' : result.rows[0]};
+            console.log(userinfo);
+            if (userinfo === undefined || result.rows.length == 0) {
+                res.redirect('loginUI.html'); //fail in staying logged in
+            }
+            else{
+                console.log("CHECK HERE", roomNum)
+                res.render('pages/multiplayerBlackjack', userinfo);
+            }
+        }
+      }
+      catch (error){
+        res.send(error)
+      }
+    })
+});
 
 //rebuys
 app.post('/rebuy', (req,res)=>{
