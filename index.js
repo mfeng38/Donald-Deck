@@ -109,7 +109,7 @@ app.post('/myStats', (req, res) => {
 app.post('/mainMenu', (req,res)=>{
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    //console.log("mainmenu",findUser);
+    console.log(findUser);
     pool.query(findUser, (error, result) => {
         if (error)
             res.send('ERROR',error);
