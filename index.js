@@ -125,9 +125,13 @@ app.post('/mainMenu', (req,res)=>{
     });
 });
 
+var roomNum;
+var playerIDs = {'solo': []};
+var rooms = {};
 app.post('/soloBlackjack',(req,res)=> {
     console.log("post soloBlackjack");
     var user = req.body.id;
+    roomNum = 'solo'
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
     pool.query(findUser, (error,result)=>{
         if (error)
@@ -146,9 +150,7 @@ app.post('/soloBlackjack',(req,res)=> {
 
 
 });
-var roomNum;
-var playerIDs = {};
-var rooms = {};
+
 app.post('/multiplayerBlackjack',(req,res)=> {
     console.log("post multiplayerBlackjack");
     var user = req.body.id;
@@ -228,7 +230,7 @@ app.post('/roomNum',(req,res)=> {
         if (error)
             res.send(error);
         else if(playerIDs[`${roomNum}`] == undefined){
-          res.send("ERROR: ROOM DOES NOT EXIST")
+            res.send("ERROR: ROOM DOES NOT EXIST")
         }
         else{
             var userinfo= {'row' : result.rows[0]};
@@ -397,6 +399,7 @@ io.on('connection', function(socket){
     socket.on('disconnect', (reason) => {
       var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
       playerIDs[`${rooms[`${socket.id}`]}`].splice(j,1);
+      delete rooms[`${socket.id}`];
       if(playerIDs[`${rooms[`${socket.id}`]}`].length == 0){
         delete playerIDs[`${rooms[`${socket.id}`]}`];
       }
