@@ -128,7 +128,8 @@
 		form.addEventListener("submit", function(event){
 			event.preventDefault();
 			var msg = document.getElementById('msgin');
-			socket.emit('chat msg',msg.value);
+      var temp = [msg.value, 'solo'];
+			socket.emit('chat msg',temp);
 			msg.value='';
 			return false;
 		});
