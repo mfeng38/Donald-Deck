@@ -227,6 +227,9 @@ app.post('/roomNum',(req,res)=> {
       try{
         if (error)
             res.send(error);
+        else if(playerIDs[`${roomNum}`] == undefined){
+          res.send("ERROR: ROOM DOES NOT EXIST")
+        }
         else{
             var userinfo= {'row' : result.rows[0]};
             console.log(userinfo);
