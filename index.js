@@ -154,6 +154,7 @@ app.post('/multiplayerBlackjack',(req,res)=> {
     console.log("post multiplayerBlackjack");
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    console.log(findUser);
     pool.query(findUser, async (error,result)=>{
       try{
         if (error)
@@ -203,7 +204,7 @@ app.post('/multiplayerBlackjack',(req,res)=> {
 app.post('/joinMatch', (req, res) => {
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    //console.log("mystats",findUser);
+    console.log(findUser);
     pool.query(findUser, (error, result) => {
         if (error)
             res.send('ERROR',error);
@@ -224,6 +225,7 @@ app.post('/roomNum',(req,res)=> {
     var user = req.body.id;
     roomNum = req.body.roomid;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    console.log(findUser);
     pool.query(findUser, async (error,result)=>{
       try{
         if (error)
@@ -250,7 +252,7 @@ app.post('/roomNum',(req,res)=> {
 app.post('/rebuy', (req,res)=>{
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    //console.log("mainmenu",findUser);
+    console.log(finderUser);
     pool.query(findUser, (error, result) => {
         if (error){
             res.send('ERROR',error);
@@ -337,7 +339,7 @@ io.on('connection', function(socket){
     });
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
-        //console.log("mystats",findUser);
+        console.log(findUser);
         pool.query(findUser, (error, result) => {
             if (error)
                 socket.emit('ERROR',error);
@@ -368,6 +370,7 @@ io.on('connection', function(socket){
     });
     socket.on('payout', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
+        console.log(findUser);
         pool.query(findUser, (error, result)=>{
             if (error)
                 socket.emit('ERROR', error);
