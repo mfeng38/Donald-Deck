@@ -129,6 +129,7 @@ app.post('/soloBlackjack',(req,res)=> {
     console.log("post soloBlackjack");
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    console.log(findUser);
     pool.query(findUser, (error,result)=>{
         if (error)
             res.send(error);
