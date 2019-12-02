@@ -178,15 +178,15 @@ p#CurrentBet {
 #start {
     position: absolute;
     left: 50%;
-    top: 40%;
+    top: 85%;
     transform: translate(-50%, -50%);
     padding: 2%;
-    width: 12%;
+    width: 45%;
 }
 
 #bet {
     position: absolute;
-    top: 85%;
+    top: 80%;
     left: 95%;
     width: max-content;
     visibility: hidden;
@@ -230,15 +230,15 @@ p#CurrentBet {
 
 #changeBet {
     position: absolute;
-    left: 80%;
-    top: 90%;
+    left: 90%;
+    top: 83%;
     visibility: hidden;
 }
 
 #playAgain {
     position: absolute;
-    left: 80%;
-    top: 95%;
+    left: 90%;
+    top: 90%;
     visibility: hidden;
 }
 
@@ -256,7 +256,7 @@ div#multicontainer {
     border: 1px solid;
     border-radius: 5px;
     height: 85%;
-    width: 50%;
+    width: 25%;
 }
 
 img#backOfCardRework {
@@ -308,18 +308,66 @@ img#backOfCardRework {
     visibility: hidden;
 }
 
-div#leaderboarddiv {
-    margin-left: 1%;
-    width: 20%;
-    float: left;
+div#leaderboardContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: DarkGreen;
+    box-shadow: 0 0 5px 2px;
+    border: 1px solid;
+    border-radius: 5px;
+    height: 85%;
+    width: 25%;
+    opacity: 95%;
+    visibility: hidden;
 }
 
-table#leaderboard{
-    width:100%;
-    overflow:auto;
+table#leaderboard {
+    width: 100%;
+    overflow: auto;
 }
 
+td{
+    color: #FFFFFF;
+    font-weight: 2px;
+    text-align: center;
+    padding: 2px;
+}
+
+th{
+    color: #FFFFFF;
+    font-weight: 2px;
+}
+
+<<<<<<< HEAD
+tr{
+    color: #FFFFFF;
+    font-weight: 2px;
+}
+
+<<<<<<< HEAD
+<<<<<<< HEAD
 /* ------- */
+=======
+ ------- */
+>>>>>>> acebb98... # This is a combination of 14 commits.
+=======
+=======
+>>>>>>> b27d997... gonnnaaa fiiiite this leaderboard
+#closeLeaderboard {
+  position: absolute;
+  left: 50%;
+  top: 85%;
+  transform: translate(-50%, -50%);
+  padding: 1%;
+  width: 45%;
+}
+>>>>>>> e0c740d... combined CSS
+
+/*////////////////////////*/
+/*Multiplayer Version Ends*/
+/*////////////////////////*/
 
 img.card {
     position: absolute;

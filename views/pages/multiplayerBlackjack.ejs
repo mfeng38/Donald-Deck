@@ -3,7 +3,6 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-	  <!--<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Donald Deck - Playing Multiplayer</title>
     <link rel="stylesheet" href="/stylesheets/blackjack.css">
@@ -60,7 +59,12 @@
             </ul>
         </div>
     </nav>
+<<<<<<< HEAD
+<<<<<<< HEAD
 	   <h1> Hello <%=row.username%>!</h1>
+=======
+	   <h1> Hello <%=row.username%>! </h1>
+>>>>>>> acebb98... # This is a combination of 14 commits.
 	   <!--<div id="leaderboarddiv">
 		   <table id = "leaderboard">
 			   <tr>
@@ -69,12 +73,15 @@
 			   </tr>
        </table>
 	  </div>-->
+=======
+>>>>>>> e0c740d... combined CSS
     <div id="solocontainer">
-  		<!--
-      <img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
-      -->
   		<div id="multicontainer">
+<<<<<<< HEAD
   			<img class="card" src="/images/cardback.png" alt="backofcard" id = "backOfCardRework"/>
+=======
+  			<img class="card" src="/images/cardback.png" alt="backofcard" id="backOfCardRework"/>
+>>>>>>> acebb98... # This is a combination of 14 commits.
   			<p id="roomID" value = "">Your game code is: <%=row.roomid%></p>
   			<button id="readyUp" class="btn-danger" >Ready to Start</button>
   		</div>
@@ -112,7 +119,15 @@
       <p id="playerCounter"> 0 </p>
       <p id="dealerCounter"> 0 </p>
 
-    	<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
+      <div id="leaderboardContainer">
+        <table id = "leaderboard">
+          <tr>
+            <th> Player </th>
+            <th> Score </th>
+          </tr>
+        </table>
+        <button id="closeLeaderboard" class="btn-danger">Close</button>
+      </div>
 
 <!-- FIX THIS -->
       <button id="viewLeaderboard" class="btn-danger">Leaderboard</button>

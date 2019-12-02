@@ -5,9 +5,11 @@
 //Readying up
 document.getElementById('readyUp').addEventListener('click', function () {
     document.getElementById("roomID").style.visibility= "hidden";
+    document.getElementById("backOfCardRework").style.visibility = "hidden";
     document.getElementById("readyUp").style.display = "none";
     document.getElementById("CurrentBet").style.visibility= "visible";
     document.getElementById("startMatch").style.visibility = "visible";
+
     showBetButtons();
 });
 
@@ -31,7 +33,7 @@ document.getElementById('startMatch').addEventListener('click', function () {
         document.getElementById("dealerCounter").style.visibility = "visible";
         document.getElementById("hit").style.visibility = "visible";
         document.getElementById("stay").style.visibility = "visible";
-        //document.getElementById("viewLeaderboard").style.visibility = "visible";
+        document.getElementById("viewLeaderboard").style.visibility = "visible";
 
         hideBetButtons();
     }
@@ -47,6 +49,8 @@ document.getElementById('changeBet').addEventListener('click', function () {
     document.getElementById('winloss').style.visibility = "hidden";
     document.getElementById("changeBet").style.visibility = "hidden";
     document.getElementById("playAgain").style.visibility = "hidden";
+    document.getElementById("viewLeaderboard").style.visibility = "hidden";
+    document.getElementById("leaderboardContainer").style.visibility = "hidden";
 
     document.getElementById("startMatch").style.visibility = "visible";
     document.getElementById("CurrentBet").style.visibility = "visible";
@@ -61,6 +65,19 @@ document.getElementById('playAgain').addEventListener('click', function () {
     document.getElementById("hit").style.visibility = "visible";
     document.getElementById("stay").style.visibility = "visible";
     gameStart();
+});
+
+document.getElementById('viewLeaderboard').addEventListener('click', function(){
+    document.getElementById('leaderboardContainer').style.visibility = "visible";
+    document.getElementById("hit").style.visibility = "hidden";
+    document.getElementById("stay").style.visibility = "hidden";
+    document.getElementById('winloss').style.visibility = "hidden";
+});
+
+document.getElementById('closeLeaderboard').addEventListener('click', function(){
+    document.getElementById('leaderboardContainer').style.visibility = "hidden";
+    document.getElementById("hit").style.visibility = "visible";
+    document.getElementById("stay").style.visibility = "visible";
 });
 
 //////////////////////////////////
