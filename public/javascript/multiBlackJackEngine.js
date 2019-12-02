@@ -103,7 +103,7 @@ async function gameStart(){
           document.getElementById("changeBet").style.visibility = "visible";
           document.getElementById("playAgain").style.visibility = "visible";
 
-          payout();
+          blackjackPayout();
         }
       } else {
         throw new Error('Response did not return 200');
