@@ -50,7 +50,7 @@ document.getElementById('changeBet').addEventListener('click', function () {
     document.getElementById("changeBet").style.visibility = "hidden";
     document.getElementById("playAgain").style.visibility = "hidden";
     document.getElementById("viewLeaderboard").style.visibility = "hidden";
-    document.getElementById('leaderboardContainer').style.visibility = "hidden";
+    document.getElementById("leaderboardContainer").style.visibility = "hidden";
 
     document.getElementById("startMatch").style.visibility = "visible";
     document.getElementById("CurrentBet").style.visibility = "visible";
