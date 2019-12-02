@@ -5,9 +5,11 @@
 //Readying up
 document.getElementById('readyUp').addEventListener('click', function () {
     document.getElementById("roomID").style.visibility= "hidden";
+    document.getElementById("backOfCardRework").style.visibility = "hidden";
     document.getElementById("readyUp").style.display = "none";
     document.getElementById("CurrentBet").style.visibility= "visible";
     document.getElementById("startMatch").style.visibility = "visible";
+
     showBetButtons();
 });
 
@@ -21,8 +23,6 @@ document.getElementById('startMatch').addEventListener('click', function () {
         document.getElementById('startMatch').style.visibility = 'hidden';
         document.getElementById("CurrentBet").style.visibility = "hidden";
         document.getElementById("multicontainer").style.visibility = "hidden";
-        document.getElementById("backOfCardRework").style.visibility = "hidden";
-
 
         document.getElementById("bet").innerHTML = `Bet: ${bet}`;
         document.getElementById("bet").style.visibility = "visible";
