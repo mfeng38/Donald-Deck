@@ -6,7 +6,7 @@
 	  <!--<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Donald Deck - Playing Solo</title>
-    <link rel="stylesheet" href="/stylesheets/soloBlackjack.css">
+    <link rel="stylesheet" href="/stylesheets/blackjack.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <script src="/javascript/soloBlackjackAnimations.js" defer ></script>
     <script src="/javascript/sharedBlackjackAnimations.js" defer ></script>
@@ -60,15 +60,15 @@
             </ul>
         </div>
     </nav>
-	<h1> Hello <%=row.username%>!</h1>
-
     <div id="solocontainer">
-  		<img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
+      <div id="multicontainer">
+        <img class="card" src="/images/cardback.png" alt="backofcard" id="backOfCardRework"/>
+        <button id="start" class="btn-danger"> START GAME</button>
+      </div>
   		<input id="id" type="hidden" value=<%=row.username%>>
 
       <p id="CurrentBet" value = "0" >Current Bet: 0</p>
 
-      <button id="start" class="btn-danger"> START GAME</button>
   		<button id="Add5" class="btn-danger" >+5</button>
       <button id="Add10" class="btn-danger" >+10</button>
   		<button id="Add25" class="btn-danger" >+25</button>

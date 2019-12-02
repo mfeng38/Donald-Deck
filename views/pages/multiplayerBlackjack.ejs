@@ -3,15 +3,15 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-	  <!--<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Donald Deck - Playing Solo</title>
-    <link rel="stylesheet" href="/stylesheets/multiBlackjack.css">
+    <title>Donald Deck - Playing Multiplayer</title>
+    <!--<link rel="icon" href="/images/logo_circle.png">-->
+    <link rel="stylesheet" href="/stylesheets/blackjack.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <script src="/javascript/multiBlackjackAnimations.js" defer ></script>
     <script src="/javascript/sharedBlackjackAnimations.js" defer ></script>
     <script src="/javascript/multiBlackJackEngine.js" defer></script>
-	  <script src="/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -60,66 +60,64 @@
             </ul>
         </div>
     </nav>
-	<h1> Hello <%=row.username%>!</h1>
-	<div id="leaderboarddiv">
-			<table id = "leaderboard">
-			<tr>
-				<th>Player </th>
-				<th> Credits won/lost </th>
-			</tr>
-			</table>
-	</div>
-
     <div id="solocontainer">
-  		<!--
-      <img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
-      -->
-		<div id="multicontainer">
-			<img class="card" src="/images/cardback.png" alt="backofcard" id = "backOfCardRework"/>
-			<p id="roomID" value = "">Your game code is: <%=row.roomid%></p>
-			<button id="readyUp" class="btn-danger" >Ready to Start</button>
-		</div>
+  		<div id="multicontainer">
+  			<img class="card" src="/images/cardback.png" alt="backofcard" id="backOfCardRework"/>
+  			<p id="roomID" value = "">Your game code is: <%=row.roomid%></p>
+  			<button id="readyUp" class="btn-danger" >Ready to Start</button>
+  		</div>
 
-  	<input id="id" type="hidden" value=<%=row.username%>>
+    	<input id="id" type="hidden" value=<%=row.username%>>
 
-    <p id="CurrentBet" value = "0" >Current Bet: 0</p>
+      <p id="CurrentBet" value = "0" >Current Bet: 0</p>
 
-	<button id="Add5" class="btn-danger" >+5</button>
-    <button id="Add10" class="btn-danger" >+10</button>
-  	<button id="Add25" class="btn-danger" >+25</button>
-  	<button id="Add100" class="btn-danger" >+100</button>
-  	<button id="Sub5" class="btn-info" >-5</button>
-    <button id="Sub10" class="btn-info" >-10</button>
-  	<button id="Sub25" class="btn-info" >-25</button>
-  	<button id="Sub100" class="btn-info" >-100</button>
-    <button id="startMatch" class="btn-danger">START ROUND</button>
+      <button id="Add5" class="btn-danger" >+5</button>
+      <button id="Add10" class="btn-danger" >+10</button>
+    	<button id="Add25" class="btn-danger" >+25</button>
+    	<button id="Add100" class="btn-danger" >+100</button>
+    	<button id="Sub5" class="btn-info" >-5</button>
+      <button id="Sub10" class="btn-info" >-10</button>
+    	<button id="Sub25" class="btn-info" >-25</button>
+    	<button id="Sub100" class="btn-info" >-100</button>
+      <button id="startMatch" class="btn-danger">START ROUND</button>
 
-    <p id="bet">Bet: 0</p>
-  	<img class="card" src="/images/cardback.png" alt="dealer1" id = "d1"/>
-  	<img class="card" src="/images/cardback.png" alt="dealer2" id = "d2"/>
-  	<img class="card" src="/images/cardback.png" alt="dealer3" id = "d3"/>
-  	<img class="card" src="/images/cardback.png" alt="dealer4" id = "d4"/>
-  	<img class="card" src="/images/cardback.png" alt="dealer5" id = "d5"/>
-  	<img class="card" src="/images/cardback.png" alt="dealer6" id = "d6"/>
+      <p id="bet">Bet: 0</p>
+    	<img class="card" src="/images/cardback.png" alt="dealer1" id = "d1"/>
+    	<img class="card" src="/images/cardback.png" alt="dealer2" id = "d2"/>
+    	<img class="card" src="/images/cardback.png" alt="dealer3" id = "d3"/>
+    	<img class="card" src="/images/cardback.png" alt="dealer4" id = "d4"/>
+    	<img class="card" src="/images/cardback.png" alt="dealer5" id = "d5"/>
+    	<img class="card" src="/images/cardback.png" alt="dealer6" id = "d6"/>
 
-  	<img class="card" src="/images/cardback.png" alt="c1" id="c1"/>
-  	<img class="card" src="/images/cardback.png" alt="c2" id="c2" />
-  	<img class="card" src="/images/cardback.png" alt="c3" id="c3"/>
-  	<img class="card" src="/images/cardback.png" alt="c4" id="c4"/>
-  	<img class="card" src="/images/cardback.png" alt="c5" id="c5"/>
-  	<img class="card" src="/images/cardback.png" alt="c6" id="c6"/>
-    <p id="Dealer">Dealer</p>
-  	<p id="Player">Player</p>
-    <p id="playerCounter"> 0 </p>
-	<p id="dealerCounter"> 0 </p>
+    	<img class="card" src="/images/cardback.png" alt="c1" id="c1"/>
+    	<img class="card" src="/images/cardback.png" alt="c2" id="c2" />
+    	<img class="card" src="/images/cardback.png" alt="c3" id="c3"/>
+    	<img class="card" src="/images/cardback.png" alt="c4" id="c4"/>
+    	<img class="card" src="/images/cardback.png" alt="c5" id="c5"/>
+    	<img class="card" src="/images/cardback.png" alt="c6" id="c6"/>
+      <p id="Dealer">Dealer</p>
+      <p id="Player">Player</p>
+      <p id="playerCounter"> 0 </p>
+      <p id="dealerCounter"> 0 </p>
 
-  	<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
+      <div id="leaderboardContainer">
+        <table id = "leaderboard">
+          <tr>
+            <th> Player </th>
+            <th> Score </th>
+          </tr>
+        </table>
+        <button id="closeLeaderboard" class="btn-danger">Close</button>
+      </div>
+
+      <button id="viewLeaderboard" class="btn-danger">Leaderboard</button>
+  		<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
   		<button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
   		<button id="changeBet" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
   		<button id="playAgain" class="btn-danger" onclick = "gameStateReset()">Play Again</button>
   		<p id="winloss"></p>
     </div>
-    <h2 id = creditcount>You have <%=row.credits%> credits</h2>
+    <h2 id = creditcount><br>You have <%=row.credits%> credits</h2>
 
     <div id = "chatroom">
 		    <div id="chatbox">
@@ -201,14 +199,14 @@
 		}
 		var numplayers = players.length;
 		for (var i =0; i< numplayers; i++){
-		//table has as many rows as there are players 
+		//table has as many rows as there are players
 			var player = players[i];
 			console.log('I see ' + player);
 			var row = table.insertRow(i+1);
 			var playercell = row.insertCell(0);
 			var balancecell = row.insertCell(1);
-			playercell.innerHTML = player; 
-			balancecell.innerHTML = i; 
+			playercell.innerHTML = player;
+			balancecell.innerHTML = i;
 		}
     });
 	socket.on('balances',function(balances){
@@ -216,10 +214,10 @@
 		var table = document.getElementById('leaderboard');
 		var numplayers = balances.length;
 		for (var i =0; i< numplayers; i++){
-		//table has as many rows as there are players 
+		//table has as many rows as there are players
 			console.log('Player has balance' + balances[i]);
 			var balancecell = table.rows[i+1].cells[1];
-			balancecell.innerHTML = balances[i]; 
+			balancecell.innerHTML = balances[i];
 		}
 	});
 

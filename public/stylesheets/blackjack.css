@@ -178,15 +178,15 @@ p#CurrentBet {
 #start {
     position: absolute;
     left: 50%;
-    top: 40%;
+    top: 85%;
     transform: translate(-50%, -50%);
     padding: 2%;
-    width: 12%;
+    width: 45%;
 }
 
 #bet {
     position: absolute;
-    top: 85%;
+    top: 80%;
     left: 95%;
     width: max-content;
     visibility: hidden;
@@ -230,17 +230,128 @@ p#CurrentBet {
 
 #changeBet {
     position: absolute;
-    left: 80%;
-    top: 90%;
+    left: 90%;
+    top: 83%;
     visibility: hidden;
 }
 
 #playAgain {
     position: absolute;
-    left: 80%;
-    top: 95%;
+    left: 90%;
+    top: 90%;
     visibility: hidden;
 }
+
+/*////////////////////////*/
+/*Multiplayer Version Only*/
+/*////////////////////////*/
+
+div#multicontainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: DarkGreen;
+    box-shadow: 0 0 5px 2px;
+    border: 1px solid;
+    border-radius: 5px;
+    height: 85%;
+    width: 25%;
+}
+
+img#backOfCardRework {
+    position: absolute;
+    visibility: visible;
+    width: 45%;
+    left: 50%;
+    top: 50%;
+    box-shadow: 0 0 5px 2px;
+    border: 1px solid;
+    padding: 1%;
+    transform: translate(-50%, -50%);
+}
+
+#roomID {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    left: 50%;
+    top: 15%;
+    font-size: 125%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+}
+
+#readyUp {
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    padding: 1%;
+    width: 45%;
+    transform: translate(-50%, -50%);
+}
+
+#startMatch {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    transform: translate(-50%, -50%);
+    padding: 1%;
+    visibility: hidden;
+    width: 12%;
+}
+
+#viewLeaderboard {
+    position: absolute;
+    left: 5%;
+    top: 45%;
+    visibility: hidden;
+}
+
+div#leaderboardContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: DarkGreen;
+    box-shadow: 0 0 5px 2px;
+    border: 1px solid;
+    border-radius: 5px;
+    height: 85%;
+    width: 25%;
+    opacity: 95%;
+    visibility: hidden;
+}
+
+table#leaderboard {
+    width: 100%;
+    overflow: auto;
+}
+
+td{
+    color: #FFFFFF;
+    font-weight: 2px;
+    text-align: center;
+    padding: 2px;
+}
+
+th{
+    color: #FFFFFF;
+    font-weight: 2px;
+}
+
+#closeLeaderboard {
+  position: absolute;
+  left: 50%;
+  top: 85%;
+  transform: translate(-50%, -50%);
+  padding: 1%;
+  width: 45%;
+}
+
+/*////////////////////////*/
+/*Multiplayer Version Ends*/
+/*////////////////////////*/
 
 img.card {
     position: absolute;
@@ -343,10 +454,12 @@ img#c6 {
 
 p#winloss {
     visibility: hidden;
-    top: 50%;
+    top: 48%;
     left: 50%;
     color: white;
+    font-size: 20px;
     font-weight: bold;
+    letter-spacing: 1.5px;
     position: absolute;
 }
 
