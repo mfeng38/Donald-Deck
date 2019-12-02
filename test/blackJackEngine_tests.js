@@ -28,14 +28,15 @@ describe('blackjackEngine Tests', () => {
     })
 })
 
-describe('deckofcards API tests', () => {
-    it(, () => {
-
+describe('button tests', () => {
+    it('should add 5 to the bet value', () => {
+        
     })
 })
 
+
 describe('socketio tests', () => {
-    it(, () => {
+    it('should ', () => {
 
     })
 })
