@@ -326,6 +326,7 @@ div#leaderboardContainer {
 table#leaderboard {
     width: 100%;
     overflow: auto;
+    padding: 5px;
 }
 
 td{
