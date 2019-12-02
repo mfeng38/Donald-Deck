@@ -88,7 +88,7 @@ app.post('/createAccount', (req, res) => {
 app.post('/myStats', (req, res) => {
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    console.log(findUser);
+    //console.log("mystats",findUser);
     pool.query(findUser, (error, result) => {
         if (error)
             res.send('ERROR',error);
@@ -98,7 +98,9 @@ app.post('/myStats', (req, res) => {
             }
             else {
                 var userinfo= {'row' : result.rows[0]};
+                //console.log(`mystats index.js`, userinfo);
                 res.render('pages/mystats.ejs', userinfo);
+                //console.log("rendered");
             }
         }
     });
@@ -107,7 +109,7 @@ app.post('/myStats', (req, res) => {
 app.post('/mainMenu', (req,res)=>{
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    console.log(findUser);
+    //console.log("mainmenu",findUser);
     pool.query(findUser, (error, result) => {
         if (error)
             res.send('ERROR',error);
@@ -134,7 +136,6 @@ app.post('/soloBlackjack',(req,res)=> {
     var user = req.body.id;
     roomNum = 'solo'
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    console.log(findUser);
     pool.query(findUser, (error,result)=>{
         if (error)
             res.send(error);
@@ -149,12 +150,14 @@ app.post('/soloBlackjack',(req,res)=> {
             }
         }
     })
+
+
 });
 
 app.post('/multiplayerBlackjack',(req,res)=> {
+    console.log("post multiplayerBlackjack");
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    console.log(findUser);
     pool.query(findUser, async (error,result)=>{
       try{
         if (error)
@@ -179,12 +182,34 @@ app.post('/multiplayerBlackjack',(req,res)=> {
         res.send(error)
       }
     })
+
+
+   /*
+   //I made this before we chatted on discord so imma just leave it here in case it'll save you any work LOL.
+
+   var createRoom = req.body.roomid;
+   var createQuery = ` insert into rooms(roomid, username, score) select '${createRoom}', '${user}', 0);`;
+   console.log(createQuery);
+   pool.query(createQuery, (error, result) => {
+       if (error)
+           res.send('ERROR',error);
+       else {
+           if (result.rowCount === 0) {
+               res.render('pages/mainMenu.ejs')
+           }
+           else {
+               res.render('pages/multiplayerBlackjack.ejs')
+           }
+       }
+   });
+    */
+
 });
 
 app.post('/joinMatch', (req, res) => {
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    console.log(findUser);
+    //console.log("mystats",findUser);
     pool.query(findUser, (error, result) => {
         if (error)
             res.send('ERROR',error);
@@ -205,7 +230,6 @@ app.post('/roomNum',(req,res)=> {
     var user = req.body.id;
     roomNum = req.body.roomid;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    console.log(findUser);
     pool.query(findUser, async (error,result)=>{
       try{
         if (error)
@@ -237,7 +261,7 @@ app.post('/roomNum',(req,res)=> {
 app.post('/rebuy', (req,res)=>{
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    console.log(finderUser);
+    //console.log("mainmenu",findUser);
     pool.query(findUser, (error, result) => {
         if (error){
             res.send('ERROR',error);
@@ -330,7 +354,7 @@ io.on('connection', function(socket){
     });
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
-        console.log(findUser);
+        //console.log("mystats",findUser);
         pool.query(findUser, (error, result) => {
             if (error)
                 socket.emit('ERROR',error);
@@ -345,7 +369,6 @@ io.on('connection', function(socket){
                     if (newCreditCount >= 0){
                         //pool query again replace new credit count
                         var UpdateQuery = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
-                        console.log(UpdateQuery);
                         pool.query(UpdateQuery, (error,result)=>{
                             if (error){
                                 socket.emit("ERROR:", error);
@@ -406,7 +429,6 @@ io.on('connection', function(socket){
 
     socket.on('payout', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
-        console.log(findUser);
         pool.query(findUser, (error, result)=>{
             if (error)
                 socket.emit('ERROR', error);
@@ -418,10 +440,10 @@ io.on('connection', function(socket){
                     var credits = result.rows[0].credits;
                     var newCreditCount = bet * 2 + credits;
                     var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
-                    console.log(addCredits);
                     pool.query(addCredits, (err, res)=>{
                         if (error) socket.emit("ERROR", err);
                         else{
+                            //console.log("new credits: ", newCreditCount);
                             io.to(`${socket.id}`).emit('newCredits', newCreditCount);
                             //balances
                             var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
