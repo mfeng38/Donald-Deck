@@ -44,7 +44,7 @@ app.post('/login', (req, res) => {
             res.send(error);
         else {
             var results = {'rows': result.rows };
-            console.log(results.rows)
+            console.log(results.rows);
             if (results.rows === undefined || results.rows.length == 0) {
                 res.render('pages/loginIncorrect.ejs');
             }
@@ -76,10 +76,10 @@ app.post('/createAccount', (req, res) => {
             res.send('ERROR',error);
         else {
             if (result.rowCount === 0) {
-                res.render('pages/createAccountIncorrect.ejs')
+                res.render('pages/createAccountIncorrect.ejs');
             }
             else {
-                res.render('pages/loginPostCreate.ejs')
+                res.render('pages/loginPostCreate.ejs');
             }
         }
     });
@@ -94,7 +94,7 @@ app.post('/myStats', (req, res) => {
             res.send('ERROR',error);
         else {
             if (result.rowCount === 0) {
-                res.render('pages/createAccountIncorrect.ejs')
+                res.render('pages/createAccountIncorrect.ejs');
             }
             else {
                 var userinfo= {'row' : result.rows[0]};
@@ -113,7 +113,7 @@ app.post('/mainMenu', (req,res) => {
             res.send('ERROR',error);
         else {
             if (result.rowCount === 0) {
-                res.render('pages/createAccountIncorrect.ejs')
+                res.render('pages/createAccountIncorrect.ejs');
             }
             else {
                 var userinfo = {'rows': result.rows };
@@ -133,7 +133,7 @@ var balances = {'solo': []};
 app.post('/soloBlackjack',(req,res) => {
     console.log("post soloBlackjack");
     var user = req.body.id;
-    roomNum = 'solo'
+    roomNum = 'solo';
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
     console.log(findUser);
     pool.query(findUser, (error,result) => {
@@ -168,7 +168,7 @@ app.post('/multiplayerBlackjack',(req,res) => {
             }
             else {
                 roomNum = await deckID();
-                console.log("CHECK HERE", roomNum)
+                console.log("CHECK HERE", roomNum);
                 playerIDs[`${roomNum}`] = [];
                 usernames[`${roomNum}`] = [];
                 balances[`${roomNum}`] = [];
@@ -177,7 +177,7 @@ app.post('/multiplayerBlackjack',(req,res) => {
         }
       }
       catch (error) {
-        res.send(error)
+        res.send(error);
       }
     })
 });
@@ -191,7 +191,7 @@ app.post('/joinMatch', (req, res) => {
             res.send('ERROR',error);
         else {
             if (result.rowCount === 0) {
-                res.render('pages/createAccountIncorrect.ejs')
+                res.render('pages/createAccountIncorrect.ejs');
             }
             else {
                 var userinfo= {'row' : result.rows[0]};
@@ -223,13 +223,13 @@ app.post('/roomNum',(req,res) => {
                 res.redirect('loginUI.html'); //fail in staying logged in
             }
             else {
-                console.log("CHECK HERE", roomNum)
+                console.log("CHECK HERE", roomNum);
                 res.render('pages/multiplayerBlackjack', userinfo);
             }
         }
       }
       catch (error) {
-        res.send(error)
+        res.send(error);
       }
     })
 });
@@ -245,7 +245,7 @@ app.post('/rebuy', (req,res) => {
         }
         else {
             if (result.rowCount === 0) {
-                res.render('pages/createAccountIncorrect.ejs')
+                res.render('pages/createAccountIncorrect.ejs');
             }
             else {
                 newCreditCount = result.rows[0].credits + 100;
@@ -308,10 +308,10 @@ io.on('connection', function(socket) {
 
     io.to(`${roomNum}`).emit('IDlist', playerIDs[`${roomNum}`]);
     io.to(`${roomNum}`).emit('room', roomNum);
-    console.log(playerIDs)
+    console.log(playerIDs);
     
     socket.on('chat msg', function(message) {
-        console.log(roomNum)
+        console.log(roomNum);
         console.log(message[1]);
         if(rooms[`${socket.id}`] == message[1]) {
           io.to(`${rooms[`${socket.id}`]}`).emit('chat msg', socket.username + ' said: ' + message[0] );
@@ -320,10 +320,9 @@ io.on('connection', function(socket) {
     socket.on('username', function(username) {
         socket.username = username;
         console.log("username " + username + " and socket.id: " + socket.id);
-        io.to(`${rooms[`${socket.id}`]}`).emit('chat msg', `${socket.username} has joined the chat!`)
+        io.to(`${rooms[`${socket.id}`]}`).emit('chat msg', `${socket.username} has joined the chat!`);
         usernames[`${roomNum}`].push(socket.username);
         io.to(`${rooms[`${socket.id}`]}`).emit('usernames', usernames[`${roomNum}`]);
-        //console.log("welp:", usernames);
     });
     socket.on('checkBet', function(bet) {
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
@@ -367,6 +366,7 @@ io.on('connection', function(socket) {
             }
         });
     });
+    
     socket.on('blackjackPay',function(bet) { //if get 21 - pay 3:2
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
         console.log(findUser);
@@ -437,7 +437,7 @@ io.on('connection', function(socket) {
         });
 
     });
-    
+
     //test
     socket.on('disconnect', (reason) => {
         var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
