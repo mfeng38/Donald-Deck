@@ -23,8 +23,6 @@ document.getElementById('startMatch').addEventListener('click', function () {
         document.getElementById('startMatch').style.visibility = 'hidden';
         document.getElementById("CurrentBet").style.visibility = "hidden";
         document.getElementById("multicontainer").style.visibility = "hidden";
-        document.getElementById("backOfCardRework").style.visibility = "hidden";
-
 
         document.getElementById("bet").innerHTML = `Bet: ${bet}`;
         document.getElementById("bet").style.visibility = "visible";
@@ -68,8 +66,6 @@ document.getElementById('playAgain').addEventListener('click', function () {
     document.getElementById("stay").style.visibility = "visible";
     gameStart();
 });
-<<<<<<< HEAD
-=======
 
 document.getElementById('viewLeaderboard').addEventListener('click', function(){
     document.getElementById('leaderboardContainer').style.visibility = "visible";
@@ -87,4 +83,3 @@ document.getElementById('closeLeaderboard').addEventListener('click', function()
 //////////////////////////////////
 //    Modified file end here    //
 //////////////////////////////////
->>>>>>> c0dc29c947d009bec3512a15e2ab68b67d838799
