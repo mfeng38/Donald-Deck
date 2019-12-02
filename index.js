@@ -10,7 +10,7 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
 });
 
-async function deckID(){
+async function deckID() {
   await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6')
     .then(async (response) => {
       if (response.ok) {
@@ -51,7 +51,7 @@ app.post('/login', (req, res) => {
             else {
                 var databasePassword = results.rows[0].password;
                 if (loginPassword === databasePassword) {
-                    if (loginUsername === "admin"){
+                    if (loginUsername === "admin") {
                         res.redirect('/admin');
                     }
                     else {
@@ -176,7 +176,7 @@ app.post('/multiplayerBlackjack',(req,res)=> {
             }
         }
       }
-      catch (error){
+      catch (error) {
         res.send(error)
       }
     })
@@ -211,7 +211,7 @@ app.post('/roomNum',(req,res)=> {
       try{
         if (error)
             res.send(error);
-        else if(playerIDs[`${roomNum}`] == undefined){
+        else if(playerIDs[`${roomNum}`] == undefined) {
             var userinfo= {'row' : result.rows[0]};
             console.log(userinfo);
             res.render('pages/JoinMatchFail.ejs', userinfo);
@@ -228,7 +228,7 @@ app.post('/roomNum',(req,res)=> {
             }
         }
       }
-      catch (error){
+      catch (error) {
         res.send(error)
       }
     })
@@ -240,7 +240,7 @@ app.post('/rebuy', (req,res)=>{
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
     console.log(finderUser);
     pool.query(findUser, (error, result) => {
-        if (error){
+        if (error) {
             res.send('ERROR',error);
         }
         else {
@@ -260,7 +260,7 @@ app.post('/rebuy', (req,res)=>{
                         //otherwise, do nothing i suppose? or maybe send something?
                     else {
                         pool.query(findUser, (erragains, finalinfo)=>{
-                            if (erragains){
+                            if (erragains) {
                                 res.send('ERROR', erragains);
                             }
                             else {
@@ -283,7 +283,7 @@ app.get('/admin', (req,res)=>{
     var GetUsersQuery = `SELECT * FROM USERS WHERE users.username != 'admin'`;
     console.log(GetUsersQuery);
     pool.query(GetUsersQuery, (error, result)=>{
-        if (error){
+        if (error) {
             res.send(error);
         }
         else {
@@ -296,13 +296,13 @@ app.get('/admin', (req,res)=>{
 
 //For socket.io using express
 const io = require('socket.io')(http);
-var server = http.listen(PORT, function(){
+var server = http.listen(PORT, function() {
     console.log('listening http index.js Port: ' + PORT);
 });
 
 
 // .io stuff
-io.on('connection', function(socket){
+io.on('connection', function(socket) {
     console.log('connection index');
     //Check how long it has been since last login
     rooms[`${socket.id}`] = roomNum;
@@ -314,14 +314,14 @@ io.on('connection', function(socket){
     io.to(`${roomNum}`).emit('room', roomNum);
     console.log(playerIDs)
     
-    socket.on('chat msg', function(message){
+    socket.on('chat msg', function(message) {
         console.log(roomNum)
         console.log(message[1]);
-        if(rooms[`${socket.id}`] == message[1]){
+        if(rooms[`${socket.id}`] == message[1]) {
           io.to(`${rooms[`${socket.id}`]}`).emit('chat msg', socket.username + ' said: ' + message[0] );
         }
     });
-    socket.on('username', function(username){
+    socket.on('username', function(username) {
         socket.username = username;
         console.log("username " + username + " and socket.id: " + socket.id);
         io.to(`${rooms[`${socket.id}`]}`).emit('chat msg', `${socket.username} has joined the chat!`)
@@ -329,7 +329,7 @@ io.on('connection', function(socket){
         io.to(`${rooms[`${socket.id}`]}`).emit('usernames', usernames[`${roomNum}`]);
         //console.log("welp:", usernames);
     });
-    socket.on('checkBet', function(bet){
+    socket.on('checkBet', function(bet) {
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
         console.log(findUser);
         pool.query(findUser, (error, result) => {
@@ -343,12 +343,12 @@ io.on('connection', function(socket){
                     var credits = result.rows[0].credits;
                     console.log(`index.js finds credits: `, credits);
                     var newCreditCount = credits - bet;
-                    if (newCreditCount >= 0){
+                    if (newCreditCount >= 0) {
                         //pool query again replace new credit count
                         var UpdateQuery = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
                         console.log(UpdateQuery);
                         pool.query(UpdateQuery, (error,result)=>{
-                            if (error){
+                            if (error) {
                                 socket.emit("ERROR:", error);
                             }
                             else {
@@ -371,13 +371,14 @@ io.on('connection', function(socket){
             }
         });
     });
-    socket.on('blackjackPay',function(bet){ //if get 21 - pay 3:2
+    socket.on('blackjackPay',function(bet) { //if get 21 - pay 3:2
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
+        console.log(findUser);
         pool.query(findUser, (error, result)=>{
             if (error)
                 socket.emit('ERROR', error);
             else {
-                if (result.rowCount === 0){
+                if (result.rowCount === 0) {
                     socket.emit('ERROR', error);
                 }
                 else {
@@ -405,14 +406,14 @@ io.on('connection', function(socket){
         });
     });
 
-    socket.on('payout', function(bet){
+    socket.on('payout', function(bet) {
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
         console.log(findUser);
         pool.query(findUser, (error, result)=>{
             if (error)
                 socket.emit('ERROR', error);
             else {
-                if (result.rowCount === 0){
+                if (result.rowCount === 0) {
                     socket.emit('ERROR', error);
                 }
                 else {
@@ -446,8 +447,8 @@ io.on('connection', function(socket){
         playerIDs[`${rooms[`${socket.id}`]}`].splice(j,1);
         usernames[`${rooms[`${socket.id}`]}`].splice(j,1);
         balances[`${rooms[`${socket.id}`]}`].splice(j,1);
-        if(playerIDs[`${rooms[`${socket.id}`]}`].length == 0){
-            if(rooms[`${socket.id}`] != 'solo'){
+        if(playerIDs[`${rooms[`${socket.id}`]}`].length == 0) {
+            if(rooms[`${socket.id}`] != 'solo') {
                 delete playerIDs[`${rooms[`${socket.id}`]}`];
                 delete usernames[`${rooms[`${socket.id}`]}`];
                 delete balances[`${rooms[`${socket.id}`]}`];
