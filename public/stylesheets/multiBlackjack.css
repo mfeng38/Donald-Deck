@@ -14,11 +14,14 @@ div#leaderboarddiv {
     float: left;
 }
 
-
+table#leaderboard{
+    width:100%;
+    overflow:auto;
+}
 
 /*blackjack game stuff*/
 div#solocontainer {
-    margin-left: 21%;
+    margin-left: 22%;
     position: relative;
     margin-top: 1%;
     margin-right: 5px;
@@ -26,7 +29,7 @@ div#solocontainer {
     border-color: #594236;
     background-color: #57A545;
     height: 90%;
-    width: 78%;
+    width: 77%;
 }
 
 p#Dealer {

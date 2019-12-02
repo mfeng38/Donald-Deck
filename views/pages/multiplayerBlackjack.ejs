@@ -63,10 +63,10 @@
 	<h1> Hello <%=row.username%>!</h1>
 	<div id="leaderboarddiv">
 			<table id = "leaderboard">
-			<th>
+			<tr>
 				<th>Player </th>
 				<th> Credits won/lost </th>
-			</th>
+			</tr>
 			</table>
 	</div>
 
@@ -113,7 +113,6 @@
     <p id="playerCounter"> 0 </p>
 	<p id="dealerCounter"> 0 </p>
 
-    <button id="viewLeaderboard" class="btn-danger">Leaderboard</button>
   	<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
   		<button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
   		<button id="changeBet" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
@@ -212,6 +211,17 @@
 			balancecell.innerHTML = i; 
 		}
     });
+	socket.on('balances',function(balances){
+		console.log(balances);
+		var table = document.getElementById('leaderboard');
+		var numplayers = balances.length;
+		for (var i =0; i< numplayers; i++){
+		//table has as many rows as there are players 
+			console.log('Player has balance' + balances[i]);
+			var balancecell = table.rows[i+1].cells[1];
+			balancecell.innerHTML = balances[i]; 
+		}
+	});
 
 		socket.on('startGame', function(credits){
 			gameStart();

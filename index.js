@@ -124,11 +124,13 @@ app.post('/mainMenu', (req,res)=>{
         }
     });
 });
-
+//------------------------------------------- blackjack game related stuff below
 var roomNum;
 var playerIDs = {'solo': []};
 var usernames = {'solo': []};
 var rooms = {};
+var balances = {'solo': []};
+
 app.post('/soloBlackjack',(req,res)=> {
     console.log("post soloBlackjack");
     var user = req.body.id;
@@ -171,6 +173,7 @@ app.post('/multiplayerBlackjack',(req,res)=> {
                 console.log("CHECK HERE", roomNum)
                 playerIDs[`${roomNum}`] = [];
                 usernames[`${roomNum}`] = [];
+                balances[`${roomNum}`] = [];
                 res.render('pages/multiplayerBlackjack', userinfo);
             }
         }
@@ -328,11 +331,12 @@ io.on('connection', function(socket){
     rooms[`${socket.id}`] = roomNum;
     socket.join(`${roomNum}`);
     playerIDs[`${roomNum}`].push(socket.id);
-    usernames[`${roomNum}`].push(socket.username);
-    io.to(`${roomNum}`).emit('userlist', usernames[`${roomNum}`]);
+    balances[`${roomNum}`].push(0);
+
     io.to(`${roomNum}`).emit('IDlist', playerIDs[`${roomNum}`]);
     io.to(`${roomNum}`).emit('room', roomNum);
     console.log(playerIDs)
+    
     socket.on('chat msg', function(message){
         console.log(roomNum)
         console.log(message[1]);
@@ -344,6 +348,9 @@ io.on('connection', function(socket){
         socket.username = username;
         console.log("username " + username + " and socket.id: " + socket.id);
         io.to(`${rooms[`${socket.id}`]}`).emit('chat msg', `${socket.username} has joined the chat!`)
+        usernames[`${roomNum}`].push(socket.username);
+        io.to(`${rooms[`${socket.id}`]}`).emit('usernames', usernames[`${roomNum}`]);
+        console.log("welp:", usernames);
     });
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
@@ -369,6 +376,16 @@ io.on('connection', function(socket){
                             else{
                                 io.to(`${socket.id}`).emit('startGame', newCreditCount);
                                 io.to(`${socket.id}`).emit('newCredits', newCreditCount);
+                                //balances subtract
+                                var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
+                                // get index
+                                var playerbalance = balances[`${rooms[`${socket.id}`]}`][j];
+                                //console.log("playerbalance:", playerbalance);
+                                playerbalance = playerbalance - bet;
+                                balances[`${rooms[`${socket.id}`]}`][j] = playerbalance;
+                                //emit to everyone new balances
+                                io.to(`${rooms[`${socket.id}`]}`).emit('balances',balances[`${roomNum}`]);
+
                             }
                         });
                     }
@@ -394,6 +411,15 @@ io.on('connection', function(socket){
                         else{
                             console.log("index bjplay new credits: ", newCreditCount);
                             io.to(`${socket.id}`).emit('newCredits', newCreditCount);
+                            // balances
+                            var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
+                            // get index
+                            var playerbalance = balances[`${rooms[`${socket.id}`]}`][j];
+                            //console.log("playerbalance:", playerbalance);
+                            playerbalance = playerbalance + 3* bet;
+                            balances[`${rooms[`${socket.id}`]}`][j] = playerbalance;
+                            //emit to everyone new balances
+                            io.to(`${rooms[`${socket.id}`]}`).emit('balances',balances[`${roomNum}`]);
                         }
                     });
                 }
@@ -419,6 +445,15 @@ io.on('connection', function(socket){
                         else{
                             //console.log("new credits: ", newCreditCount);
                             io.to(`${socket.id}`).emit('newCredits', newCreditCount);
+                            //balances
+                            var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
+                            // get index
+                            var playerbalance = balances[`${rooms[`${socket.id}`]}`][j];
+                            //console.log("playerbalance:", playerbalance);
+                            playerbalance = playerbalance + 2* bet;
+                            balances[`${rooms[`${socket.id}`]}`][j] = playerbalance;
+                            //emit to everyone new balances
+                            io.to(`${rooms[`${socket.id}`]}`).emit('balances',balances[`${roomNum}`]);
                         }
                     });
                 }
@@ -430,10 +465,13 @@ io.on('connection', function(socket){
     socket.on('disconnect', (reason) => {
         var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
         playerIDs[`${rooms[`${socket.id}`]}`].splice(j,1);
+        usernames[`${rooms[`${socket.id}`]}`].splice(j,1);
+        balances[`${rooms[`${socket.id}`]}`].splice(j,1);
         if(playerIDs[`${rooms[`${socket.id}`]}`].length == 0){
             if(rooms[`${socket.id}`] != 'solo'){
                 delete playerIDs[`${rooms[`${socket.id}`]}`];
                 delete usernames[`${rooms[`${socket.id}`]}`];
+                delete balances[`${rooms[`${socket.id}`]}`];
             }
             delete rooms[`${socket.id}`];
         }
@@ -441,7 +479,7 @@ io.on('connection', function(socket){
                 io.to(`${rooms[`${socket.id}`]}`).emit('usernames', usernames[`${roomNum}`]); 
                 io.to(`${rooms[`${socket.id}`]}`).emit('IDlist',playerIDs[`${roomNum}`]);
                 io.to(`${rooms[`${socket.id}`]}`).emit('chat msg',`${socket.username} has left`);
-
+                io.to(`${rooms[`${socket.id}`]}`).emit('balances',balances[`${roomNum}`]);
             }
-});
+    });
 });
