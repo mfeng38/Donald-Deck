@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <script src="/javascript/multiBlackjackAnimations.js" defer ></script>
     <script src="/javascript/sharedBlackjackAnimations.js" defer ></script>
+<<<<<<< HEAD
     <script src="/javascript/multiBlackJackEngine.js" defer></script>
+=======
+    <script src="/javascript/blackJackEngine.js" defer></script>
+>>>>>>> dad164ae31665a8b58e18244531f412d2143e4dc
 	  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
@@ -60,6 +64,7 @@
             </ul>
         </div>
     </nav>
+<<<<<<< HEAD
 	<h1> Hello <%=row.username%>!</h1>
 	<div id="leaderboarddiv">
 			<table id = "leaderboard">
@@ -69,11 +74,15 @@
 			</tr>
 			</table>
 	</div>
+=======
+	  <h1> Hello <%=row.username%>!</h1>
+>>>>>>> dad164ae31665a8b58e18244531f412d2143e4dc
 
     <div id="solocontainer">
   		<!--
       <img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
       -->
+<<<<<<< HEAD
 		<div id="multicontainer">
 			<img class="card" src="/images/cardback.png" alt="backofcard" id = "backOfCardRework"/>
 			<p id="roomID" value = "">Your game code is: <%=row.roomid%></p>
@@ -114,6 +123,51 @@
 	<p id="dealerCounter"> 0 </p>
 
   	<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
+=======
+      <div id="multicontainer">
+        <!-- when DB is made, need to pull that info... this is temp for  now -->
+        <img class="card" src="/images/cardback.png" alt="backofcard" id = "backOfCardRework"/>
+        <p id="roomID">Your game code is: <%=row.roomid%></p>
+        <button id="readyUp" class="btn-danger" >Ready to Start</button>
+      </div>
+
+  		<input id="id" type="hidden" value=<%=row.username%>>
+
+      <p id="CurrentBet" value = "0" >Current Bet: 0</p>
+
+  		<button id="Add5" class="btn-danger" >+5</button>
+      <button id="Add10" class="btn-danger" >+10</button>
+  		<button id="Add25" class="btn-danger" >+25</button>
+  		<button id="Add100" class="btn-danger" >+100</button>
+  		<button id="Sub5" class="btn-info" >-5</button>
+      <button id="Sub10" class="btn-info" >-10</button>
+  		<button id="Sub25" class="btn-info" >-25</button>
+  		<button id="Sub100" class="btn-info" >-100</button>
+      <button id="startMatch" class="btn-danger">START ROUND</button>
+
+      <p id="bet">Bet: 0</p>
+  		<img class="card" src="/images/cardback.png" alt="dealer1" id = "d1"/>
+  		<img class="card" src="/images/cardback.png" alt="dealer2" id = "d2"/>
+  		<img class="card" src="/images/cardback.png" alt="dealer3" id = "d3"/>
+  		<img class="card" src="/images/cardback.png" alt="dealer4" id = "d4"/>
+  		<img class="card" src="/images/cardback.png" alt="dealer5" id = "d5"/>
+  		<img class="card" src="/images/cardback.png" alt="dealer6" id = "d6"/>
+
+  		<img class="card" src="/images/cardback.png" alt="c1" id="c1"/>
+  		<img class="card" src="/images/cardback.png" alt="c2" id="c2" />
+  		<img class="card" src="/images/cardback.png" alt="c3" id="c3"/>
+  		<img class="card" src="/images/cardback.png" alt="c4" id="c4"/>
+  		<img class="card" src="/images/cardback.png" alt="c5" id="c5"/>
+  		<img class="card" src="/images/cardback.png" alt="c6" id="c6"/>
+
+      <p id="Dealer">Dealer</p>
+    	<p id="Player">Player</p>
+      <p id="playerCounter"> 0 </p>
+  		<p id="dealerCounter"> 0 </p>
+
+      <button id="viewLeaderboard" class="btn-danger">Leaderboard</button>
+  		<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
+>>>>>>> dad164ae31665a8b58e18244531f412d2143e4dc
   		<button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
   		<button id="changeBet" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
   		<button id="playAgain" class="btn-danger" onclick = "gameStateReset()">Play Again</button>

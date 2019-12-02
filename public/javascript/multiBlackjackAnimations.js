@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 //////////////////////////////////
 //    Multiplayer Animations    //
 //////////////////////////////////
+=======
+>>>>>>> dad164ae31665a8b58e18244531f412d2143e4dc
 
 //Readying up
 document.getElementById('readyUp').addEventListener('click', function () {
@@ -51,6 +54,19 @@ document.getElementById('changeBet').addEventListener('click', function () {
     document.getElementById("startMatch").style.visibility = "visible";
     document.getElementById("CurrentBet").style.visibility = "visible";
     showBetButtons();
+<<<<<<< HEAD
+=======
+});
+
+document.getElementById('playAgain').addEventListener('click', function () {
+    document.getElementById('winloss').style.visibility = "hidden";
+    document.getElementById("changeBet").style.visibility = "hidden";
+    document.getElementById("playAgain").style.visibility = "hidden";
+
+    document.getElementById("hit").style.visibility = "visible";
+    document.getElementById("stay").style.visibility = "visible";
+    gameStart();
+>>>>>>> dad164ae31665a8b58e18244531f412d2143e4dc
 });
 
 document.getElementById('playAgain').addEventListener('click', function () {
@@ -63,4 +79,10 @@ document.getElementById('playAgain').addEventListener('click', function () {
     gameStart();
 });
 
+<<<<<<< HEAD
 
+=======
+//////////////////////////////////
+//    Modified file end here    //
+//////////////////////////////////
+>>>>>>> dad164ae31665a8b58e18244531f412d2143e4dc
