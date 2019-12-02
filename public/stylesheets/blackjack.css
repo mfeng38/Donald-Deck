@@ -326,11 +326,11 @@ table#leaderboard {
     width:100%;
     overflow:auto;
 }
-/*
-td,tr,th {
+
+td th {
   font-color: white;
 }
-*/
+
 
 #closeLeaderboard {
   position: absolute;
@@ -338,7 +338,6 @@ td,tr,th {
   top: 85%;
   transform: translate(-50%, -50%);
   padding: 1%;
-  visibility: hidden;
   width: 12%;
 }
 

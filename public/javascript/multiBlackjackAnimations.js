@@ -67,10 +67,14 @@ document.getElementById('playAgain').addEventListener('click', function () {
 
 document.getElementById('viewLeaderboard').addEventListener('click', function(){
     document.getElementById('leaderboardContainer').style.visibility = "visible";
+    document.getElementById("hit").style.visibility = "hidden";
+    document.getElementById("stay").style.visibility = "hidden";
 });
 
 document.getElementById('closeLeaderboard').addEventListener('click', function(){
     document.getElementById('leaderboardContainer').style.visibility = "hidden";
+    document.getElementById("hit").style.visibility = "visible";
+    document.getElementById("stay").style.visibility = "visible";
 });
 
 //////////////////////////////////
