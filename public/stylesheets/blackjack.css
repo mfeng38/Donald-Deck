@@ -319,7 +319,6 @@ div#leaderboardContainer {
     border-radius: 5px;
     height: 85%;
     width: 25%;
-    visibility: hidden; 
 }
 
 table#leaderboard {
