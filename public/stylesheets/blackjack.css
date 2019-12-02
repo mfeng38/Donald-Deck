@@ -329,8 +329,8 @@ table#leaderboard {
     margin: 0 auto;
 }
 
-td tr th {
-    color: white;
+td tr th tbody {
+    color: #FFFFFF;
     font-weight: 2px;
 }
 
