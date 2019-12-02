@@ -276,8 +276,6 @@ app.post('/rebuy', (req,res) => {
     });
 });
 
-
-
 // If Log in as administrator, redirect to here
 app.get('/admin', (req,res) => {
     var GetUsersQuery = `SELECT * FROM USERS WHERE users.username != 'admin'`;
@@ -293,13 +291,11 @@ app.get('/admin', (req,res) => {
     })
 });
 
-
 //For socket.io using express
 const io = require('socket.io')(http);
 var server = http.listen(PORT, function() {
     console.log('listening http index.js Port: ' + PORT);
 });
-
 
 // .io stuff
 io.on('connection', function(socket) {
@@ -441,6 +437,7 @@ io.on('connection', function(socket) {
         });
 
     });
+    
     //test
     socket.on('disconnect', (reason) => {
         var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
