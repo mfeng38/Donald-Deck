@@ -5,16 +5,13 @@
     <meta charset="utf-8" />
 	  <!--<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Donald Deck - Playing Solo</title>
+    <title>Donald Deck - Playing Multiplayer</title>
     <link rel="stylesheet" href="/stylesheets/blackjack.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <script src="/javascript/multiBlackjackAnimations.js" defer ></script>
     <script src="/javascript/sharedBlackjackAnimations.js" defer ></script>
-<<<<<<< HEAD
     <script src="/javascript/multiBlackJackEngine.js" defer></script>
-=======
-    <script src="/javascript/blackJackEngine.js" defer></script>
->>>>>>> dad164ae31665a8b58e18244531f412d2143e4dc
+    <!--<script src="/javascript/blackJackEngine.js" defer></script>-->
 	  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
@@ -64,7 +61,6 @@
             </ul>
         </div>
     </nav>
-<<<<<<< HEAD
 	<h1> Hello <%=row.username%>!</h1>
 	<div id="leaderboarddiv">
 			<table id = "leaderboard">
@@ -74,15 +70,12 @@
 			</tr>
 			</table>
 	</div>
-=======
 	  <h1> Hello <%=row.username%>!</h1>
->>>>>>> dad164ae31665a8b58e18244531f412d2143e4dc
 
     <div id="solocontainer">
   		<!--
       <img class="card" src="/images/cardback.png" alt="backofcard" id = "backofcard"/>
       -->
-<<<<<<< HEAD
 		<div id="multicontainer">
 			<img class="card" src="/images/cardback.png" alt="backofcard" id = "backOfCardRework"/>
 			<p id="roomID" value = "">Your game code is: <%=row.roomid%></p>
@@ -123,7 +116,6 @@
 	<p id="dealerCounter"> 0 </p>
 
   	<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
-=======
       <div id="multicontainer">
         <!-- when DB is made, need to pull that info... this is temp for  now -->
         <img class="card" src="/images/cardback.png" alt="backofcard" id = "backOfCardRework"/>
@@ -167,7 +159,6 @@
 
       <button id="viewLeaderboard" class="btn-danger">Leaderboard</button>
   		<button id="hit" onclick = "hit()" class="btn-danger">HIT</button>
->>>>>>> dad164ae31665a8b58e18244531f412d2143e4dc
   		<button id="stay" onclick = "dealer()" class="btn-danger">STAY</button>
   		<button id="changeBet" class="btn-danger" onclick = "gameStateReset()">Change Bet?</button>
   		<button id="playAgain" class="btn-danger" onclick = "gameStateReset()">Play Again</button>
