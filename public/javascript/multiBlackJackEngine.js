@@ -170,6 +170,8 @@ async function hit(){
           document.getElementById("playAgain").style.visibility = "visible";
           document.getElementById('winloss').innerHTML = "YOU BUST";
           document.getElementById('winloss').style.visibility = "visible";
+          document.getElementById('d1').src = dealerHiddenCard;
+          document.getElementById("dealerCounter").innerHTML = dealerHandValue;
         }
         document.getElementById("playerCounter").innerHTML = playerHandValue;
       }
