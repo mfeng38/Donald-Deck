@@ -7,6 +7,7 @@ if (numcredits < 500) {
     console.log('less');
     div.className = '';
 }
+
 else {
     div.className = 'hidden';
 }
