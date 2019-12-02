@@ -308,19 +308,36 @@ img#backOfCardRework {
     visibility: hidden;
 }
 
-/*
 div#leaderboarddiv {
-    margin-left: 1%;
-    width: 20%;
-    float: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: DarkGreen;
+    box-shadow: 0 0 5px 2px;
+    border: 1px solid;
+    border-radius: 5px;
+    height: 85%;
+    width: 25%;
 }
 
-table#leaderboard{
+table#leaderboard {
     width:100%;
     overflow:auto;
 }
+td,tr,th {
+  font-color: white;
+}
 
- ------- */
+#closeLeaderboard {
+  position: absolute;
+  left: 50%;
+  top: 85%;
+  transform: translate(-50%, -50%);
+  padding: 1%;
+  visibility: hidden;
+  width: 12%;
+}
 
 img.card {
     position: absolute;

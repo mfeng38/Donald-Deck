@@ -65,6 +65,14 @@ document.getElementById('playAgain').addEventListener('click', function () {
     gameStart();
 });
 
+document.getElementById('viewLeaderboard').addEventListener('click', function(){
+    document.getElementById('leaderboardContainer').style.visibility = "visible";
+});
+
+document.getElementById('closeLeaderboard').addEventListener('click', function(){
+    document.getElementById('leaderboardContainer').style.visibility = "hidden";
+});
+
 //////////////////////////////////
 //    Modified file end here    //
 //////////////////////////////////
