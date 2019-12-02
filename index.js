@@ -230,7 +230,9 @@ app.post('/roomNum',(req,res)=> {
         if (error)
             res.send(error);
         else if(playerIDs[`${roomNum}`] == undefined){
-            res.send("ERROR: ROOM DOES NOT EXIST")
+            var userinfo= {'row' : result.rows[0]};
+            console.log(userinfo);
+            res.render('pages/JoinMatchFail.ejs', userinfo);
         }
         else{
             var userinfo= {'row' : result.rows[0]};
@@ -370,6 +372,31 @@ io.on('connection', function(socket){
             }
         });
     });
+    socket.on('blackjackPay',function(bet){ //if get 21 - pay 3:2
+        var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
+        pool.query(findUser, (error, result)=>{
+            if (error)
+                socket.emit('ERROR', error);
+            else{
+                if (result.rowCount === 0){
+                    socket.emit('ERROR', error);
+                }
+                else{
+                    var credits = result.rows[0].credits;
+                    var newCreditCount = bet *3 + credits;
+                    var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
+                    pool.query(addCredits, (err, res)=>{
+                        if (error) socket.emit("ERROR", err);
+                        else{
+                            console.log("index bjplay new credits: ", newCreditCount);
+                            io.to(`${socket.id}`).emit('newCredits', newCreditCount);
+                        }
+                    });
+                }
+            }
+        });
+    });
+
     socket.on('payout', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
         pool.query(findUser, (error, result)=>{
@@ -381,7 +408,7 @@ io.on('connection', function(socket){
                 }
                 else{
                     var credits = result.rows[0].credits;
-                    var newCreditCount = bet * 3 + credits;
+                    var newCreditCount = bet * 2 + credits;
                     var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
                     pool.query(addCredits, (err, res)=>{
                         if (error) socket.emit("ERROR", err);
@@ -404,7 +431,8 @@ io.on('connection', function(socket){
         delete playerIDs[`${rooms[`${socket.id}`]}`];
       }
       else{
-        io.to(`${rooms[`${socket.id}`]}`).emit('IDlist',playerIDs[`${roomNum}`]);
+          io.to(`${rooms[`${socket.id}`]}`).emit('IDlist',playerIDs[`${roomNum}`]);
+          io.to(`${rooms[`${socket.id}`]}`).emit('chat msg',`${socket.username} has left`);
       }
     });
 });
