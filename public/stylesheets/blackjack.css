@@ -308,6 +308,7 @@ img#backOfCardRework {
     visibility: hidden;
 }
 
+/*
 div#leaderboarddiv {
     margin-left: 1%;
     width: 20%;
@@ -319,7 +320,7 @@ table#leaderboard{
     overflow:auto;
 }
 
-/* ------- */
+ ------- */
 
 img.card {
     position: absolute;
