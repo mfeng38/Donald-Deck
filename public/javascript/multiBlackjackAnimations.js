@@ -31,7 +31,7 @@ document.getElementById('startMatch').addEventListener('click', function () {
         document.getElementById("dealerCounter").style.visibility = "visible";
         document.getElementById("hit").style.visibility = "visible";
         document.getElementById("stay").style.visibility = "visible";
-        document.getElementById("viewLeaderboard").style.visibility = "visible";
+        // document.getElementById("viewLeaderboard").style.visibility = "visible";
         hideBetButtons();
     }
     gameStart();
