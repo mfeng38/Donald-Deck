@@ -186,7 +186,7 @@ p#CurrentBet {
 
 #bet {
     position: absolute;
-    top: 85%;
+    top: 80%;
     left: 95%;
     width: max-content;
     visibility: hidden;
@@ -231,7 +231,7 @@ p#CurrentBet {
 #changeBet {
     position: absolute;
     left: 90%;
-    top: 90%;
+    top: 85%;
     visibility: hidden;
 }
 
@@ -329,8 +329,9 @@ table#leaderboard {
     margin: 0 auto;
 }
 
-td th {
-  color: white;
+td tr th {
+    color: white;
+    font-weight: 2px;
 }
 
 
