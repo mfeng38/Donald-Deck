@@ -16,7 +16,8 @@ async function deckID(){
       if (response.ok) {
         var temp = await response.json();
         newDeckID = temp.deck_id;
-      } else {
+      }
+      else {
         throw new Error('Response did not return 200');
       }
     })
@@ -32,7 +33,6 @@ app.use(express.urlencoded({ extended: false }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.redirect('loginUI.html'));
-//app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 app.get('/test', (req, res) => res.render('pages/soloBlackjackTEST'));
 app.post('/login', (req, res) => {
     var loginUsername = req.body.username;
@@ -122,6 +122,7 @@ app.post('/mainMenu', (req,res)=>{
         }
     });
 });
+
 //------------------------------------------- blackjack game related stuff below
 var roomNum;
 var playerIDs = {'solo': []};
@@ -138,13 +139,13 @@ app.post('/soloBlackjack',(req,res)=> {
     pool.query(findUser, (error,result)=>{
         if (error)
             res.send(error);
-        else{
+        else {
             var userinfo= {'row' : result.rows[0]};
             console.log(userinfo);
             if (userinfo === undefined || result.rows.length == 0) {
                 res.redirect('loginUI.html'); //fail in staying logged in
             }
-            else{
+            else {
                 res.render('pages/soloBlackjack', userinfo);
             }
         }
@@ -159,13 +160,13 @@ app.post('/multiplayerBlackjack',(req,res)=> {
       try{
         if (error)
             res.send(error);
-        else{
+        else {
             var userinfo= {'row' : result.rows[0]};
             console.log(userinfo);
             if (userinfo === undefined || result.rows.length == 0) {
                 res.redirect('loginUI.html'); //fail in staying logged in
             }
-            else{
+            else {
                 roomNum = await deckID();
                 console.log("CHECK HERE", roomNum)
                 playerIDs[`${roomNum}`] = [];
@@ -215,13 +216,13 @@ app.post('/roomNum',(req,res)=> {
             console.log(userinfo);
             res.render('pages/JoinMatchFail.ejs', userinfo);
         }
-        else{
+        else {
             var userinfo= {'row' : result.rows[0]};
             console.log(userinfo);
             if (userinfo === undefined || result.rows.length == 0) {
                 res.redirect('loginUI.html'); //fail in staying logged in
             }
-            else{
+            else {
                 console.log("CHECK HERE", roomNum)
                 res.render('pages/multiplayerBlackjack', userinfo);
             }
@@ -257,12 +258,12 @@ app.post('/rebuy', (req,res)=>{
                     if (erroragain)
                         res.send('ERROR', erroragain);
                         //otherwise, do nothing i suppose? or maybe send something?
-                    else{
+                    else {
                         pool.query(findUser, (erragains, finalinfo)=>{
                             if (erragains){
                                 res.send('ERROR', erragains);
                             }
-                            else{
+                            else {
                                 var userinfo = {'row': result.rows[0]};
                                 res.render('pages/mystats.ejs', userinfo);
                             }
@@ -285,7 +286,7 @@ app.get('/admin', (req,res)=>{
         if (error){
             res.send(error);
         }
-        else{
+        else {
             var results = {'rows': result.rows};
             res.render('pages/adminview.ejs', results);
         }
@@ -350,7 +351,7 @@ io.on('connection', function(socket){
                             if (error){
                                 socket.emit("ERROR:", error);
                             }
-                            else{
+                            else {
                                 io.to(`${socket.id}`).emit('startGame', newCreditCount);
                                 io.to(`${socket.id}`).emit('newCredits', newCreditCount);
                                 //balances subtract
@@ -375,17 +376,17 @@ io.on('connection', function(socket){
         pool.query(findUser, (error, result)=>{
             if (error)
                 socket.emit('ERROR', error);
-            else{
+            else {
                 if (result.rowCount === 0){
                     socket.emit('ERROR', error);
                 }
-                else{
+                else {
                     var credits = result.rows[0].credits;
                     var newCreditCount = bet *3 + credits;
                     var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
                     pool.query(addCredits, (err, res)=>{
                         if (error) socket.emit("ERROR", err);
-                        else{
+                        else {
                             console.log("index bjplay new credits: ", newCreditCount);
                             io.to(`${socket.id}`).emit('newCredits', newCreditCount);
                             // balances
@@ -410,18 +411,18 @@ io.on('connection', function(socket){
         pool.query(findUser, (error, result)=>{
             if (error)
                 socket.emit('ERROR', error);
-            else{
+            else {
                 if (result.rowCount === 0){
                     socket.emit('ERROR', error);
                 }
-                else{
+                else {
                     var credits = result.rows[0].credits;
                     var newCreditCount = bet * 2 + credits;
                     var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
                     console.log(addCredits);
                     pool.query(addCredits, (err, res)=>{
                         if (error) socket.emit("ERROR", err);
-                        else{
+                        else {
                             io.to(`${socket.id}`).emit('newCredits', newCreditCount);
                             //balances
                             var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
@@ -453,7 +454,7 @@ io.on('connection', function(socket){
             }
             delete rooms[`${socket.id}`];
         }
-            else{
+            else {
                 io.to(`${rooms[`${socket.id}`]}`).emit('usernames', usernames[`${roomNum}`]); 
                 io.to(`${rooms[`${socket.id}`]}`).emit('IDlist',playerIDs[`${roomNum}`]);
                 io.to(`${rooms[`${socket.id}`]}`).emit('chat msg',`${socket.username} has left`);
