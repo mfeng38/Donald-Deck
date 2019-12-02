@@ -238,7 +238,7 @@ p#CurrentBet {
 #playAgain {
     position: absolute;
     left: 90%;
-    top: 95%;
+    top: 90%;
     visibility: hidden;
 }
 
@@ -326,7 +326,6 @@ div#leaderboardContainer {
 table#leaderboard {
     width: 100%;
     overflow: auto;
-    padding: 5px;
 }
 
 td{
@@ -349,6 +348,10 @@ th{
   padding: 1%;
   width: 45%;
 }
+
+/*////////////////////////*/
+/*Multiplayer Version Ends*/
+/*////////////////////////*/
 
 img.card {
     position: absolute;
