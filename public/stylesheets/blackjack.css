@@ -1,3 +1,4 @@
+/*All CSS Updated*/
 body {
     background-color: #FDFDF9;
     margin: 0px;
@@ -340,21 +341,11 @@ th{
     font-weight: 2px;
 }
 
-<<<<<<< HEAD
 tr{
     color: #FFFFFF;
     font-weight: 2px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-/* ------- */
-=======
- ------- */
->>>>>>> acebb98... # This is a combination of 14 commits.
-=======
-=======
->>>>>>> b27d997... gonnnaaa fiiiite this leaderboard
 #closeLeaderboard {
   position: absolute;
   left: 50%;
@@ -363,7 +354,6 @@ tr{
   padding: 1%;
   width: 45%;
 }
->>>>>>> e0c740d... combined CSS
 
 /*////////////////////////*/
 /*Multiplayer Version Ends*/
