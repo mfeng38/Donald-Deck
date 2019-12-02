@@ -183,27 +183,6 @@ app.post('/multiplayerBlackjack',(req,res)=> {
       }
     })
 
-
-   /*
-   //I made this before we chatted on discord so imma just leave it here in case it'll save you any work LOL.
-
-   var createRoom = req.body.roomid;
-   var createQuery = ` insert into rooms(roomid, username, score) select '${createRoom}', '${user}', 0);`;
-   console.log(createQuery);
-   pool.query(createQuery, (error, result) => {
-       if (error)
-           res.send('ERROR',error);
-       else {
-           if (result.rowCount === 0) {
-               res.render('pages/mainMenu.ejs')
-           }
-           else {
-               res.render('pages/multiplayerBlackjack.ejs')
-           }
-       }
-   });
-    */
-
 });
 
 app.post('/joinMatch', (req, res) => {
@@ -350,7 +329,7 @@ io.on('connection', function(socket){
         io.to(`${rooms[`${socket.id}`]}`).emit('chat msg', `${socket.username} has joined the chat!`)
         usernames[`${roomNum}`].push(socket.username);
         io.to(`${rooms[`${socket.id}`]}`).emit('usernames', usernames[`${roomNum}`]);
-        console.log("welp:", usernames);
+        //console.log("welp:", usernames);
     });
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
