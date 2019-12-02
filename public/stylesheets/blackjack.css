@@ -454,10 +454,10 @@ img#c6 {
 
 p#winloss {
     visibility: hidden;
-    top: 50%;
+    top: 45%;
     left: 50%;
     color: white;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     letter-spacing: 1.5px;
     position: absolute;
