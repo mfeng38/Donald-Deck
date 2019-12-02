@@ -27,16 +27,3 @@ describe('blackjackEngine Tests', () => {
         expect(result).to.be.an('undefined')
     })
 })
-
-describe('button tests', () => {
-    it('should add 5 to the bet value', () => {
-        
-    })
-})
-
-
-describe('socketio tests', () => {
-    it('should ', () => {
-        
-    })
-})
