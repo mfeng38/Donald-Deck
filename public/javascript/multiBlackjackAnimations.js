@@ -21,6 +21,8 @@ document.getElementById('startMatch').addEventListener('click', function () {
         document.getElementById('startMatch').style.visibility = 'hidden';
         document.getElementById("CurrentBet").style.visibility = "hidden";
         document.getElementById("multicontainer").style.visibility = "hidden";
+        document.getElementById("backOfCardRework").style.visibility = "hidden";
+
 
         document.getElementById("bet").innerHTML = `Bet: ${bet}`;
         document.getElementById("bet").style.visibility = "visible";
