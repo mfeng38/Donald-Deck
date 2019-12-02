@@ -6,6 +6,7 @@ document.getElementById('start').addEventListener('click', function () {
     document.getElementById("CurrentBet").style.visibility= "visible";
     document.getElementById("start").style.display = "none";
     document.getElementById("startround").style.visibility = "visible";
+    document.getElementById("backOfCardRework").style.visibility = "hidden";
     showBetButtons();
 
 });
@@ -27,7 +28,7 @@ document.getElementById('startround').addEventListener('click', function () {
         document.getElementById("Dealer").style.visibility = "visible";
         document.getElementById("playerCounter").style.visibility = "visible";
         document.getElementById("dealerCounter").style.visibility = "visible";
-        document.getElementById("backofcard").style.visibility = "hidden";
+        document.getElementById("multicontainer").style.visibility = "hidden";
         document.getElementById("hit").style.visibility = "visible";
         document.getElementById("stay").style.visibility = "visible";
         hideBetButtons();
