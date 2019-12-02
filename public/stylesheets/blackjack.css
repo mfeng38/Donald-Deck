@@ -230,14 +230,14 @@ p#CurrentBet {
 
 #changeBet {
     position: absolute;
-    left: 80%;
+    left: 90%;
     top: 90%;
     visibility: hidden;
 }
 
 #playAgain {
     position: absolute;
-    left: 80%;
+    left: 90%;
     top: 95%;
     visibility: hidden;
 }
@@ -319,7 +319,7 @@ div#leaderboardContainer {
     border-radius: 5px;
     height: 85%;
     width: 25%;
-    opactity: 95%;
+    opacity: 95%;
     visibility: hidden;
 }
 
