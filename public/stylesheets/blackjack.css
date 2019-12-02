@@ -327,13 +327,23 @@ table#leaderboard {
     width: 100%;
     overflow: auto;
     margin: 0 auto;
+    color: #FFFFFF;
 }
 
-td tr th tbody {
+td{
     color: #FFFFFF;
     font-weight: 2px;
 }
 
+th{
+    color: #FFFFFF;
+    font-weight: 2px;
+}
+
+tr{
+    color: #FFFFFF;
+    font-weight: 2px;
+}
 
 #closeLeaderboard {
   position: absolute;
