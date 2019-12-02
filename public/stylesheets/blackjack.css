@@ -325,9 +325,11 @@ table#leaderboard {
     width:100%;
     overflow:auto;
 }
+/*
 td,tr,th {
   font-color: white;
 }
+*/
 
 #closeLeaderboard {
   position: absolute;
