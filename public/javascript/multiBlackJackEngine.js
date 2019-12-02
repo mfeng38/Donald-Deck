@@ -3,7 +3,6 @@ var deckOfCards = [];
 var playerHandValue;
 var dealerVisibleHandValue;
 var dealerHandValue;
-var newDeckID;
 var playerCardIndex;
 var dealerCardIndex;
 var dealerHiddenCard;
@@ -14,25 +13,8 @@ var playerAces;
        ? - store card values in deckOfCards
 */
 
-async function deckID(){
-  await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6')
-    .then(async (response) => {
-      if (response.ok) {
-        var temp = await response.json();
-        newDeckID = temp.deck_id;
-      } else {
-        throw new Error('Response did not return 200');
-      }
-    })
-    .catch(async (error) => {
-        console.log(error);
-    })
-  return newDeckID;
-}
-
 //betting see ejs file since it uses socket
 async function gameStart(){
-  await deckID();
   await fetch(`https://deckofcardsapi.com/api/deck/${newDeckID}/draw/?count=4`)
     .then(async (response) => {
       if (response.ok) {
@@ -121,7 +103,7 @@ async function gameStart(){
           document.getElementById("changeBet").style.visibility = "visible";
           document.getElementById("playAgain").style.visibility = "visible";
 
-          payout();
+          blackjackPayout();
         }
       } else {
         throw new Error('Response did not return 200');
