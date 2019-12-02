@@ -6,7 +6,7 @@
 	  <!--<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Donald Deck - Playing Solo</title>
-    <link rel="stylesheet" href="/stylesheets/multiBlackjack.css">
+    <link rel="stylesheet" href="/stylesheets/blackjack.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <script src="/javascript/multiBlackjackAnimations.js" defer ></script>
     <script src="/javascript/sharedBlackjackAnimations.js" defer ></script>
@@ -201,14 +201,14 @@
 		}
 		var numplayers = players.length;
 		for (var i =0; i< numplayers; i++){
-		//table has as many rows as there are players 
+		//table has as many rows as there are players
 			var player = players[i];
 			console.log('I see ' + player);
 			var row = table.insertRow(i+1);
 			var playercell = row.insertCell(0);
 			var balancecell = row.insertCell(1);
-			playercell.innerHTML = player; 
-			balancecell.innerHTML = i; 
+			playercell.innerHTML = player;
+			balancecell.innerHTML = i;
 		}
     });
 	socket.on('balances',function(balances){
@@ -216,10 +216,10 @@
 		var table = document.getElementById('leaderboard');
 		var numplayers = balances.length;
 		for (var i =0; i< numplayers; i++){
-		//table has as many rows as there are players 
+		//table has as many rows as there are players
 			console.log('Player has balance' + balances[i]);
 			var balancecell = table.rows[i+1].cells[1];
-			balancecell.innerHTML = balances[i]; 
+			balancecell.innerHTML = balances[i];
 		}
 	});
 
