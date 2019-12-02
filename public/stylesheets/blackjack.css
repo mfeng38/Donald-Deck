@@ -308,7 +308,7 @@ img#backOfCardRework {
     visibility: hidden;
 }
 
-div#leaderboarddiv {
+div#leaderboardContainer {
     position: absolute;
     top: 50%;
     left: 50%;
