@@ -192,7 +192,7 @@
 
     //code to keep track of players in room
     var players;
-    socket.on('IDlist', function(playerIDs){
+    socket.on('usernames', function(playerIDs){
       players = playerIDs;
       console.log(players)
 	  var table = document.getElementById('leaderboard');

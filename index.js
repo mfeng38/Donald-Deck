@@ -127,6 +127,7 @@ app.post('/mainMenu', (req,res)=>{
 
 var roomNum;
 var playerIDs = {'solo': []};
+var usernames = {'solo': []};
 var rooms = {};
 app.post('/soloBlackjack',(req,res)=> {
     console.log("post soloBlackjack");
@@ -169,6 +170,7 @@ app.post('/multiplayerBlackjack',(req,res)=> {
                 roomNum = await deckID();
                 console.log("CHECK HERE", roomNum)
                 playerIDs[`${roomNum}`] = [];
+                usernames[`${roomNum}`] = [];
                 res.render('pages/multiplayerBlackjack', userinfo);
             }
         }
@@ -326,8 +328,10 @@ io.on('connection', function(socket){
     rooms[`${socket.id}`] = roomNum;
     socket.join(`${roomNum}`);
     playerIDs[`${roomNum}`].push(socket.id);
-    io.to(`${roomNum}`).emit('IDlist', playerIDs[`${roomNum}`])
-    io.to(`${roomNum}`).emit('room', roomNum)
+    usernames[`${roomNum}`].push(socket.username);
+    io.to(`${roomNum}`).emit('userlist', usernames[`${roomNum}`]);
+    io.to(`${roomNum}`).emit('IDlist', playerIDs[`${roomNum}`]);
+    io.to(`${roomNum}`).emit('room', roomNum);
     console.log(playerIDs)
     socket.on('chat msg', function(message){
         console.log(roomNum)
@@ -424,15 +428,20 @@ io.on('connection', function(socket){
     });
     //test
     socket.on('disconnect', (reason) => {
-      var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
-      playerIDs[`${rooms[`${socket.id}`]}`].splice(j,1);
-      delete rooms[`${socket.id}`];
-      if(playerIDs[`${rooms[`${socket.id}`]}`].length == 0){
-        delete playerIDs[`${rooms[`${socket.id}`]}`];
-      }
-      else{
-          io.to(`${rooms[`${socket.id}`]}`).emit('IDlist',playerIDs[`${roomNum}`]);
-          io.to(`${rooms[`${socket.id}`]}`).emit('chat msg',`${socket.username} has left`);
-      }
-    });
+        var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
+        playerIDs[`${rooms[`${socket.id}`]}`].splice(j,1);
+        if(playerIDs[`${rooms[`${socket.id}`]}`].length == 0){
+            if(rooms[`${socket.id}`] != 'solo'){
+                delete playerIDs[`${rooms[`${socket.id}`]}`];
+                delete usernames[`${rooms[`${socket.id}`]}`];
+            }
+            delete rooms[`${socket.id}`];
+        }
+            else{
+                io.to(`${rooms[`${socket.id}`]}`).emit('usernames', usernames[`${roomNum}`]); 
+                io.to(`${rooms[`${socket.id}`]}`).emit('IDlist',playerIDs[`${roomNum}`]);
+                io.to(`${rooms[`${socket.id}`]}`).emit('chat msg',`${socket.username} has left`);
+
+            }
+});
 });
