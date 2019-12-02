@@ -2,13 +2,13 @@ body {
     background-color: #FDFDF9;
     margin: 0px;
 }
-html, body{
-    height:100%;
+
+html, body {
+    height: 100%;
 }
 
 div#solocontainer {
-    position:relative;
-    border-color: #594236;
+    position: relative;
     margin-top: 1%;
     margin-left: 5px;
     margin-right: 5px;
@@ -18,19 +18,22 @@ div#solocontainer {
     height: 90%;
     width: 98%;
 }
+
 p#Dealer {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
     visibility: hidden;
 }
+
 p#Player {
     position: absolute;
     left: 50%;
-    top:94%;
+    top: 94%;
     transform: translate(-50%,-50%);
     visibility: hidden;
 }
+
 p#dealerCounter {
     position: absolute;
     left: 50%;
@@ -38,6 +41,7 @@ p#dealerCounter {
     transform: translate(-50%);
     visibility: hidden;
 }
+
 p#playerCounter {
     position: absolute;
     left: 50%;
@@ -45,6 +49,7 @@ p#playerCounter {
     transform: translate(-50%,-50%);
     visibility: hidden;
 }
+
 p#CurrentBet {
     position: absolute;
     left: 50%;
@@ -55,6 +60,7 @@ p#CurrentBet {
     background-color: white;
     visibility: hidden;
 }
+
 #Add5 {
     position: absolute;
     left: 45%;
@@ -69,6 +75,7 @@ p#CurrentBet {
     width: 8%;
     visibility: hidden;
 }
+
 #Add10 {
     position: absolute;
     left: 45%;
@@ -83,6 +90,7 @@ p#CurrentBet {
     width: 8%;
     visibility: hidden;
 }
+
 #Add25 {
     position: absolute;
     left: 45%;
@@ -96,6 +104,7 @@ p#CurrentBet {
     width: 8%;
     visibility: hidden;
 }
+
 #Add100 {
     position: absolute;
     left: 45%;
@@ -169,14 +178,15 @@ p#CurrentBet {
 #start {
     position: absolute;
     left: 50%;
-    top: 40%;
+    top: 85%;
     transform: translate(-50%, -50%);
     padding: 2%;
-    width: 12%;
+    width: 45%;
 }
+
 #bet {
     position: absolute;
-    top: 85%;
+    top: 80%;
     left: 95%;
     width: max-content;
     visibility: hidden;
@@ -192,13 +202,14 @@ p#CurrentBet {
     visibility: hidden;
     width: 12%;
 }
+
 #hit {
     position: absolute;
     left: 50%;
     top: 45%;
     transform: translate(-50%, -50%);
     padding: 0%;
-    width:10%;
+    width: 10%;
     height: 7%;
     text-align: center;
     vertical-align: center;
@@ -216,97 +227,224 @@ p#CurrentBet {
     text-align: center;
     visibility: hidden;
 }
-#changeBet{
+
+#changeBet {
+    position: absolute;
+    left: 90%;
+    top: 83%;
+    visibility: hidden;
+}
+
+#playAgain {
+    position: absolute;
+    left: 90%;
+    top: 90%;
+    visibility: hidden;
+}
+
+/*////////////////////////*/
+/*Multiplayer Version Only*/
+/*////////////////////////*/
+
+div#multicontainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: DarkGreen;
+    box-shadow: 0 0 5px 2px;
+    border: 1px solid;
+    border-radius: 5px;
+    height: 85%;
+    width: 25%;
+}
+
+img#backOfCardRework {
+    position: absolute;
+    visibility: visible;
+    width: 45%;
+    left: 50%;
+    top: 50%;
+    box-shadow: 0 0 5px 2px;
+    border: 1px solid;
+    padding: 1%;
+    transform: translate(-50%, -50%);
+}
+
+#roomID {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    left: 50%;
+    top: 15%;
+    font-size: 125%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+}
+
+#readyUp {
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    padding: 1%;
+    width: 45%;
+    transform: translate(-50%, -50%);
+}
+
+#startMatch {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    transform: translate(-50%, -50%);
+    padding: 1%;
+    visibility: hidden;
+    width: 12%;
+}
+
+#viewLeaderboard {
+    position: absolute;
+    left: 5%;
+    top: 45%;
+    visibility: hidden;
+}
+
+div#leaderboardContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: DarkGreen;
+    box-shadow: 0 0 5px 2px;
+    border: 1px solid;
+    border-radius: 5px;
+    height: 85%;
+    width: 25%;
+    opacity: 95%;
+    visibility: hidden;
+}
+
+table#leaderboard {
+    width: 100%;
+    overflow: auto;
+}
+
+td{
+    color: #FFFFFF;
+    font-weight: 2px;
+    text-align: center;
+    padding: 2px;
+}
+
+th{
+    color: #FFFFFF;
+    font-weight: 2px;
+}
+
+#closeLeaderboard {
   position: absolute;
-  left:80%;
-  top:90%;
-  visibility:hidden;
+  left: 50%;
+  top: 85%;
+  transform: translate(-50%, -50%);
+  padding: 1%;
+  width: 45%;
 }
-#playAgain{
-  position: absolute;
-  left:80%;
-  top:95%;
-  visibility:hidden;
+
+/*////////////////////////*/
+/*Multiplayer Version Ends*/
+/*////////////////////////*/
+
+img.card {
+    position: absolute;
+    visibility: hidden;
+    width: 120px;
 }
-img.card{
-    position:absolute;
-    visibility:hidden;
-    width:120px;
-}
+
 img#backofcard {
-    position:absolute;
+    position: absolute;
     visibility: visible;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width:30%
+    width: 30%
 }
+
 img#d1 {
     left: 45%;
     top: 7%;
     transform: translate(-50%);
     visibility: hidden;
 }
+
 img#d2 {
     left: 47%;
     top: 9%;
     transform: translate(-50%);
     visibility: hidden;
 }
+
 img#d3 {
     left: 49%;
     top: 11%;
     transform: translate(-50%);
     visibility: hidden;
 }
+
 img#d4 {
     left: 51%;
-    top:13%;
+    top: 13%;
     transform: translate(-50%);
     visibility: hidden;
 }
+
 img#d5 {
     left: 53%;
     top: 15%;
     transform: translate(-50%);
     visibility: hidden;
 }
+
 img#d6 {
     left: 55%;
     top: 17%;
     transform: translate(-50%);
     visibility: hidden;
 }
+
 img#c1 {
     left: 45%;
     transform: translate(-50%);
     top: 63%;
     visibility: hidden;
 }
+
 img#c2 {
     left: 47%;
     transform: translate(-50%);
     top: 61%;
     visibility: hidden;
 }
+
 img#c3 {
     left: 49%;
     transform: translate(-50%);
     top: 59%;
     visibility: hidden;
 }
+
 img#c4 {
     left: 51%;
     transform: translate(-50%);
     top: 57%;
     visibility: hidden;
 }
+
 img#c5 {
     left: 53%;
     transform: translate(-50%);
     top: 55%;
     visibility: hidden;
 }
+
 img#c6 {
     left: 55%;
     transform: translate(-50%);
@@ -314,57 +452,69 @@ img#c6 {
     visibility: hidden;
 }
 
-p#winloss{
-    visibility:hidden;
-    top:50%;
-    left:50%;
-    color:white;
-    font-weight:bold;
-    position:absolute;
+p#winloss {
+    visibility: hidden;
+    top: 48%;
+    left: 50%;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    position: absolute;
 }
-
 
 /*Chatroom*/
-div#chatroom{
-    height:25%;
-    margin-top:3%;
+div#chatroom {
+    height: 25%;
+    margin-top: 3%;
 }
-ul#messages{
-    padding:1%;
+
+ul#messages {
+    padding: 1%;
 }
+
 div#chatbox {
     height: 85%;
     width: 98%;
     margin: auto;
-    border:solid;
-    border-color:#546A76;
-    overflow-y:scroll;
-    overflow-x:no-content;
+    border: solid;
+    border-color: #546A76;
+    overflow-y: scroll;
+    overflow-x: no-content;
 }
-li.msgs{
-    margin-top:5px;
+
+li.msgs {
+    margin-top: 5px;
     list-style-type: none;
-    display:block;
-    border:dotted;
-    border-color:skyblue;
+    display: block;
+    border: dotted;
+    border-color: skyblue;
 }
+
 p.wrap {
-    word-wrap:break-word;
+    word-wrap: break-word;
 }
+
 form.chat {
     margin: auto;
     margin-top: 1%;
     margin-bottom: 1%;
     width: 98%;
 }
-input#msgin{
-    width:80%;
+
+input#msgin {
+    width: 80%;
 }
 
-button#sendmsg{
+button#sendmsg {
     width: 19%;
 }
 
+h1#globalchatheader {
+    text-align: center;
+    font-family: 'Corbel';
+    color: saddlebrown;
+}
 
 
 /* For Phone/mobile */
@@ -376,12 +526,12 @@ button#sendmsg{
     }
 
     p#winloss {
-        transform:translate(-50%);
+        transform: translate(-50%);
     }
 
     img#backofcard {
         width: 55%;
-        top:50%;
+        top: 50%;
     }
 
     #Add5 {
@@ -392,6 +542,7 @@ button#sendmsg{
         width: 15%;
         display: inline-block;
     }
+
     #Add10 {
         left: 40%;
         top: 67%;
@@ -400,6 +551,7 @@ button#sendmsg{
         width: 15%;
         display: inline-block;
     }
+
     #Add25 {
         left: 40%;
         top: 77%;
@@ -408,6 +560,7 @@ button#sendmsg{
         width: 15%;
         display: inline-block;
     }
+
     #Add100 {
         left: 40%;
         top: 87%;
@@ -452,14 +605,16 @@ button#sendmsg{
         width: 15%;
         display: inline-block;
     }
+
     button#start {
         left: 50%;
         top: 47%;
         transform: translate(-50%, -50%);
         padding: 3%;
         width: auto;
-        display:inline-block;
+        display: inline-block;
     }
+
     #startround {
         left: 50%;
         top: 45%;
@@ -511,6 +666,7 @@ button#sendmsg{
         visibility: hidden;
         width: 80px;
     }
+
     img#d1 {
         left: 40%;
         top: 18%;
@@ -522,21 +678,25 @@ button#sendmsg{
         top: 16%;
         transform: translate(-50%);
     }
+
     img#d3 {
         left: 48%;
         top: 14%;
         transform: translate(-50%);
     }
+
     img#d4 {
         left: 52%;
         top: 12%;
         transform: translate(-50%);
     }
+
     img#d5 {
         left: 56%;
         top: 10%;
         transform: translate(-50%);
     }
+
     img#d6 {
         left: 60%;
         top: 8%;
@@ -548,26 +708,31 @@ button#sendmsg{
         transform: translate(-50%);
         top: 70%;
     }
+
     img#c2 {
         left: 44%;
         transform: translate(-50%);
         top: 68%;
     }
+
     img#c3 {
         left: 48%;
         transform: translate(-50%);
         top: 66%;
     }
+
     img#c4 {
         left: 52%;
         transform: translate(-50%);
         top: 64%;
     }
+
     img#c5 {
         left: 56%;
         transform: translate(-50%);
         top: 62%;
     }
+
     img#c6 {
         left: 60%;
         transform: translate(-50%);
@@ -575,13 +740,12 @@ button#sendmsg{
     }
 
     /*Chat*/
-    #msgin{
-        width:78%;
+    #msgin {
+        width: 78%;
     }
-
 }
 
 @viewport {
-  width: device-width ;
-  zoom: 1.0 ;
+    width: device-width;
+    zoom: 1.0;
 }

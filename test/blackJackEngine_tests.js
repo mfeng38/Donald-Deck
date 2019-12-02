@@ -28,3 +28,15 @@ describe('blackjackEngine Tests', () => {
     })
 })
 
+describe('button tests', () => {
+    it('should add 5 to the bet value', () => {
+        
+    })
+})
+
+
+describe('socketio tests', () => {
+    it('should ', () => {
+
+    })
+})
