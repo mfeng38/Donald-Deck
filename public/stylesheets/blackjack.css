@@ -319,16 +319,18 @@ div#leaderboardContainer {
     border-radius: 5px;
     height: 85%;
     width: 25%;
+    opactity: 95%;
     visibility: hidden;
 }
 
 table#leaderboard {
-    width:100%;
-    overflow:auto;
+    width: 100%;
+    overflow: auto;
+    margin: 0 auto;
 }
 
 td th {
-  font-color: white;
+  color: white;
 }
 
 
@@ -338,7 +340,7 @@ td th {
   top: 85%;
   transform: translate(-50%, -50%);
   padding: 1%;
-  width: 12%;
+  width: 45%;
 }
 
 img.card {
