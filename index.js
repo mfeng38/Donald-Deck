@@ -67,22 +67,29 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/createAccount', (req, res) => {
+    var regexTest = /^[a-z0-9]+$/i;
     var createUsername = req.body.username;
     var createPassword = req.body.password;
-    var createQuery = ` insert into users(username, password, credits) select '${createUsername}', '${createPassword}', 2000 where not exists (select 1 from users where username='${createUsername}');`;
-    console.log(createQuery);
-    pool.query(createQuery, (error, result) => {
-        if (error)
-            res.send('ERROR',error);
-        else {
-            if (result.rowCount === 0) {
-                res.render('pages/createAccountIncorrect.ejs');
-            }
+    if (!regexTest.test(createUsername) || !regexTest.test(createPassword)) {
+        console.log("Non alpha numeric username/password.");
+        res.render('pages/createAccountNonAlpha.ejs')
+    }
+    else {
+        var createQuery = ` insert into users(username, password, credits) select '${createUsername}', '${createPassword}', 2000 where not exists (select 1 from users where username='${createUsername}');`;
+        console.log(createQuery);
+        pool.query(createQuery, (error, result) => {
+            if (error)
+                res.send('ERROR',error);
             else {
-                res.render('pages/loginPostCreate.ejs');
+                if (result.rowCount === 0) {
+                    res.render('pages/createAccountIncorrect.ejs')
+                }
+                else {
+                    res.render('pages/loginPostCreate.ejs')
+                }
             }
-        }
-    });
+        });
+    }
 });
 
 app.post('/myStats', (req, res) => {
