@@ -156,10 +156,6 @@ async function hit(){
           playerHandValue -= 10;
         }
         if(playerHandValue == 21){
-          document.getElementById("hit").style.visibility = "hidden";
-          document.getElementById("stay").style.visibility = "hidden";
-          document.getElementById("changeBet").style.visibility = "visible";
-          document.getElementById("playAgain").style.visibility = "visible";
           await dealer();
         }
         else if(playerHandValue > 21){
@@ -170,6 +166,8 @@ async function hit(){
           document.getElementById("playAgain").style.visibility = "visible";
           document.getElementById('winloss').innerHTML = "YOU BUST";
           document.getElementById('winloss').style.visibility = "visible";
+          document.getElementById('d1').src = dealerHiddenCard;
+          document.getElementById("dealerCounter").innerHTML = dealerHandValue;
         }
         document.getElementById("playerCounter").innerHTML = playerHandValue;
       }
@@ -250,6 +248,10 @@ async function dealer(){
       //PLAYER LOSES
       document.getElementById('winloss').innerHTML = "YOU LOSE";
       document.getElementById('winloss').style.visibility = "visible";
+  }
+  else if(playerHandValue == 21 && (playerHandValue != dealerHandValue)){
+    document.getElementById('winloss').innerHTML = "BLACKJACK!";
+    document.getElementById('winloss').style.visibility = "visible";
   }
   else{
       //DRAW;PUSH
