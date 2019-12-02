@@ -3,13 +3,28 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const app = express();
 const http = require('http').Server(app);
+const fetch = require("node-fetch");
 
 const { Pool, Client } = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
 });
 
-
+async function deckID(){
+  await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6')
+    .then(async (response) => {
+      if (response.ok) {
+        var temp = await response.json();
+        newDeckID = temp.deck_id;
+      } else {
+        throw new Error('Response did not return 200');
+      }
+    })
+    .catch(async (error) => {
+        console.log(error);
+    })
+  return newDeckID;
+}
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -73,7 +88,7 @@ app.post('/createAccount', (req, res) => {
 app.post('/myStats', (req, res) => {
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    //console.log("mystats",findUser);
+    console.log(findUser);
     pool.query(findUser, (error, result) => {
         if (error)
             res.send('ERROR',error);
@@ -83,9 +98,7 @@ app.post('/myStats', (req, res) => {
             }
             else {
                 var userinfo= {'row' : result.rows[0]};
-                //console.log(`mystats index.js`, userinfo);
                 res.render('pages/mystats.ejs', userinfo);
-                //console.log("rendered");
             }
         }
     });
@@ -94,7 +107,7 @@ app.post('/myStats', (req, res) => {
 app.post('/mainMenu', (req,res)=>{
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    //console.log("mainmenu",findUser);
+    console.log(findUser);
     pool.query(findUser, (error, result) => {
         if (error)
             res.send('ERROR',error);
@@ -109,11 +122,19 @@ app.post('/mainMenu', (req,res)=>{
         }
     });
 });
+//------------------------------------------- blackjack game related stuff below
+var roomNum;
+var playerIDs = {'solo': []};
+var usernames = {'solo': []};
+var rooms = {};
+var balances = {'solo': []};
 
 app.post('/soloBlackjack',(req,res)=> {
     console.log("post soloBlackjack");
     var user = req.body.id;
+    roomNum = 'solo'
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    console.log(findUser);
     pool.query(findUser, (error,result)=>{
         if (error)
             res.send(error);
@@ -128,15 +149,14 @@ app.post('/soloBlackjack',(req,res)=> {
             }
         }
     })
-
-
 });
 
 app.post('/multiplayerBlackjack',(req,res)=> {
-    console.log("post multiplayerBlackjack");
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    pool.query(findUser, (error,result)=>{
+    console.log(findUser);
+    pool.query(findUser, async (error,result)=>{
+      try{
         if (error)
             res.send(error);
         else{
@@ -146,36 +166,25 @@ app.post('/multiplayerBlackjack',(req,res)=> {
                 res.redirect('loginUI.html'); //fail in staying logged in
             }
             else{
+                roomNum = await deckID();
+                console.log("CHECK HERE", roomNum)
+                playerIDs[`${roomNum}`] = [];
+                usernames[`${roomNum}`] = [];
+                balances[`${roomNum}`] = [];
                 res.render('pages/multiplayerBlackjack', userinfo);
             }
         }
+      }
+      catch (error){
+        res.send(error)
+      }
     })
-   /*
-   //I made this before we chatted on discord so imma just leave it here in case it'll save you any work LOL.
-
-   var createRoom = req.body.roomid;
-   var createQuery = ` insert into rooms(roomid, username, score) select '${createRoom}', '${user}', 0);`;
-   console.log(createQuery);
-   pool.query(createQuery, (error, result) => {
-       if (error)
-           res.send('ERROR',error);
-       else {
-           if (result.rowCount === 0) {
-               res.render('pages/mainMenu.ejs')
-           }
-           else {
-               res.render('pages/multiplayerBlackjack.ejs')
-           }
-       }
-   });
-    */
-
 });
 
 app.post('/joinMatch', (req, res) => {
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    //console.log("mystats",findUser);
+    console.log(findUser);
     pool.query(findUser, (error, result) => {
         if (error)
             res.send('ERROR',error);
@@ -192,12 +201,43 @@ app.post('/joinMatch', (req, res) => {
     });
 });
 
+app.post('/roomNum',(req,res)=> {
+    var user = req.body.id;
+    roomNum = req.body.roomid;
+    var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
+    console.log(findUser);
+    pool.query(findUser, async (error,result)=>{
+      try{
+        if (error)
+            res.send(error);
+        else if(playerIDs[`${roomNum}`] == undefined){
+            var userinfo= {'row' : result.rows[0]};
+            console.log(userinfo);
+            res.render('pages/JoinMatchFail.ejs', userinfo);
+        }
+        else{
+            var userinfo= {'row' : result.rows[0]};
+            console.log(userinfo);
+            if (userinfo === undefined || result.rows.length == 0) {
+                res.redirect('loginUI.html'); //fail in staying logged in
+            }
+            else{
+                console.log("CHECK HERE", roomNum)
+                res.render('pages/multiplayerBlackjack', userinfo);
+            }
+        }
+      }
+      catch (error){
+        res.send(error)
+      }
+    })
+});
 
 //rebuys
 app.post('/rebuy', (req,res)=>{
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    //console.log("mainmenu",findUser);
+    console.log(finderUser);
     pool.query(findUser, (error, result) => {
         if (error){
             res.send('ERROR',error);
@@ -261,25 +301,36 @@ var server = http.listen(PORT, function(){
 
 
 // .io stuff
-var playerIDs = [];
-setInterval(()=>io.emit('time',new Date().toTimeString()), 1000);
-io.of('/multiplayerBlackjack').on('connection', function(socket){
+io.on('connection', function(socket){
     console.log('connection index');
     //Check how long it has been since last login
-    playerIDs.push(socket.id);
-    io.of('/multiplayerBlackjack').emit('IDlist', playerIDs)
+    rooms[`${socket.id}`] = roomNum;
+    socket.join(`${roomNum}`);
+    playerIDs[`${roomNum}`].push(socket.id);
+    balances[`${roomNum}`].push(0);
+
+    io.to(`${roomNum}`).emit('IDlist', playerIDs[`${roomNum}`]);
+    io.to(`${roomNum}`).emit('room', roomNum);
+    console.log(playerIDs)
+    
     socket.on('chat msg', function(message){
-        //console.log(message);
-        io.of('/multiplayerBlackjack').emit('chat msg', socket.username + ' said: ' + message );
+        console.log(roomNum)
+        console.log(message[1]);
+        if(rooms[`${socket.id}`] == message[1]){
+          io.to(`${rooms[`${socket.id}`]}`).emit('chat msg', socket.username + ' said: ' + message[0] );
+        }
     });
     socket.on('username', function(username){
         socket.username = username;
         console.log("username " + username + " and socket.id: " + socket.id);
-        io.of('/multiplayerBlackjack').emit('chat msg', `${socket.username} has joined the chat!`)
+        io.to(`${rooms[`${socket.id}`]}`).emit('chat msg', `${socket.username} has joined the chat!`)
+        usernames[`${roomNum}`].push(socket.username);
+        io.to(`${rooms[`${socket.id}`]}`).emit('usernames', usernames[`${roomNum}`]);
+        //console.log("welp:", usernames);
     });
     socket.on('checkBet', function(bet){
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
-        //console.log("mystats",findUser);
+        console.log(findUser);
         pool.query(findUser, (error, result) => {
             if (error)
                 socket.emit('ERROR',error);
@@ -294,13 +345,24 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
                     if (newCreditCount >= 0){
                         //pool query again replace new credit count
                         var UpdateQuery = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
+                        console.log(UpdateQuery);
                         pool.query(UpdateQuery, (error,result)=>{
                             if (error){
                                 socket.emit("ERROR:", error);
                             }
                             else{
-                                io.of('/multiplayerBlackjack').to(`${socket.id}`).emit('startGame', newCreditCount);
-                                io.of('/multiplayerBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
+                                io.to(`${socket.id}`).emit('startGame', newCreditCount);
+                                io.to(`${socket.id}`).emit('newCredits', newCreditCount);
+                                //balances subtract
+                                var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
+                                // get index
+                                var playerbalance = balances[`${rooms[`${socket.id}`]}`][j];
+                                //console.log("playerbalance:", playerbalance);
+                                playerbalance = playerbalance - bet;
+                                balances[`${rooms[`${socket.id}`]}`][j] = playerbalance;
+                                //emit to everyone new balances
+                                io.to(`${rooms[`${socket.id}`]}`).emit('balances',balances[`${roomNum}`]);
+
                             }
                         });
                     }
@@ -308,7 +370,7 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
             }
         });
     });
-    socket.on('payout', function(bet){
+    socket.on('blackjackPay',function(bet){ //if get 21 - pay 3:2
         var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
         pool.query(findUser, (error, result)=>{
             if (error)
@@ -319,13 +381,57 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
                 }
                 else{
                     var credits = result.rows[0].credits;
-                    var newCreditCount = bet * 3 + credits;
+                    var newCreditCount = bet *3 + credits;
                     var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
                     pool.query(addCredits, (err, res)=>{
                         if (error) socket.emit("ERROR", err);
                         else{
-                            //console.log("new credits: ", newCreditCount);
-                            io.of('/multiplayerBlackjack').to(`${socket.id}`).emit('newCredits', newCreditCount);
+                            console.log("index bjplay new credits: ", newCreditCount);
+                            io.to(`${socket.id}`).emit('newCredits', newCreditCount);
+                            // balances
+                            var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
+                            // get index
+                            var playerbalance = balances[`${rooms[`${socket.id}`]}`][j];
+                            //console.log("playerbalance:", playerbalance);
+                            playerbalance = playerbalance + 3* bet;
+                            balances[`${rooms[`${socket.id}`]}`][j] = playerbalance;
+                            //emit to everyone new balances
+                            io.to(`${rooms[`${socket.id}`]}`).emit('balances',balances[`${roomNum}`]);
+                        }
+                    });
+                }
+            }
+        });
+    });
+
+    socket.on('payout', function(bet){
+        var findUser = `SELECT * FROM users WHERE users.username = '${socket.username}'`;
+        console.log(findUser);
+        pool.query(findUser, (error, result)=>{
+            if (error)
+                socket.emit('ERROR', error);
+            else{
+                if (result.rowCount === 0){
+                    socket.emit('ERROR', error);
+                }
+                else{
+                    var credits = result.rows[0].credits;
+                    var newCreditCount = bet * 2 + credits;
+                    var addCredits = `UPDATE users SET credits = ${newCreditCount} WHERE users.username = '${socket.username}'`;
+                    console.log(addCredits);
+                    pool.query(addCredits, (err, res)=>{
+                        if (error) socket.emit("ERROR", err);
+                        else{
+                            io.to(`${socket.id}`).emit('newCredits', newCreditCount);
+                            //balances
+                            var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
+                            // get index
+                            var playerbalance = balances[`${rooms[`${socket.id}`]}`][j];
+                            //console.log("playerbalance:", playerbalance);
+                            playerbalance = playerbalance + 2* bet;
+                            balances[`${rooms[`${socket.id}`]}`][j] = playerbalance;
+                            //emit to everyone new balances
+                            io.to(`${rooms[`${socket.id}`]}`).emit('balances',balances[`${roomNum}`]);
                         }
                     });
                 }
@@ -333,9 +439,25 @@ io.of('/multiplayerBlackjack').on('connection', function(socket){
         });
 
     });
+    //test
     socket.on('disconnect', (reason) => {
-      var j = playerIDs.indexOf(socket.id);
-      playerIDs.splice(j,1);
-      io.of('/multiplayerBlackjack').emit('IDlist',playerIDs);
+        var j = playerIDs[`${rooms[`${socket.id}`]}`].indexOf(socket.id);
+        playerIDs[`${rooms[`${socket.id}`]}`].splice(j,1);
+        usernames[`${rooms[`${socket.id}`]}`].splice(j,1);
+        balances[`${rooms[`${socket.id}`]}`].splice(j,1);
+        if(playerIDs[`${rooms[`${socket.id}`]}`].length == 0){
+            if(rooms[`${socket.id}`] != 'solo'){
+                delete playerIDs[`${rooms[`${socket.id}`]}`];
+                delete usernames[`${rooms[`${socket.id}`]}`];
+                delete balances[`${rooms[`${socket.id}`]}`];
+            }
+            delete rooms[`${socket.id}`];
+        }
+            else{
+                io.to(`${rooms[`${socket.id}`]}`).emit('usernames', usernames[`${roomNum}`]); 
+                io.to(`${rooms[`${socket.id}`]}`).emit('IDlist',playerIDs[`${roomNum}`]);
+                io.to(`${rooms[`${socket.id}`]}`).emit('chat msg',`${socket.username} has left`);
+                io.to(`${rooms[`${socket.id}`]}`).emit('balances',balances[`${roomNum}`]);
+            }
     });
 });
