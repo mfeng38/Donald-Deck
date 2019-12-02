@@ -49,7 +49,9 @@ document.getElementById('changeBet').addEventListener('click', function () {
     document.getElementById('winloss').style.visibility = "hidden";
     document.getElementById("changeBet").style.visibility = "hidden";
     document.getElementById("playAgain").style.visibility = "hidden";
+    document.getElementById("viewLeaderboard").style.visibility = "hidden";
 
+    document.getElementById("multicontainer").style.visibility = "visible";
     document.getElementById("startMatch").style.visibility = "visible";
     document.getElementById("CurrentBet").style.visibility = "visible";
     showBetButtons();
