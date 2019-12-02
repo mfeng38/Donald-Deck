@@ -31,7 +31,7 @@ document.getElementById('startMatch').addEventListener('click', function () {
         document.getElementById("dealerCounter").style.visibility = "visible";
         document.getElementById("hit").style.visibility = "visible";
         document.getElementById("stay").style.visibility = "visible";
-        document.getElementById("viewLeaderboard").style.visibility = "visible";
+        //document.getElementById("viewLeaderboard").style.visibility = "visible";
         hideBetButtons();
     }
     gameStart();
@@ -62,7 +62,4 @@ document.getElementById('playAgain').addEventListener('click', function () {
     gameStart();
 });
 
-//Fill this boi with leaderboard stuff
-document.getElementById('viewLeaderboard').addEventListener('click', function() {
 
-});
