@@ -1,4 +1,7 @@
 const expect = require('chai').expect
+const chai = require('chai'), chaiHttp = require('chai-http');
+chai.use(chaiHttp);
+
 const blackjack = require('../public/javascript/blackJackEngine.js')
 
 describe('blackjackEngine Tests', () => {
@@ -26,4 +29,57 @@ describe('blackjackEngine Tests', () => {
         const result = blackjack.shuffle
         expect(result).to.be.an('undefined')
     })
+})
+
+describe('http requests', () => {
+    it('loads login page ', function(done) {
+        chai.request('https://donalddeck.herokuapp.com/')
+        .get('/loginUI.html')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    it('loads createAccount page ', function(done) {
+        chai.request('https://donalddeck.herokuapp.com/')
+        .get('/createAccount.html')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    /*
+    it('loads myStats page ', function(done) {
+        chai.request('https://donalddeck.herokuapp.com/')
+        .get('/myStats/')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    it('loads mainMenu page ', function(done) {
+        chai.request('https://donalddeck.herokuapp.com/')
+        .get('/login/')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    it('loads soloBlackjack page ', function(done) {
+        chai.request('https://donalddeck.herokuapp.com/')
+        .get('/soloBlackjack/')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    it('loads multiplayerBlackjack page ', function(done) {
+        chai.request('https://donalddeck.herokuapp.com/')
+        .get('/multiplayerBlackjack/')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    */
 })
