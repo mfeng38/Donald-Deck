@@ -245,7 +245,7 @@ app.post('/roomNum',(req,res) => {
 app.post('/rebuy', (req,res) => {
     var user = req.body.id;
     var findUser = `SELECT * FROM users WHERE users.username = '${user}'`;
-    console.log(finderUser);
+    console.log(findUser);
     pool.query(findUser, (error, result) => {
         if (error) {
             res.send('ERROR',error);
