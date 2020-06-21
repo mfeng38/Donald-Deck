@@ -1,8 +1,6 @@
 ### The Quacking Cows present
 # Donald Deck
 
-https://csil-git1.cs.surrey.sfu.ca/pjalali/donald-deck
-
 ## The Quacking Cows are:
 |Name            |SFU ID  |
 |----------------|--------|
