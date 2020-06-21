@@ -2,13 +2,13 @@
 # Donald Deck
 
 ## The Quacking Cows are:
-|Name            |SFU ID  |
-|----------------|--------|
-|Malik Feng      |malikf  |
-|Erica Ho        |hoericah|
-|Paymon Jalali   |pjalali |
-|Alyssa Nicholson|anicolso|
-|David Yeung     |dya40   |
+|Name            |
+|----------------|
+|Malik Feng      |
+|Erica Ho        |
+|Paymon Jalali   |
+|Alyssa Nicholson|
+|David Yeung     |
 
 ## Abstract
 
